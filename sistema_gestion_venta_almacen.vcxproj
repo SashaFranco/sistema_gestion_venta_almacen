@@ -139,7 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cliente.cpp" />
+    <ClCompile Include="Fecha.cpp" />
+    <ClCompile Include="Helpers.cpp" />
+    <ClCompile Include="Persona.cpp" />
+    <ClCompile Include="Proveedor.cpp" />
     <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cliente.h" />
+    <ClInclude Include="Fecha.h" />
+    <ClInclude Include="Helpers.h" />
+    <ClInclude Include="Persona.h" />
+    <ClInclude Include="Proveedor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
