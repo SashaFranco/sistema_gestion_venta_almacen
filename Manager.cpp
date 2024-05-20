@@ -1,5 +1,6 @@
 #include "Manager.h"
 
+// METODOS PARA MANEJAR USUARIOS
 void Manager::MostrarEncabezadoUsuario()
 {
 	cout << left;
@@ -201,6 +202,8 @@ void Manager::listarUsuarios()
     system("pause");
 }
 
+
+//METODOS PARA MANEJAR PRODUCTOS
 void Manager::MostrarEncabezadoProductos()
 {
     cout << left;
@@ -525,6 +528,8 @@ void Manager::BuscarProductoXNombre()
     }
 }
 
+
+// METODOS PARA MANEJAR STOCK
 void Manager::CargarStock(Producto producto)
 {
 

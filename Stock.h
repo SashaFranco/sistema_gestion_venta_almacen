@@ -18,7 +18,6 @@ public:
     void SetProducto(Producto p);
     void SetFecha();
 
-
     int GetId() const;
     int GetCantidad() const;
     Producto GetProdcuto() const;
