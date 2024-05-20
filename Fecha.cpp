@@ -2,13 +2,13 @@
 #include <iostream>
 #include <ctime>
 
-int Fecha::getDia() { return _dia; }
-int Fecha::getMes() { return _mes; }
-int Fecha::getAnio() { return _anio; }
+int Fecha::getDia(){return _dia;}
+int Fecha::getMes(){return _mes;}
+int Fecha::getAnio(){return _anio;}
 
 std::string Fecha::getNombreDia()
 {
-	std::string nombres[7] = {
+	std::string nombres[7] = { 
 		"Domingo",
 		"Lunes",
 		"Martes",
@@ -23,11 +23,11 @@ std::string Fecha::getNombreDia()
 	return "";
 }
 
-void Fecha::setDia(int dia) { _dia = dia; }
+void Fecha::setDia(int dia){_dia = dia;}
 
-void Fecha::setMes(int mes) { _mes = mes; }
+void Fecha::setMes(int mes){_mes = mes;}
 
-void Fecha::setAnio(int anio) { _anio = anio; }
+void Fecha::setAnio(int anio){_anio = anio;}
 
 Fecha::Fecha()
 {
@@ -50,8 +50,8 @@ Fecha::Fecha(int dia, int mes, int anio)
 std::string Fecha::toString()
 {
 	std::string valorADevolver;
-	valorADevolver = std::to_string(_dia) +
-		"/" + std::to_string(_mes) +
+	valorADevolver = std::to_string(_dia) + 
+		"/" + std::to_string(_mes) + 
 		"/" + std::to_string(_anio);
 
 	return valorADevolver;

@@ -12,9 +12,9 @@ class Producto
 public:
 
 	Producto();
-	Producto(int id,
-		const char* nombre,
-		int precioVenta,
+	Producto(int id, 
+		const char* nombre, 
+		int precioVenta, 
 		int precioCompra);
 
 	void CargarProducto();
@@ -22,13 +22,13 @@ public:
 	void MostrarProducto2();
 
 	void SetId(int id);
-	void SetNombre(const char* nombre);
+	void SetNombre(const char * nombre);
 	void SetFecha();
 	void SetEstado(bool estado);
 	void SetPrecioVenta(float precioVenta);
 	void SetPrecioCompra(float precioCompra);
 	void SetDescripcion(const char* desc);
-
+	
 	int GetId() const;
 	char* GetNombre();
 	char* GetDescripcion();
@@ -36,7 +36,7 @@ public:
 	bool GetEstado() const;
 	float GetPrecioVenta() const;
 	float GetPrecioCompra() const;
-
+	
 
 protected:
 	int _id;
@@ -45,5 +45,4 @@ protected:
 	Fecha _fecha;
 	bool _estado;
 };
-
 

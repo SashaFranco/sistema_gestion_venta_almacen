@@ -1,11 +1,11 @@
 #pragma once
 #include "Persona.h"
+#include "ArchivosManager.h"
 #include "Helpers.h";
-#include <iomanip>
 
 
 class Proveedor :
-	public Persona
+    public Persona
 {
 public:
 
@@ -19,5 +19,6 @@ public:
 	void BuscarProveedor();
 
 private:
-	//ArchivosManager _reg = ArchivosManager("Proveedores.dat");
+    ArchivosManager _reg = ArchivosManager("Proveedores.dat");
 };
+

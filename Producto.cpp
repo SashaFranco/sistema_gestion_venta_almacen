@@ -11,12 +11,12 @@ Producto::Producto()
 	_estado = true;
 }
 
-Producto::Producto(int id,
-	const char* nombre,
-	int precioVenta,
+Producto::Producto(int id, 
+	const char* nombre, 
+	int precioVenta, 
 	int precioCompra)
 {
-
+	
 	SetId(id);
 	SetNombre(nombre);
 	SetPrecioVenta(precioVenta);
@@ -75,21 +75,24 @@ void Producto::MostrarProducto2()
 	}
 }
 
-void Producto::SetId(int id) { _id = id; }
-void Producto::SetNombre(const char* nombre) { strcpy_s(_nombre, nombre); }
-void Producto::SetDescripcion(const char* desc) { strcpy_s(_descripcion, desc); }
+void Producto::SetId(int id){_id = id;}
+void Producto::SetNombre(const char* nombre){strcpy_s(_nombre, nombre);}
+void Producto::SetDescripcion(const char* desc){strcpy_s(_descripcion, desc);}
 
 
-void Producto::SetFecha() { _fecha.FechaActual(); }
-void Producto::SetEstado(bool estado) { _estado = estado; }
+void Producto::SetFecha(){_fecha.FechaActual();}
+void Producto::SetEstado(bool estado){_estado = estado;}
 void Producto::SetPrecioVenta(float precioVenta) { _precioVenta = precioVenta; }
 void Producto::SetPrecioCompra(float precioCompra) { _precioCompra = precioCompra; }
 
-int Producto::GetId() const { return _id; }
-char* Producto::GetNombre() { return _nombre; }
-char* Producto::GetDescripcion() { return _descripcion; }
+int Producto::GetId() const {return _id;}
+char* Producto::GetNombre() {return _nombre;}
+char* Producto::GetDescripcion(){return _descripcion;}
 
-Fecha Producto::GetFecha() const { return _fecha; }
-bool Producto::GetEstado() const { return _estado; }
-float Producto::GetPrecioVenta() const { return _precioVenta; }
-float Producto::GetPrecioCompra() const { return _precioCompra; }
+Fecha Producto::GetFecha() const{return _fecha;}
+bool Producto::GetEstado() const{return _estado;}
+float Producto::GetPrecioVenta() const{return _precioVenta;}
+float Producto::GetPrecioCompra() const{return _precioCompra;}
+
+
+

@@ -3,9 +3,9 @@
 using namespace std;
 
 //#include <xlslib.h>
-//#include "Cliente.h"
-//#include "Proveedor.h"
-//#include "Producto.h"
+#include "Cliente.h"
+#include "Proveedor.h"
+#include "Producto.h"
 
 void setConsoleSize(int rows, int cols) {
     cout << "\x1b[8;" << rows << ";" << cols << "t"; // ANSI escape (funcion para controlar tamaño de consola)
