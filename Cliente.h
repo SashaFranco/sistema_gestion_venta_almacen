@@ -1,9 +1,11 @@
 #pragma once
 #include "Persona.h"
+#include "ArchivosManager.h"
 #include "Helpers.h";
 
+
 class Cliente :
-	public Persona
+    public Persona
 {
 public:
 	void mostrarEncabezado();
@@ -16,5 +18,6 @@ public:
 	void BuscarCliente();
 
 private:
-	//ArchivosManager _reg = ArchivosManager("Clientes.dat");
+	ArchivosManager _reg = ArchivosManager("Clientes.dat");
 };
+

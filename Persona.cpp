@@ -20,9 +20,9 @@ void Persona::setApellido(const char* apellido) { strcpy_s(_apellido, apellido);
 void Persona::setDomicilio(const char* domicilio) { strcpy_s(_direccion, domicilio); }
 void Persona::setEmail(const char* email) { strcpy_s(_email, email); }
 
-void Persona::setFechaAlta() { _fechaAlta.FechaActual(); }
+void Persona::setFechaAlta(){_fechaAlta.FechaActual();}
 
-void Persona::setEstado(bool estado) { _estado = estado; }
+void Persona::setEstado(bool estado){_estado = estado;}
 
 int Persona::getDNI() { return _dni; }
 int Persona::getId() { return _id; }
@@ -31,7 +31,7 @@ char* Persona::getApellido() { return _apellido; }
 char* Persona::getDomicilio() { return _direccion; }
 char* Persona::getEmail() { return _email; }
 Fecha Persona::getFechaAlta() { return _fechaAlta; }
-bool Persona::getEstado() { return _estado; }
+bool Persona::getEstado(){return _estado;}
 
 
 void Persona::Cargar()
