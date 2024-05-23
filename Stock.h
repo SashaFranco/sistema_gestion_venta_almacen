@@ -9,24 +9,26 @@ class Stock
 public:
 
     Stock();
+    Stock(int idProducto, int cantidad, Fecha fechaIngreso, bool estado);
 
-    void CargarStock(Producto &producto);
+    void CargarStock();
     void MostrarStock();
 
-    void SetId(int id);
+    void SetIdProducto(int idProducto);
     void SetCantidad(int cantidad);
-    void SetProducto(Producto p);
-    void SetFecha();
+    void SetFechaIngreso(Fecha fechaIngreso);
+    void SetEstado(bool estado);
 
-    int GetId() const;
+    int GetIdProducto() const;
     int GetCantidad() const;
-    Producto GetProdcuto() const;
-    Fecha GetFecha() const;
+    Fecha GetFechaIngreso() const;
+    bool GetEstado() const;
 
 private:
 
-    int _id, _cantidad;
+    int _cantidad, _idProducto;
     Producto _producto;
-    Fecha _fecha;
+    Fecha _fechaIngreso;
+    bool _estado;
 };
 

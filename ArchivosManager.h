@@ -63,14 +63,14 @@ public:
 	Producto BuscarProducto(int n) const;
 
 	// METODOS PARA EL STOCK
-	int ObtenerUltimoIdStock() const;
 	bool AltaStock(Stock reg);
-	bool ListarStock(Stock reg) const;
+	bool BajaStock(int idProducto);
 	bool ModificarStock(Stock reg, int pos);
+	bool ListarStock() const;
+	Stock BuscarStock(int idProducto) const;
+	int BuscarStockXProductoID(int idProducto) const;
 	int BuscarPosicionStock(Stock reg);
-	int BuscarStockXID(int id, FILE* p) const;
-	/*Stock BuscarStockFecha(Fecha fecha) const;
-	Stock BuscarStock(int n) const;*/
+	bool sobreEscribirRegistroStock(Stock reg, int pos);
 
 private:
 	char _nombreArchivo[30];
