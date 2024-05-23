@@ -9,6 +9,7 @@ class Stock
 public:
 
     Stock();
+    Stock(int idProducto, int cantidad, bool estado);
     Stock(int idProducto, int cantidad, Fecha fechaIngreso, bool estado);
 
     void CargarStock();

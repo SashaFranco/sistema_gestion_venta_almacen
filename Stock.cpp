@@ -7,6 +7,13 @@ Stock::Stock() {
     _estado = true;
 }
 
+Stock::Stock(int idProducto, int cantidad, bool estado)
+{
+    _idProducto = idProducto;
+    _cantidad = cantidad;
+    _estado = estado;
+}
+
 Stock::Stock(int idProducto, int cantidad, Fecha fechaIngreso, bool estado) {
     _idProducto = idProducto;
     _cantidad = cantidad;

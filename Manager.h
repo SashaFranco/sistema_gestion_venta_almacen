@@ -38,7 +38,11 @@ public:
 	void BuscarProductoXNombre();
 	
 	// METODOS PARA GESTIONAR STOCK
-	void CargarStock(Producto producto);
+	void AgregarStock();
+	void EliminarStock();
+	void ModificarStock();
+	void ListarStock();
+	void BuscarStockPorProducto();
 
 
 
