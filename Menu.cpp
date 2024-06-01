@@ -128,14 +128,14 @@ void Menu::mostrarCompras()
         switch (opc)
         {
         case 1:
-            _manager.AgregarStock();
+            //_manager.AgregarStock();
             system("pause");
             break;
         case 2:
-            _manager.ListarStock();
+            //_manager.ListarStock();
             break;
         case 3:
-            _manager.BuscarStockPorProducto();
+            //_manager.BuscarStockPorProducto();
             break;
         case 4:
             break;

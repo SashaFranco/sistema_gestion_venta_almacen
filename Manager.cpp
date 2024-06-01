@@ -212,6 +212,7 @@ void Manager::MostrarEncabezadoProductos()
     cout << setw(45) << "DESCRIPCION";
     cout << setw(20) << "PRECIO DE VENTA";
     cout << setw(35) << "PRECIO DE COMPRA";
+    cout << setw(35) << "CANTIDAD";
     cout << setw(55) << "FECHA DE ALTA" << endl;
     cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 }
@@ -563,7 +564,6 @@ void Manager::AgregarStock() {
     }
     system("pause");
 }
-
 void Manager::EliminarStock() {
     system("cls");
     int idProducto;
@@ -595,7 +595,6 @@ void Manager::EliminarStock() {
     }
     system("pause");
 }
-
 void Manager::ModificarStock() {
     system("cls");
     int idProducto;
@@ -621,7 +620,6 @@ void Manager::ModificarStock() {
     }
     system("pause");
 }
-
 void Manager::ListarStock() {
     system("cls");
     if (!_regStock.ListarStock()) {
@@ -629,7 +627,6 @@ void Manager::ListarStock() {
     }
     system("pause");
 }
-
 void Manager::BuscarStockPorProducto() {
     system("cls");
     int idProducto;

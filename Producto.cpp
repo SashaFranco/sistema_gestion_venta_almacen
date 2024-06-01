@@ -57,6 +57,7 @@ void Producto::MostrarProducto()
 		cout << setw(45) << GetDescripcion();
 		cout << setw(20) << GetPrecioVenta();
 		cout << setw(35) << GetPrecioCompra();
+		cout << setw(35) << GetCantidad();
 		cout << setw(55) << GetFecha().toString() << endl;
 		cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 	}
@@ -70,12 +71,14 @@ void Producto::MostrarProducto2()
 		cout << setw(20) << GetDescripcion();
 		cout << setw(20) << GetPrecioVenta();
 		cout << setw(35) << GetPrecioCompra();
+		cout << setw(35) << GetCantidad();
 		cout << setw(55) << GetFecha().toString() << endl;
 		cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 	}
 }
 
 void Producto::SetId(int id){_id = id;}
+void Producto::SetCantidad(int cantidad) { _cantidad = cantidad; }
 void Producto::SetNombre(const char* nombre){strcpy_s(_nombre, nombre);}
 void Producto::SetDescripcion(const char* desc){strcpy_s(_descripcion, desc);}
 
@@ -86,6 +89,7 @@ void Producto::SetPrecioVenta(float precioVenta) { _precioVenta = precioVenta; }
 void Producto::SetPrecioCompra(float precioCompra) { _precioCompra = precioCompra; }
 
 int Producto::GetId() const {return _id;}
+int Producto::GetCantidad() const {return _cantidad;}
 char* Producto::GetNombre() {return _nombre;}
 char* Producto::GetDescripcion(){return _descripcion;}
 

@@ -62,6 +62,12 @@ public:
 	int BuscarPosicion(Producto reg);
 	Producto BuscarProducto(int n) const;
 
+	// METODOS PARA MANEJAR TRANSACCIONES
+	bool AltaTransaccion(Transaccion reg);
+	bool ListarTransacciones() const;
+	double CalcularIngresos() const;
+	double CalcularEgresos() const;
+
 	// METODOS PARA EL STOCK
 	bool AltaStock(Stock reg);
 	bool BajaStock(int idProducto);
