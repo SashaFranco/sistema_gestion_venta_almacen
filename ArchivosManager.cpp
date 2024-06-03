@@ -1,9 +1,11 @@
+#include <string>
 #include "ArchivosManager.h"
 #include "Usuarios.h"
 #include "Cliente.h"
 #include "Proveedor.h"
 #include "Producto.h"
 #include "Stock.h"
+#include "ExportarCSV.h"
 
 ArchivosManager::ArchivosManager(const char* n){
 	strcpy_s(_nombreArchivo, n);
@@ -735,6 +737,44 @@ int ArchivosManager::BuscarStockXID(int id, FILE* p) const
 {
     return 0;
 }
+//****************************************************************************************************************
+// Implementación de la nueva función exportarACSV
+// Cambiar el nombre de la función para evitar conflictos con el nombre del archivo CSV
+void ArchivosManager::exportarACSV(const string& archivoBinario, const string& archivoCSV) {
+
+    // Abrir archivo binario para lectura
+    FILE* archivoEntrada;
+    archivoEntrada = fopen(archivoBinario.c_str(), "rb");
+    if (!archivoEntrada) {
+        cout << "Error al abrir el archivo " << archivoBinario << endl;
+        return;
+    }
+
+    // Abrir archivo CSV para escritura
+    FILE* archivoSalida;
+    archivoSalida = fopen(archivoCSV.c_str(), "w");
+    if (!archivoSalida) {
+        cout << "Error al abrir el archivo " << archivoCSV << endl;
+        fclose(archivoEntrada); // Cerrar el archivo binario antes de salir
+        return;
+    }
+
+    // Leer y procesar los datos del archivo binario
+    char buffer[256]; // Supongamos que cada línea tiene un máximo de 256 caracteres
+    size_t bytesRead;
+    while ((bytesRead = fread(buffer, 1, sizeof(buffer), archivoEntrada)) > 0) {
+        // Escribir el buffer en el archivo CSV
+        fwrite(buffer, 1, bytesRead, archivoSalida);
+    }
+
+    // Cerrar archivos
+    fclose(archivoEntrada);
+    fclose(archivoSalida);
+
+    cout << "Datos exportados correctamente como " << archivoCSV << endl;
+}
+//***********************************************************************************************************************
+
 
 
 

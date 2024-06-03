@@ -40,8 +40,7 @@ public:
 	// METODOS PARA GESTIONAR STOCK
 	void CargarStock(Producto producto);
 
-
-
+	
 	// SETTERS
 	void setUsuarios(Usuarios usuario);
 

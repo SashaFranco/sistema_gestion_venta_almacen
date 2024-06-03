@@ -72,7 +72,14 @@ public:
 	/*Stock BuscarStockFecha(Fecha fecha) const;
 	Stock BuscarStock(int n) const;*/
 
+
+
+	//FUNCION PARA EXPORTAR ARCHIVOS COMO CSV
+	void exportarACSV(const string& archivoBinario, const string& _archivoCSV);
+
+
 private:
 	char _nombreArchivo[30];
+	
 };
 
