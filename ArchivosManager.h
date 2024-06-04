@@ -6,6 +6,7 @@ class Cliente;
 class Proveedor;
 class Producto;
 class Stock;
+class Transaccion;
 
 using namespace std;
 

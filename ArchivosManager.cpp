@@ -324,7 +324,6 @@ Cliente ArchivosManager::BuscarCliente(int n) const
     return reg;
 }
 
-
 // METODOS PARA PROVEEDORES
 int ArchivosManager::ObtenerUltimoIdProveedor() const
 {
@@ -500,7 +499,6 @@ Proveedor ArchivosManager::BuscarProveedor(int n) const
 }
 
 // METODOS PARA PRODUCTOS - Revisar baja de producto
-
 int ArchivosManager::ObtenerUltimoIdProducto() const
 {
     int pos;
@@ -676,7 +674,6 @@ Producto ArchivosManager::BuscarProducto(int n) const
 }
 
 // METODOS PARA MANEJAR TRANSACCIONES
-
 bool ArchivosManager::AltaTransaccion(Transaccion reg) {
     FILE* p = fopen(_nombreArchivo, "ab");
     if (p == nullptr) return false;
@@ -685,7 +682,6 @@ bool ArchivosManager::AltaTransaccion(Transaccion reg) {
     fclose(p);
     return true;
 }
-
 bool ArchivosManager::ListarTransacciones() const {
     FILE* p = fopen(_nombreArchivo, "rb");
     if (p == nullptr) return false;
@@ -699,7 +695,6 @@ bool ArchivosManager::ListarTransacciones() const {
     fclose(p);
     return true;
 }
-
 double ArchivosManager::CalcularIngresos() const {
     FILE* p = fopen(_nombreArchivo, "rb");
     if (p == nullptr) return 0.0;
@@ -714,7 +709,6 @@ double ArchivosManager::CalcularIngresos() const {
     fclose(p);
     return totalIngresos;
 }
-
 double ArchivosManager::CalcularEgresos() const {
     FILE* p = fopen(_nombreArchivo, "rb");
     if (p == nullptr) return 0.0;
@@ -729,7 +723,6 @@ double ArchivosManager::CalcularEgresos() const {
     fclose(p);
     return totalEgresos;
 }
-
 
 // METODOS PARA EL STOCK
 
