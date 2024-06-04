@@ -43,9 +43,13 @@ public:
 	void ModificarStock();
 	void ListarStock();
 	void BuscarStockPorProducto();
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
 
+	
 	// SETTERS
 	void setUsuarios(Usuarios usuario);
 

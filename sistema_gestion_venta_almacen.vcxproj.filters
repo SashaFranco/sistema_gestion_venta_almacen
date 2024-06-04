@@ -57,6 +57,9 @@
     <ClCompile Include="Venta.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ExportarCSV.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Persona.h">
@@ -99,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Venta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExportarCSV.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

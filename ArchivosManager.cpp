@@ -1,3 +1,4 @@
+#include <string>
 #include "ArchivosManager.h"
 #include "Usuarios.h"
 #include "Cliente.h"
@@ -5,6 +6,10 @@
 #include "Producto.h"
 #include "Stock.h"
 #include "Transaccion.h"
+<<<<<<< HEAD
+=======
+#include "ExportarCSV.h"
+>>>>>>> master
 
 ArchivosManager::ArchivosManager(const char* n){
 	strcpy_s(_nombreArchivo, n);
@@ -821,6 +826,7 @@ int ArchivosManager::BuscarPosicionStock(Stock reg) {
     }
     fclose(p);
     return -1;
+<<<<<<< HEAD
 }
 bool ArchivosManager::sobreEscribirRegistroStock(Stock reg, int pos) {
     FILE* p = fopen(_nombreArchivo, "rb+");
@@ -830,7 +836,31 @@ bool ArchivosManager::sobreEscribirRegistroStock(Stock reg, int pos) {
     bool escribio = fwrite(&reg, sizeof(Stock), 1, p);
     fclose(p);
     return escribio;
+=======
+>>>>>>> master
 }
 
 
 
+<<<<<<< HEAD
+=======
+//Stock ArchivosManager::BuscarStockFecha(Fecha fecha) const
+//{
+//    return Stock();
+//}
+//
+//Stock ArchivosManager::BuscarStock(int n) const
+//{
+//    return Stock();
+//}
+
+
+    fseek(p, sizeof(Stock) * pos, SEEK_SET);
+    bool escribio = fwrite(&reg, sizeof(Stock), 1, p);
+    fclose(p);
+    return escribio;
+}
+
+
+
+>>>>>>> master

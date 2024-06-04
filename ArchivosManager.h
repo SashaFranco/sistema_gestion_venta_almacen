@@ -78,8 +78,18 @@ public:
 	int BuscarStockXProductoID(int idProducto) const;
 	int BuscarPosicionStock(Stock reg);
 	bool sobreEscribirRegistroStock(Stock reg, int pos);
+<<<<<<< HEAD
+=======
+
+
+
+	//FUNCION PARA EXPORTAR ARCHIVOS COMO CSV
+	void exportarACSV(const string& archivoBinario, const string& _archivoCSV);
+
+>>>>>>> master
 
 private:
 	char _nombreArchivo[30];
+	
 };
 

@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "ExportarCSV.h"
 
 
 void Menu::MostrarEntrada()
@@ -66,8 +67,8 @@ void Menu::mostrar()
         cout << setw(40) << "1. GESTIONAR COMPRAS - STOCK" << endl;
         cout << setw(40) << "2. REALIZAR VENTA" << endl;
         cout << setw(40) << "3. ABM" << endl;
-        cout << setw(40) << "4. EMITIR REPORTES" << endl;
-        cout << setw(40) << "5. GRESTION DE USUARIOS" << endl; //terminado
+        cout << setw(40) << "4. EMITIR REPORTES - EXPORTAR DATOS" << endl;
+        cout << setw(40) << "5. GESTION DE USUARIOS" << endl; //terminado
         cout << setw(40) << "6. BACKUP DE ARCHIVOS" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "0. VOLVER" << endl;
@@ -246,7 +247,7 @@ void Menu::mostrarRreportes()
         cout << setw(40) << "3. LISTAR PRODUCTOS" << endl;
         cout << setw(40) << "4. LISTADO DE VENTAS" << endl;
         cout << setw(40) << "5. EMITIR REPORTE DE CAJA" << endl;
-        cout << setw(40) << "6. EXPORTAR REPORTES A CSV" << endl; // REVISAR COMO HACER
+        cout << setw(40) << "6. EXPORTAR ARCHIVOS A CSV" << endl; 
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "0. VOLVER AL MENU PRINCIPAL" << endl;
         setConsoleSize(45, 45);
@@ -267,7 +268,9 @@ void Menu::mostrarRreportes()
         case 5:
             break;
         case 6:
-            // REVISAR COMO EXPORTAR DE BINARIOS A XLS
+            //***************************************************************
+            mostrarExportaciones(); //TIENE QUE LLAMAR A UN SUBMENU DONDE ELIJA CLIENTES/USUARIOS/PRODUCTOS/PROVEEDORES //
+            //****************************************************************
             break;
         case 0:
             return;
@@ -366,6 +369,57 @@ void Menu::mostrarBk()
         }
     }
 }
+
+//*********************************************************************************
+//
+// 
+ void Menu::mostrarExportaciones()
+{
+    while (true)
+    {
+     const string archivoCSV;
+        system("cls");
+        int opc;
+        cout << left;
+        cout << setw(40) << "SISTEMA DE GESTION PARA LA VENTA DE ALMACEN" << endl;
+        cout << setw(40) << "--------------------------------------------" << endl;
+        cout << setw(40) << "----------------MENU EXPORTAR ARCHIVOS------" << endl;
+        cout << setw(40) << "--------------------------------------------" << endl;
+        // Opciones del menú de exportaciones
+        cout << setw(40) << "1. EXPORTAR CLIENTES" << endl;
+        cout << setw(40) << "2. EXPORTAR PROVEEDORES" << endl;
+        cout << setw(40) << "3. EXPORTAR PRODUCTOS" << endl;
+        cout << setw(40) << "4. EXPORTAR USUARIOS" << endl;
+        cout << setw(40) << "--------------------------------------------" << endl;
+        cout << setw(40) << "0. VOLVER AL MENU PRINCIPAL" << endl;
+        setConsoleSize(45, 45);
+        cin >> opc;
+
+        switch (opc)
+        {
+        case 1:
+            exportarClientesACSV();
+            break;
+        case 2:
+            exportarProveedoresACSV();
+            break;
+        case 3:
+            exportarProductosACSV();
+            break;
+        case 4:
+            exportarUsuariosACSV();
+            break;
+        case 0:
+            return;
+            break;
+        default:
+            cout << "INGRESE UNA OPCION VALIDA" << endl;
+            system("pause");
+            break;
+        }
+    }
+}
+//*********************************************************************************
 
 void Menu::mostrarABMCLientes()
 {
