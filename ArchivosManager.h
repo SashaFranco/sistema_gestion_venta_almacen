@@ -6,6 +6,7 @@ class Cliente;
 class Proveedor;
 class Producto;
 class Stock;
+class Transaccion;
 
 using namespace std;
 
@@ -62,15 +63,21 @@ public:
 	int BuscarPosicion(Producto reg);
 	Producto BuscarProducto(int n) const;
 
+	// METODOS PARA MANEJAR TRANSACCIONES
+	bool AltaTransaccion(Transaccion reg);
+	bool ListarTransacciones() const;
+	double CalcularIngresos() const;
+	double CalcularEgresos() const;
+
 	// METODOS PARA EL STOCK
-	int ObtenerUltimoIdStock() const;
 	bool AltaStock(Stock reg);
-	bool ListarStock(Stock reg) const;
+	bool BajaStock(int idProducto);
 	bool ModificarStock(Stock reg, int pos);
+	bool ListarStock() const;
+	Stock BuscarStock(int idProducto) const;
+	int BuscarStockXProductoID(int idProducto) const;
 	int BuscarPosicionStock(Stock reg);
-	int BuscarStockXID(int id, FILE* p) const;
-	/*Stock BuscarStockFecha(Fecha fecha) const;
-	Stock BuscarStock(int n) const;*/
+	bool sobreEscribirRegistroStock(Stock reg, int pos);
 
 
 

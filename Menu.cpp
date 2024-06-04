@@ -119,7 +119,7 @@ void Menu::mostrarCompras()
         // Opciones del menú de compras
         cout << setw(40) << "1. INGRESAR AL STOCK PRODUCTOS COMPRADOS" << endl;
         cout << setw(40) << "2. LISTAR STOCK DE PRODUCTOS" << endl;
-        cout << setw(40) << "3. BUSCAR PRODUCTO" << endl;
+        cout << setw(40) << "3. BUSCAR STOCK DE PRODUCTO POR ID" << endl;
         cout << setw(40) << "4. INGRESAR COMPRA" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "0. VOLVER AL MENU PRINCIPAL" << endl;
@@ -129,12 +129,14 @@ void Menu::mostrarCompras()
         switch (opc)
         {
         case 1:
+            //_manager.AgregarStock();
             system("pause");
             break;
         case 2:
-            
+            //_manager.ListarStock();
             break;
         case 3:
+            //_manager.BuscarStockPorProducto();
             break;
         case 4:
             break;

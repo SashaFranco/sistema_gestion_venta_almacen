@@ -5,6 +5,7 @@
 #include "Proveedor.h"
 #include "Producto.h"
 #include "Stock.h"
+#include "Transaccion.h"
 #include "ExportarCSV.h"
 
 ArchivosManager::ArchivosManager(const char* n){
@@ -325,7 +326,6 @@ Cliente ArchivosManager::BuscarCliente(int n) const
     return reg;
 }
 
-
 // METODOS PARA PROVEEDORES
 int ArchivosManager::ObtenerUltimoIdProveedor() const
 {
@@ -501,7 +501,6 @@ Proveedor ArchivosManager::BuscarProveedor(int n) const
 }
 
 // METODOS PARA PRODUCTOS - Revisar baja de producto
-
 int ArchivosManager::ObtenerUltimoIdProducto() const
 {
     int pos;
@@ -676,30 +675,60 @@ Producto ArchivosManager::BuscarProducto(int n) const
     return reg;
 }
 
-// METODOS PARA EL STOCK
+// METODOS PARA MANEJAR TRANSACCIONES
+bool ArchivosManager::AltaTransaccion(Transaccion reg) {
+    FILE* p = fopen(_nombreArchivo, "ab");
+    if (p == nullptr) return false;
 
-int ArchivosManager::ObtenerUltimoIdStock() const
-{
-    int pos;
+    fwrite(&reg, sizeof(Transaccion), 1, p);
+    fclose(p);
+    return true;
+}
+bool ArchivosManager::ListarTransacciones() const {
     FILE* p = fopen(_nombreArchivo, "rb");
-    if (p == nullptr) return -1;
+    if (p == nullptr) return false;
 
-    fseek(p, 0, SEEK_END);
-    pos = ftell(p);
-    int ultimoRegistro = pos - sizeof(Stock);
-    fseek(p, ultimoRegistro, SEEK_SET);
-
-    Stock reg;
-    if (fread(&reg, sizeof(Stock), 1, p) != 1) {
-        fclose(p);
-        return -1;
+    Transaccion reg;
+    while (fread(&reg, sizeof(Transaccion), 1, p) == 1) {
+        if (reg.GetEstado()) {
+            reg.MostrarTransaccion();
+        }
     }
     fclose(p);
-    return reg.GetId();
+    return true;
 }
-bool ArchivosManager::AltaStock(Stock reg)
-{
-    reg.SetId(ObtenerUltimoIdStock() + 1);
+double ArchivosManager::CalcularIngresos() const {
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr) return 0.0;
+
+    Transaccion reg;
+    double totalIngresos = 0.0;
+    while (fread(&reg, sizeof(Transaccion), 1, p) == 1) {
+        if (reg.GetTipo() == VENTA && reg.GetEstado()) {
+            totalIngresos += reg.GetTotal();
+        }
+    }
+    fclose(p);
+    return totalIngresos;
+}
+double ArchivosManager::CalcularEgresos() const {
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr) return 0.0;
+
+    Transaccion reg;
+    double totalEgresos = 0.0;
+    while (fread(&reg, sizeof(Transaccion), 1, p) == 1) {
+        if (reg.GetTipo() == COMPRA && reg.GetEstado()) {
+            totalEgresos += reg.GetTotal();
+        }
+    }
+    fclose(p);
+    return totalEgresos;
+}
+
+// METODOS PARA EL STOCK
+
+bool ArchivosManager::AltaStock(Stock reg) {
     FILE* p = fopen(_nombreArchivo, "ab");
     if (p == nullptr) return false;
 
@@ -707,74 +736,94 @@ bool ArchivosManager::AltaStock(Stock reg)
     fclose(p);
     return true;
 }
-bool ArchivosManager::ListarStock(Stock reg) const
-{
-    FILE* p = fopen(_nombreArchivo, "rb");
-    if (p == nullptr)
-    {
-        return false;
-    }
+bool ArchivosManager::BajaStock(int idProducto) {
+    FILE* p = fopen(_nombreArchivo, "rb+");
+    if (p == nullptr) return false;
 
-    while (fread(&reg, sizeof(Stock), 1, p) == 1)
-    {
-        reg.MostrarStock();
+    Stock reg;
+    int pos = -1;
+
+    while (fread(&reg, sizeof(Stock), 1, p) == 1) {
+        pos++;
+        if (reg.GetEstado() && reg.GetIdProducto() == idProducto) {
+            fseek(p, sizeof(Stock) * pos, SEEK_SET);
+            reg.SetEstado(false);
+            fwrite(&reg, sizeof(Stock), 1, p);
+            fclose(p);
+            return true;
+        }
+    }
+    fclose(p);
+    return false;
+}
+bool ArchivosManager::ModificarStock(Stock reg, int pos) {
+    FILE* p = fopen(_nombreArchivo, "rb+");
+    if (p == nullptr) return false;
+
+    fseek(p, sizeof(Stock) * pos, SEEK_SET);
+    fwrite(&reg, sizeof(Stock), 1, p);
+    fclose(p);
+    return true;
+}
+bool ArchivosManager::ListarStock() const {
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr) return false;
+
+    Stock reg;
+    while (fread(&reg, sizeof(Stock), 1, p) == 1) {
+        if (reg.GetEstado()) {
+            reg.MostrarStock();
+        }
     }
     fclose(p);
     return true;
 }
+Stock ArchivosManager::BuscarStock(int idProducto) const {
+    Stock reg;
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr) return reg;
 
-bool ArchivosManager::ModificarStock(Stock reg, int pos)
-{
-    return false;
-}
-
-int ArchivosManager::BuscarPosicionStock(Stock reg)
-{
-    return 0;
-}
-
-int ArchivosManager::BuscarStockXID(int id, FILE* p) const
-{
-    return 0;
-}
-//****************************************************************************************************************
-// Implementación de la nueva función exportarACSV
-// Cambiar el nombre de la función para evitar conflictos con el nombre del archivo CSV
-void ArchivosManager::exportarACSV(const string& archivoBinario, const string& archivoCSV) {
-
-    // Abrir archivo binario para lectura
-    FILE* archivoEntrada;
-    archivoEntrada = fopen(archivoBinario.c_str(), "rb");
-    if (!archivoEntrada) {
-        cout << "Error al abrir el archivo " << archivoBinario << endl;
-        return;
+    while (fread(&reg, sizeof(Stock), 1, p) == 1) {
+        if (reg.GetIdProducto() == idProducto && reg.GetEstado()) {
+            fclose(p);
+            return reg;
+        }
     }
-
-    // Abrir archivo CSV para escritura
-    FILE* archivoSalida;
-    archivoSalida = fopen(archivoCSV.c_str(), "w");
-    if (!archivoSalida) {
-        cout << "Error al abrir el archivo " << archivoCSV << endl;
-        fclose(archivoEntrada); // Cerrar el archivo binario antes de salir
-        return;
-    }
-
-    // Leer y procesar los datos del archivo binario
-    char buffer[256]; // Supongamos que cada línea tiene un máximo de 256 caracteres
-    size_t bytesRead;
-    while ((bytesRead = fread(buffer, 1, sizeof(buffer), archivoEntrada)) > 0) {
-        // Escribir el buffer en el archivo CSV
-        fwrite(buffer, 1, bytesRead, archivoSalida);
-    }
-
-    // Cerrar archivos
-    fclose(archivoEntrada);
-    fclose(archivoSalida);
-
-    cout << "Datos exportados correctamente como " << archivoCSV << endl;
+    fclose(p);
+    return reg;
 }
-//***********************************************************************************************************************
+int ArchivosManager::BuscarStockXProductoID(int idProducto) const {
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr) return -1;
 
+    Stock reg;
+    int pos = 0;
+    while (fread(&reg, sizeof(Stock), 1, p) == 1) {
+        if (reg.GetIdProducto() == idProducto) {
+            fclose(p);
+            return pos;
+        }
+        pos++;
+    }
+    fclose(p);
+    return -1;
+}
+int ArchivosManager::BuscarPosicionStock(Stock reg) {
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr) return -1;
+
+    Stock aux;
+    int i = 0;
+    while (fread(&aux, sizeof(Stock), 1, p) == 1) {
+        if (reg.GetIdProducto() == aux.GetIdProducto()) {
+            fclose(p);
+            return i;
+        }
+        i++;
+    }
+    fclose(p);
+    return -1;
+}
 
 
 
@@ -789,6 +838,11 @@ void ArchivosManager::exportarACSV(const string& archivoBinario, const string& a
 //}
 
 
+    fseek(p, sizeof(Stock) * pos, SEEK_SET);
+    bool escribio = fwrite(&reg, sizeof(Stock), 1, p);
+    fclose(p);
+    return escribio;
+}
 
 
 

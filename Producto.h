@@ -22,6 +22,7 @@ public:
 	void MostrarProducto2();
 
 	void SetId(int id);
+	void SetCantidad(int cantidad);
 	void SetNombre(const char * nombre);
 	void SetFecha();
 	void SetEstado(bool estado);
@@ -30,6 +31,7 @@ public:
 	void SetDescripcion(const char* desc);
 	
 	int GetId() const;
+	int GetCantidad() const;
 	char* GetNombre();
 	char* GetDescripcion();
 	Fecha GetFecha() const;
@@ -39,7 +41,7 @@ public:
 	
 
 protected:
-	int _id;
+	int _id, _cantidad;
 	float _precioVenta, _precioCompra;
 	char _nombre[40], _descripcion[100];
 	Fecha _fecha;

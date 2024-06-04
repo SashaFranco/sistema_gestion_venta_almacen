@@ -1,45 +1,79 @@
 #include "Stock.h"
 
-Stock::Stock()
-{
-	_id = -1;
-	_cantidad = 0;
-	_producto = Producto();
-	_fecha = Fecha(0, 0, 0);
+Stock::Stock() {
+    _idProducto = -1;
+    _cantidad = 0;
+    _fechaIngreso = Fecha(0, 0, 0);
+    _estado = true;
 }
 
-void Stock::CargarStock(Producto &p)
+Stock::Stock(int idProducto, int cantidad, bool estado)
 {
-	int cantidad;
-
-	cout << "CARGAR CANTIDAD DEL ARTICULO: " << endl;
-	cout << "CANTIDAD: ";
-	cin >> cantidad;
-	cout << endl;
-
-	SetCantidad(cantidad);
-	_producto = p;
+    _idProducto = idProducto;
+    _cantidad = cantidad;
+    _estado = estado;
 }
 
-void Stock::MostrarStock()
-{
-	cout << setw(5) << GetId();
-	cout << setw(5) << _producto.GetId();
-	cout << setw(15) << _producto.GetNombre();
-	cout << setw(45) << _producto.GetDescripcion();
-	cout << setw(20) << _producto.GetPrecioVenta();
-	cout << setw(20) << _producto.GetPrecioCompra();
-	cout << setw(35) << GetCantidad();
-	cout << setw(55) << GetFecha().toString() << endl;
-	cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
+Stock::Stock(int idProducto, int cantidad, Fecha fechaIngreso, bool estado) {
+    _idProducto = idProducto;
+    _cantidad = cantidad;
+    _fechaIngreso = fechaIngreso;
+    _estado = estado;
 }
 
-void Stock::SetId(int id){_id = id;}
-void Stock::SetCantidad(int cantidad){_cantidad = cantidad;}
-void Stock::SetProducto(Producto p){_producto = p;}
-void Stock::SetFecha(){_fecha.FechaActual();}
+void Stock::CargarStock() {
+    int idProducto, cantidad;
+    Fecha fechaIngreso;
 
-int Stock::GetId() const{return _id;}
-int Stock::GetCantidad() const{return _cantidad;}
-Producto Stock::GetProdcuto() const{return _producto;}
-Fecha Stock::GetFecha() const {return _fecha;}
+    std::cout << "ID del Producto: ";
+    std::cin >> idProducto;
+    std::cout << "Cantidad: ";
+    std::cin >> cantidad;
+    std::cout << "Fecha de Ingreso (DD MM YYYY): ";
+    fechaIngreso.FechaActual();
+
+    SetIdProducto(idProducto);
+    SetCantidad(cantidad);
+    SetFechaIngreso(fechaIngreso);
+    SetEstado(true);
+}
+
+void Stock::MostrarStock() {
+    if (_estado) {
+        std::cout << std::setw(10) << GetIdProducto();
+        std::cout << std::setw(10) << GetCantidad();
+        std::cout << std::setw(20) << GetFechaIngreso().toString() << std::endl;
+    }
+}
+
+void Stock::SetIdProducto(int idProducto) {
+    _idProducto = idProducto;
+}
+
+void Stock::SetCantidad(int cantidad) {
+    _cantidad = cantidad;
+}
+
+void Stock::SetFechaIngreso(Fecha fechaIngreso) {
+    _fechaIngreso = fechaIngreso;
+}
+
+void Stock::SetEstado(bool estado) {
+    _estado = estado;
+}
+
+int Stock::GetIdProducto() const {
+    return _idProducto;
+}
+
+int Stock::GetCantidad() const {
+    return _cantidad;
+}
+
+Fecha Stock::GetFechaIngreso() const {
+    return _fechaIngreso;
+}
+
+bool Stock::GetEstado() const {
+    return _estado;
+}
