@@ -10,6 +10,7 @@ using namespace std;
 #include "Manager.h"
 #include "Cliente.h"
 #include "Proveedor.h"
+#include "ExportarACSV.h"
 
 
 class Menu
@@ -30,6 +31,9 @@ public:
 	void mostrarRreportes();
 	void mostrarUsuarios();
 	void mostrarBk();
+
+	//submenu de mostrarRreportes
+	void mostrarExportaciones();
 
 	// MOSTRAR ULTIMOS MENUS (NIVEL 3)
 	void mostrarABMCLientes();
