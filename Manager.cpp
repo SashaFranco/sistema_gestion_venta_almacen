@@ -223,6 +223,7 @@ void Manager::mostrarEncabezado2()
     cout << setw(45) << "DESCRIPCION";
     cout << setw(20) << "PRECIO DE VENTA";
     cout << setw(35) << "PRECIO DE COMPRA";
+    cout << setw(35) << "CANTIDAD";
     cout << setw(55) << "FECHA DE ALTA" << endl;
     cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 
@@ -642,5 +643,15 @@ void Manager::BuscarStockPorProducto() {
     else {
         cout << "No se encontró el producto en el stock con el ID proporcionado." << endl;
     }
+    system("pause");
+}
+
+void Manager::ListarProductos()
+{
+    Producto producto;
+    system("cls");
+    setConsoleSize(25, 170);
+    MostrarEncabezadoProductos();
+    _regProductos.ListarProducto(producto);
     system("pause");
 }
