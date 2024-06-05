@@ -38,7 +38,6 @@ public:
 
 
 	// METODOS PARA Proveedor
-
 	int ObtenerUltimoIdProveedor() const;
 	bool AltaProveedor(Proveedor reg);
 	bool BajaProveedor(int id);
@@ -51,7 +50,6 @@ public:
 	Proveedor BuscarProveedor(int n) const;
 
 	// METODOS PARA Producto
-
 	int ObtenerUltimoIdProducto() const;
 	bool AltaProducto(Producto reg);
 	bool BajaProducto(int id);

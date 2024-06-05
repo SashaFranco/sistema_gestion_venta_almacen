@@ -77,6 +77,7 @@ void Producto::MostrarProducto2()
 	}
 }
 
+
 void Producto::SetId(int id){_id = id;}
 void Producto::SetCantidad(int cantidad) { _cantidad = cantidad; }
 void Producto::SetNombre(const char* nombre){strcpy_s(_nombre, nombre);}

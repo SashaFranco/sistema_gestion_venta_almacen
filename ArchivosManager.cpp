@@ -36,7 +36,7 @@ Usuarios ArchivosManager::BuscarUsuario(const char* usuario, const char* passw) 
     Usuarios reg;
     FILE* p = fopen(_nombreArchivo, "rb");
     if (p == nullptr) {
-        cerr << "Error al abrir el archivo de usuarios." << endl;
+        cout << "Error al abrir el archivo de usuarios." << endl;
         return reg;
     }
 
@@ -725,7 +725,6 @@ double ArchivosManager::CalcularEgresos() const {
 }
 
 // METODOS PARA EL STOCK
-
 bool ArchivosManager::AltaStock(Stock reg) {
     FILE* p = fopen(_nombreArchivo, "ab");
     if (p == nullptr) return false;

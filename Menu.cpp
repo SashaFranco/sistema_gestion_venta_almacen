@@ -116,10 +116,9 @@ void Menu::mostrarCompras()
         cout << setw(40) << "---------------MENU DE COMPRAS--------------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         // Opciones del menú de compras
-        cout << setw(40) << "1. INGRESAR AL STOCK PRODUCTOS COMPRADOS" << endl;
-        cout << setw(40) << "2. LISTAR STOCK DE PRODUCTOS" << endl;
-        cout << setw(40) << "3. BUSCAR STOCK DE PRODUCTO POR ID" << endl;
-        cout << setw(40) << "4. INGRESAR COMPRA" << endl;
+        cout << setw(40) << "1. LISTAR STOCK DE PRODUCTOS" << endl;
+        cout << setw(40) << "2. BUSCAR STOCK DE PRODUCTO POR ID" << endl;
+        cout << setw(40) << "3. INGRESAR COMPRA" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "0. VOLVER AL MENU PRINCIPAL" << endl;
         setConsoleSize(45, 45);

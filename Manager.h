@@ -44,8 +44,6 @@ public:
 	void ListarStock();
 	void BuscarStockPorProducto();
 
-
-
 	// SETTERS
 	void setUsuarios(Usuarios usuario);
 

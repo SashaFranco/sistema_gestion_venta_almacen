@@ -1,43 +1,45 @@
 #pragma once
 #include <iostream>
-#include <fstream>
 #include <iomanip>
 #include <string>
+#include "Fecha.h"
 
+using namespace std;
 
 // ESTA CLASE MANEJA LAS TRANSACCIONES DE ENTRADA Y SALIDA DE DINERO Y PRODUCTOS
 // COMPRA ES ENTRADA DE DINERO Y SALIDA ES GASTO DE PLATA
 // ES DECIR COMPRA INGRESA STOCK Y SALE PLATA Y SALIDA ENTRA PLATA Y SALE STOCK
-enum TipoTransaccion {
-    COMPRA,
-    VENTA
-};
+
 
 class Transaccion {
-public:
-    Transaccion() : _idProducto(-1), _cantidad(0), _precio(0.0), _total(0.0), _tipo(COMPRA), _estado(true) {}
-    Transaccion(int idProducto, int cantidad, double precio, TipoTransaccion tipo);
+private:
+    int idTransaccion;
+    int tipo; // 1 para compra, 2 para venta
+    Fecha fecha;
+    double monto;
+    int idProducto;
+    int idUsuario;
 
-    void MostrarTransaccion() const;
+public:
+    Transaccion(int idTransaccion, int tipo, double monto, int idProducto, int idUsuario);
 
     // Getters
-    int GetIdProducto() const { return _idProducto; }
-    int GetCantidad() const { return _cantidad; }
-    double GetPrecio() const { return _precio; }
-    double GetTotal() const { return _total; }
-    TipoTransaccion GetTipo() const { return _tipo; }
-    bool GetEstado() const { return _estado; }
+    int getIdTransaccion() const;
+    int getTipo() const;
+    Fecha getFecha() const;
+    double getMonto() const;
+    int getIdProducto() const;
+    int getIdUsuario() const;
 
     // Setters
-    void SetEstado(bool estado) { _estado = estado; }
+    void setIdTransaccion(int idTransaccion);
+    void setTipo(int tipo);
+    void setFecha();
+    void setMonto(double monto);
+    void setIdProducto(int idProducto);
+    void setIdUsuario(int idUsuario);
 
-private:
-    int _idProducto;
-    int _cantidad;
-    double _precio;
-    double _total;
-    TipoTransaccion _tipo;
-    bool _estado;
+    void mostrarTransaccion() const;
 };
 
 
