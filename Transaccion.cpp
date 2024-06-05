@@ -21,7 +21,6 @@ void Transaccion::setMonto(double monto) { monto = monto; }
 void Transaccion::setIdProducto(int idProducto) {idProducto = idProducto; }
 void Transaccion::setIdUsuario(int idUsuario) { idUsuario = idUsuario; }
 
-// Display method
 void Transaccion::mostrarTransaccion() const {
     cout << "ID Transaccion: " << idTransaccion << endl;
     cout << "Tipo: " << (tipo == 1 ? "Compra" : "Venta") << endl;

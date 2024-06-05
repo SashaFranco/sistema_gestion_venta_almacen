@@ -674,55 +674,6 @@ Producto ArchivosManager::BuscarProducto(int n) const
 }
 
 // METODOS PARA MANEJAR TRANSACCIONES
-bool ArchivosManager::AltaTransaccion(Transaccion reg) {
-    FILE* p = fopen(_nombreArchivo, "ab");
-    if (p == nullptr) return false;
-
-    fwrite(&reg, sizeof(Transaccion), 1, p);
-    fclose(p);
-    return true;
-}
-bool ArchivosManager::ListarTransacciones() const {
-    FILE* p = fopen(_nombreArchivo, "rb");
-    if (p == nullptr) return false;
-
-    Transaccion reg;
-    while (fread(&reg, sizeof(Transaccion), 1, p) == 1) {
-        if (reg.GetEstado()) {
-            reg.MostrarTransaccion();
-        }
-    }
-    fclose(p);
-    return true;
-}
-double ArchivosManager::CalcularIngresos() const {
-    FILE* p = fopen(_nombreArchivo, "rb");
-    if (p == nullptr) return 0.0;
-
-    Transaccion reg;
-    double totalIngresos = 0.0;
-    while (fread(&reg, sizeof(Transaccion), 1, p) == 1) {
-        if (reg.GetTipo() == VENTA && reg.GetEstado()) {
-            totalIngresos += reg.GetTotal();
-        }
-    }
-    fclose(p);
-    return totalIngresos;
-}
-double ArchivosManager::CalcularEgresos() const {
-    FILE* p = fopen(_nombreArchivo, "rb");
-    if (p == nullptr) return 0.0;
-
-    Transaccion reg;
-    double totalEgresos = 0.0;
-    while (fread(&reg, sizeof(Transaccion), 1, p) == 1) {
-        if (reg.GetTipo() == COMPRA && reg.GetEstado()) {
-            totalEgresos += reg.GetTotal();
-        }
-    }
-    fclose(p);
-    return totalEgresos;
-}
 
 // METODOS PARA EL STOCK
 bool ArchivosManager::AltaStock(Stock reg) {
