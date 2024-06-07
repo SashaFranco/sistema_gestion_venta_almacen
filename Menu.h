@@ -11,6 +11,7 @@ using namespace std;
 #include "Cliente.h"
 #include "Proveedor.h"
 #include "ExportarACSV.h"
+#include "Backup.h"
 
 
 class Menu
@@ -35,6 +36,9 @@ public:
 	//submenu de mostrarRreportes
 	void mostrarExportaciones();
 
+	//submenu de RESTAURACION DE BK
+	void mostrarRestauracionBK();
+	
 	// MOSTRAR ULTIMOS MENUS (NIVEL 3)
 	void mostrarABMCLientes();
 	void mostrarABMProveedores();
@@ -45,5 +49,6 @@ private:
 	Manager _manager;
 	Cliente _cliente;
 	Proveedor _proveedor;
+	Backup _backup;
 };
 

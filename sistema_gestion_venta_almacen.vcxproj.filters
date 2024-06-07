@@ -60,6 +60,9 @@
     <ClCompile Include="ExportarACSV.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Backup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Persona.h">
@@ -105,6 +108,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ExportarACSV.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Backup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
