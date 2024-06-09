@@ -14,7 +14,7 @@ void Menu::MostrarEntrada()
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "-----------------BIENVENIDO-----------------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        // Opciones del menú inicial
+        // Opciones del menÃº inicial
         cout << setw(40) << "1. ENTRAR AL SISTEMA" << endl;
         cout << setw(40) << "2. CREDITOS" << endl;
         cout << setw(40) << "0. SALIR" << endl;
@@ -61,7 +61,7 @@ void Menu::mostrar()
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "--------BIENVENIDO AL MENU PRINCIPAL--------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        // Opciones del menú principal
+        // Opciones del menÃº principal
         cout << setw(40) << "1. GESTIONAR COMPRAS - STOCK" << endl;
         cout << setw(40) << "2. REALIZAR VENTA" << endl;
         cout << setw(40) << "3. ABM" << endl;
@@ -114,7 +114,7 @@ void Menu::mostrarCompras()
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "---------------MENU DE COMPRAS--------------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        // Opciones del menú de compras
+        // Opciones del menÃº de compras
         cout << setw(40) << "1. LISTAR STOCK DE PRODUCTOS" << endl;
         cout << setw(40) << "2. BUSCAR STOCK DE PRODUCTO POR ID" << endl;
         cout << setw(40) << "3. INGRESAR COMPRA" << endl;
@@ -126,7 +126,14 @@ void Menu::mostrarCompras()
         switch (opc)
         {
         case 1:
-            
+
+            _manager.ListarProductos();
+            system("pause");
+            break;
+        case 2:
+            _manager.BuscarProductoXID();
+            break;
+          case 3:
             system("pause");
             break;
         case 2:
@@ -134,6 +141,7 @@ void Menu::mostrarCompras()
             break;
         case 3:
            
+
             break;
         case 4:
             break;
@@ -159,7 +167,7 @@ void Menu::mostrarVentas()
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "---------------MENU DE VENTAS---------------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        // Opciones del menú de ventas
+        // Opciones del menÃº de ventas
         cout << setw(40) << "1. INGRESAR VENTA DE UN ARTICULO" << endl;
         cout << setw(40) << "2. INGRESAR VENTA DE VARIOS ARTICULOS" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
@@ -196,7 +204,7 @@ void Menu::mostrarABM()
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "----------------MENU PARA ABM---------------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        // Opciones del menú de ABM
+        // Opciones del menÃº de ABM
         cout << setw(40) << "1. ABM DE CLIENTES" << endl;
         cout << setw(40) << "2. ABM DE PROVEEDORES" << endl;
         cout << setw(40) << "3. ABM DE PRODUCTOS" << endl;
@@ -238,7 +246,7 @@ void Menu::mostrarRreportes()
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "----------------MENU REPORTES---------------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        // Opciones del menú de reportes
+        // Opciones del menÃº de reportes
         cout << setw(40) << "1. LISTAR CLIENTES" << endl;
         cout << setw(40) << "2. LISTAR PROVEEDORES" << endl;
         cout << setw(40) << "3. LISTAR PRODUCTOS" << endl;
@@ -259,6 +267,7 @@ void Menu::mostrarRreportes()
             _proveedor.ListarProveedores();
             break;
         case 3:
+           
             break;
         case 4:
             break;
@@ -289,7 +298,7 @@ void Menu::mostrarUsuarios()
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "----------------MENU USUARIOS---------------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        // Opciones del menú de usuarios del sistema
+        // Opciones del menÃº de usuarios del sistema
         cout << setw(40) << "1. LISTAR USUARIOS" << endl;
         cout << setw(40) << "2. CREAR NUEVO USUARIO" << endl;
         cout << setw(40) << "3. MODIFICAR USUARIO" << endl;
@@ -338,7 +347,7 @@ void Menu::mostrarBk()
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "-----------------MENU BACKUP----------------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        // Opciones del menú para BK
+        // Opciones del menÃº para BK
         cout << setw(40) << "1. HACER BACKUP CLIENTES" << endl;
         cout << setw(40) << "2. HACER BACKUP PROVEEDORES" << endl;
         cout << setw(40) << "3. HACER BACKUP PRODUCTOS" << endl;
@@ -401,9 +410,9 @@ void Menu::mostrarRestauracionBK()
         cout << left;
         cout << setw(40) << "SISTEMA DE GESTION PARA LA VENTA DE ALMACEN" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        cout << setw(40) << "--------MENU RESTAURACIÓN DE BACKUPS--------" << endl;
+        cout << setw(40) << "--------MENU RESTAURACIÃ“N DE BACKUPS--------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        // Opciones del menú de restauraciones
+        // Opciones del menÃº de restauraciones
         cout << setw(40) << "1. RESTAURAR BACKUP CLIENTES" << endl;
         cout << setw(40) << "2. RESTAURAR BACKUP PROVEEDORES" << endl;
         cout << setw(40) << "3. RESTAURAR BACKUP PRODUCTOS" << endl;
@@ -450,7 +459,7 @@ void Menu::mostrarExportaciones()
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "----------------MENU EXPORTAR ARCHIVOS------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        // Opciones del menú de exportaciones
+        // Opciones del menÃº de exportaciones
         cout << setw(40) << "1. EXPORTAR CLIENTES" << endl;
         cout << setw(40) << "2. EXPORTAR PROVEEDORES" << endl;
         cout << setw(40) << "3. EXPORTAR PRODUCTOS" << endl;
@@ -497,7 +506,7 @@ void Menu::mostrarABMCLientes()
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "--------------MENU ABM CLIENTES-------------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        // Opciones del menú de ABM
+        // Opciones del menÃº de ABM
         cout << setw(40) << "1. ALTA DE CLIENTE NUEVO" << endl;
         cout << setw(40) << "2. BAJA DE CLIENTE" << endl;
         cout << setw(40) << "3. MODIFICAR CLIENTE" << endl;
@@ -548,7 +557,7 @@ void Menu::mostrarABMProveedores()
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "------------MENU ABM PROVEEDORES------------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        // Opciones del menú de ABM
+        // Opciones del menÃº de ABM
         cout << setw(40) << "1. ALTA DE PROVEEDOR NUEVO" << endl;
         cout << setw(40) << "2. BAJA DE PROVEEDOR" << endl;
         cout << setw(40) << "3. MODIFICAR PROVEEDOR" << endl;
@@ -598,7 +607,7 @@ void Menu::mostrarABMProductos()
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "------------MENU ABM PRODUCTOS--------------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        // Opciones del menú de ABM
+        // Opciones del menÃº de ABM
         cout << setw(40) << "1. ALTA DE PRODUCTO NUEVO" << endl;
         cout << setw(40) << "2. BAJA DE PRODUCTO" << endl;
         cout << setw(40) << "3. MODIFICAR PRODUCTO" << endl;

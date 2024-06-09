@@ -38,17 +38,10 @@ public:
 	void BuscarProductoXNombre();
 	
 	// METODOS PARA GESTIONAR STOCK
-	
-
-
-
-
-	// METODOS PARA GESTIONAR TRANSACCIONES
-	
-
 
 	// SETTERS
 	void setUsuarios(Usuarios usuario);
+
 
 private:
 

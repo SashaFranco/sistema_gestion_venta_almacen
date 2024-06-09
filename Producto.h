@@ -12,10 +12,7 @@ class Producto
 public:
 
 	Producto();
-	Producto(int id, 
-		const char* nombre, 
-		int precioVenta, 
-		int precioCompra);
+	Producto(int id,const char* nombre, int precioVenta,int precioCompra,int cantidad);
 
 	void CargarProducto();
 	void MostrarProducto();

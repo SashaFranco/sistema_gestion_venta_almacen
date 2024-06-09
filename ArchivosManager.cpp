@@ -578,7 +578,7 @@ bool ArchivosManager::ListarProducto(Producto reg) const
 
     while (fread(&reg, sizeof(Producto), 1, p) == 1)
     {
-        reg.MostrarProducto();
+        reg.MostrarProducto2();
     }
     fclose(p);
     return true;

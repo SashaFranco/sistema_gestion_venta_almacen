@@ -9,20 +9,19 @@ Producto::Producto()
 	strcpy_s(_nombre, "");
 	strcpy_s(_descripcion, "");
 	_fecha = Fecha(0, 0, 0);
+	_cantidad = 0;
 	_estado = true;
+	
 }
 
-Producto::Producto(int id, 
-	const char* nombre, 
-	int precioVenta, 
-	int precioCompra)
+Producto::Producto(int id,const char* nombre, int precioVenta, int precioCompra,int cantidad)
 {
 	
 	SetId(id);
 	SetNombre(nombre);
 	SetPrecioVenta(precioVenta);
 	SetPrecioCompra(precioCompra);
-
+	SetCantidad(cantidad);
 	_fecha.FechaActual();
 	_estado = true;
 }
@@ -31,12 +30,15 @@ void Producto::CargarProducto()
 {
 	float precioVenta, precioCompra;
 	char nombre[40], desc[100];
+	int cantidad;
 
 	cin.ignore();
 	cout << endl << "NOMBRE: ";
 	cin.getline(nombre, sizeof(nombre));
 	cout << endl << "DESCRIPCION: ";
 	cin.getline(desc, sizeof(desc));
+	cout << endl << "CANTIDADES: ";
+	cin >> cantidad;
 	cout << endl << "PRECIO DE VENTA: ";
 	cin >> precioVenta;
 	cout << endl << "PRECIO DE COMPRA: ";
@@ -47,6 +49,7 @@ void Producto::CargarProducto()
 	SetDescripcion(desc);
 	SetPrecioVenta(precioVenta);
 	SetPrecioCompra(precioCompra);
+	SetCantidad(cantidad);
 	SetEstado(true);
 }
 void Producto::MostrarProducto()
@@ -58,7 +61,6 @@ void Producto::MostrarProducto()
 		cout << setw(45) << GetDescripcion();
 		cout << setw(20) << GetPrecioVenta();
 		cout << setw(35) << GetPrecioCompra();
-		cout << setw(35) << GetCantidad();
 		cout << setw(55) << GetFecha().toString() << endl;
 		cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 	}
@@ -68,17 +70,15 @@ void Producto::MostrarProducto2()
 {
 	if (_estado == true)
 	{
+		cout << setw(5) << GetId();
 		cout << setw(15) << GetNombre();
 		cout << setw(20) << GetDescripcion();
 		cout << setw(20) << GetPrecioVenta();
 		cout << setw(35) << GetPrecioCompra();
-		cout << setw(35) << GetCantidad();
 		cout << setw(55) << GetFecha().toString() << endl;
 		cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 	}
 }
-
-
 void Producto::SetId(int id){_id = id;}
 void Producto::SetCantidad(int cantidad) { _cantidad = cantidad; }
 void Producto::SetNombre(const char* nombre){strcpy_s(_nombre, nombre);}
