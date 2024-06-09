@@ -131,7 +131,7 @@ void Menu::mostrarCompras()
             system("pause");
             break;
         case 2:
-            
+            _manager.BuscarProductoXID();
             break;
         case 3:
             
@@ -260,6 +260,7 @@ void Menu::mostrarRreportes()
             _proveedor.ListarProveedores();
             break;
         case 3:
+           
             break;
         case 4:
             break;

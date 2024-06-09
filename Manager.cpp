@@ -209,16 +209,16 @@ void Manager::MostrarEncabezadoProductos()
     cout << left;
     cout << setw(5) << "ID";
     cout << setw(15) << "NOMBRE";
-    cout << setw(45) << "DESCRIPCION";
+    cout << setw(20) << "DESCRIPCION";
     cout << setw(20) << "PRECIO DE VENTA";
     cout << setw(35) << "PRECIO DE COMPRA";
-    cout << setw(35) << "CANTIDAD";
-    cout << setw(55) << "FECHA DE ALTA" << endl;
+    cout << setw(45) << "FECHA DE ALTA" << endl;
     cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 }
 void Manager::mostrarEncabezado2()
 {
     cout << left;
+    cout << setw(5) << "ID";
     cout << setw(15) << "NOMBRE";
     cout << setw(45) << "DESCRIPCION";
     cout << setw(20) << "PRECIO DE VENTA";

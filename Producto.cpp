@@ -60,7 +60,6 @@ void Producto::MostrarProducto()
 		cout << setw(45) << GetDescripcion();
 		cout << setw(20) << GetPrecioVenta();
 		cout << setw(35) << GetPrecioCompra();
-		cout << setw(35) << GetCantidad();
 		cout << setw(55) << GetFecha().toString() << endl;
 		cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 	}
@@ -70,11 +69,11 @@ void Producto::MostrarProducto2()
 {
 	if (_estado == true)
 	{
+		cout << setw(5) << GetId();
 		cout << setw(15) << GetNombre();
 		cout << setw(20) << GetDescripcion();
 		cout << setw(20) << GetPrecioVenta();
 		cout << setw(35) << GetPrecioCompra();
-		cout << setw(35) << GetCantidad();
 		cout << setw(55) << GetFecha().toString() << endl;
 		cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 	}
