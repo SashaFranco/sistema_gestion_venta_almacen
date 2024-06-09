@@ -12,7 +12,7 @@ void Menu::MostrarEntrada()
         cout << "***********************" << endl << endl;
         cout << setw(40) << "SISTEMA DE GESTION PARA LA VENTA DE ALMACEN" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        cout << setw(40) << "-----------------BIENVENDIO-----------------" << endl;
+        cout << setw(40) << "-----------------BIENVENIDO-----------------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         // Opciones del menú inicial
         cout << setw(40) << "1. ENTRAR AL SISTEMA" << endl;
@@ -59,14 +59,14 @@ void Menu::mostrar()
         cout << "***********************" << endl << endl;
         cout << setw(40) << "SISTEMA DE GESTION PARA LA VENTA DE ALMACEN" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        cout << setw(40) << "--------BIENVENDIO AL MENU PRINCIPAL--------" << endl;
+        cout << setw(40) << "--------BIENVENIDO AL MENU PRINCIPAL--------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         // Opciones del menú principal
         cout << setw(40) << "1. GESTIONAR COMPRAS - STOCK" << endl;
         cout << setw(40) << "2. REALIZAR VENTA" << endl;
         cout << setw(40) << "3. ABM" << endl;
-        cout << setw(40) << "4. EMITIR REPORTES" << endl;
-        cout << setw(40) << "5. GRESTION DE USUARIOS" << endl; //terminado
+        cout << setw(40) << "4. EMITIR REPORTES - EXPORTAR DATOS" << endl;
+        cout << setw(40) << "5. GESTION DE USUARIOS" << endl; //terminado
         cout << setw(40) << "6. BACKUP DE ARCHIVOS" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "0. VOLVER" << endl;
@@ -244,7 +244,7 @@ void Menu::mostrarRreportes()
         cout << setw(40) << "3. LISTAR PRODUCTOS" << endl;
         cout << setw(40) << "4. LISTADO DE VENTAS" << endl;
         cout << setw(40) << "5. EMITIR REPORTE DE CAJA" << endl;
-        cout << setw(40) << "6. EXPORTAR REPORTES A CSV" << endl; // REVISAR COMO HACER
+        cout << setw(40) << "6. EXPORTAR REPORTES A CSV" << endl; //lLISTO
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "0. VOLVER AL MENU PRINCIPAL" << endl;
         setConsoleSize(45, 45);
@@ -265,7 +265,7 @@ void Menu::mostrarRreportes()
         case 5:
             break;
         case 6:
-            // REVISAR COMO EXPORTAR DE BINARIOS A XLS
+            mostrarExportaciones();
             break;
         case 0:
             return;
@@ -324,6 +324,9 @@ void Menu::mostrarUsuarios()
     }
 }
 
+
+//************************************************************************************************************************
+//MENU DE BACKUPS
 void Menu::mostrarBk()
 {
     while (true)
@@ -333,12 +336,16 @@ void Menu::mostrarBk()
         cout << left;
         cout << setw(40) << "SISTEMA DE GESTION PARA LA VENTA DE HALMACEN" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
-        cout << setw(40) << "-----------------MENU BUCKUP----------------" << endl;
+        cout << setw(40) << "-----------------MENU BACKUP----------------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         // Opciones del menú para BK
-        cout << setw(40) << "1. BUCKUP CLIENTES" << endl;
-        cout << setw(40) << "2. BUCKUP PROVEEDORES" << endl;
-        cout << setw(40) << "3. BUCKUP PRODUCTOS" << endl;
+        cout << setw(40) << "1. HACER BACKUP CLIENTES" << endl;
+        cout << setw(40) << "2. HACER BACKUP PROVEEDORES" << endl;
+        cout << setw(40) << "3. HACER BACKUP PRODUCTOS" << endl;
+        //cout << setw(40) << "4. MOSTRAR BACKUP CLIENTES" << endl;
+        //cout << setw(40) << "5. MOSTRAR BACKUP PROVEEDORES" << endl;
+        //cout << setw(40) << "6. MOSTRAR BACKUP PRODUCTOS" << endl;
+        cout << setw(40) << "7. RESTAURAR BACKUP" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "0. VOLVER AL MENU PRINCIPAL" << endl;
         setConsoleSize(45, 45);
@@ -347,12 +354,74 @@ void Menu::mostrarBk()
         switch (opc)
         {
         case 1:
+            _backup.backupClientes();
             break;
         case 2:
+            _backup.backupProveedores();
             break;
         case 3:
+            _backup.backupProductos();
             break;
-        case 4:
+        /*case 4:
+            mostrarClientesBackup();
+            break;
+        case 5:
+            mostrarProveedoresBackup();
+            break;
+        case 6:
+            mostrarProductosBackup();
+            break;*/
+        case 7:
+            mostrarRestauracionBK();
+        case 0:
+            return;
+            break;
+        default:
+            cout << "INGRESE UNA OPCION VALIDA" << endl;
+            system("pause");
+            break;
+        }
+    }
+}
+//FIN MENU DE BACKUPS**********************************************************************
+
+
+//*****************************************************************************************
+//MENU RESTAURACION DE BACKUPS
+//*****************************************************************************************
+void Menu::mostrarRestauracionBK()
+{
+    while (true)
+    {
+        
+
+        //const string archivoCSV;
+        system("cls");
+        int opc;
+        cout << left;
+        cout << setw(40) << "SISTEMA DE GESTION PARA LA VENTA DE ALMACEN" << endl;
+        cout << setw(40) << "--------------------------------------------" << endl;
+        cout << setw(40) << "--------MENU RESTAURACIÓN DE BACKUPS--------" << endl;
+        cout << setw(40) << "--------------------------------------------" << endl;
+        // Opciones del menú de restauraciones
+        cout << setw(40) << "1. RESTAURAR BACKUP CLIENTES" << endl;
+        cout << setw(40) << "2. RESTAURAR BACKUP PROVEEDORES" << endl;
+        cout << setw(40) << "3. RESTAURAR BACKUP PRODUCTOS" << endl;
+        cout << setw(40) << "--------------------------------------------" << endl;
+        cout << setw(40) << "0. VOLVER AL MENU PRINCIPAL" << endl;
+        setConsoleSize(45, 45);
+        cin >> opc;
+
+        switch (opc)
+        {
+        case 1:
+            restaurarBackup("ClientesBackup.dat", "Clientes.dat");
+            break;
+        case 2:
+            restaurarBackup("ProveedoresBackup.dat", "Proveedores.dat");
+            break;
+        case 3:
+            restaurarBackup("ProductosBackup.dat", "Productos.dat");
             break;
         case 0:
             return;
@@ -364,6 +433,58 @@ void Menu::mostrarBk()
         }
     }
 }
+//FIN MENU DE RESTAURACION DE BACKUP*******************************************************
+
+//*****************************************************************************************
+//EXPORTAR DATOS
+// 
+void Menu::mostrarExportaciones()
+{
+    while (true)
+    {
+        const string archivoCSV;
+        system("cls");
+        int opc;
+        cout << left;
+        cout << setw(40) << "SISTEMA DE GESTION PARA LA VENTA DE ALMACEN" << endl;
+        cout << setw(40) << "--------------------------------------------" << endl;
+        cout << setw(40) << "----------------MENU EXPORTAR ARCHIVOS------" << endl;
+        cout << setw(40) << "--------------------------------------------" << endl;
+        // Opciones del menú de exportaciones
+        cout << setw(40) << "1. EXPORTAR CLIENTES" << endl;
+        cout << setw(40) << "2. EXPORTAR PROVEEDORES" << endl;
+        cout << setw(40) << "3. EXPORTAR PRODUCTOS" << endl;
+        cout << setw(40) << "4. EXPORTAR USUARIOS" << endl;
+        cout << setw(40) << "--------------------------------------------" << endl;
+        cout << setw(40) << "0. VOLVER AL MENU PRINCIPAL" << endl;
+        setConsoleSize(45, 45);
+        cin >> opc;
+
+        switch (opc)
+        {
+        case 1:
+            exportarClientesACSV();
+            break;
+        case 2:
+            exportarProveedoresACSV();
+            break;
+        case 3:
+            exportarProductosACSV();
+            break;
+        case 4:
+            exportarUsuariosACSV();
+            break;
+        case 0:
+            return;
+            break;
+        default:
+            cout << "INGRESE UNA OPCION VALIDA" << endl;
+            system("pause");
+            break;
+        }
+    }
+}
+//FIN EXPORTAR DATOS************************************************************************
 
 void Menu::mostrarABMCLientes()
 {
@@ -495,7 +616,7 @@ void Menu::mostrarABMProductos()
             _manager.AltaProducto();
             break;
         case 2:
-            _manager.BajaProducto(); // REVISAR POR QUE NO DA DE BAJA LOS PRODUCTOS
+            _manager.BajaProducto(); // ya funciona
             break;
         case 3:
             _manager.MoidificarProducto();

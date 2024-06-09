@@ -140,7 +140,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ArchivosManager.cpp" />
+    <ClCompile Include="Backup.cpp" />
     <ClCompile Include="Cliente.cpp" />
+    <ClCompile Include="ExportarACSV.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Helpers.cpp" />
     <ClCompile Include="Manager.cpp" />
@@ -155,7 +157,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArchivosManager.h" />
+    <ClInclude Include="Backup.h" />
     <ClInclude Include="Cliente.h" />
+    <ClInclude Include="ExportarACSV.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Helpers.h" />
     <ClInclude Include="Manager.h" />

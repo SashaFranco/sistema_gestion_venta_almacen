@@ -300,7 +300,7 @@ void Manager::BajaProducto()
         {
         case 1:
             system("cls");
-            borro = _reg.BajaProducto(aux.GetId());
+            borro = _regProductos.BajaProducto(aux.GetId());
             system("pause");
             if (borro)
             {
