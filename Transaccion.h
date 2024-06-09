@@ -20,6 +20,7 @@ private:
     int idProducto;
 
 public:
+
     Transaccion(int idTransaccion, int tipo, double monto, int idProducto);
 
     // Getters

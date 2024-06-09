@@ -530,6 +530,11 @@ void Manager::BuscarProductoXNombre()
     }
 }
 
+void Manager::mostrarCompras()
+{
+    
+}
+
 
 // METODOS PARA MANEJAR STOCK
 

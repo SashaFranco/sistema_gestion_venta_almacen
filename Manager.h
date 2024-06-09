@@ -37,7 +37,9 @@ public:
 	void BuscarProductoXID();
 	void BuscarProductoXNombre();
 	
-	// METODOS PARA GESTIONAR STOCK
+	// METODOS PARA GESTIONAR TRANSACCION
+	void mostrarCompras();
+
 
 	// SETTERS
 	void setUsuarios(Usuarios usuario);
@@ -59,7 +61,7 @@ private:
 
 	// INSTANCIAS PARA GESTIONAR TRANSACCIONES
 	/*ArchivosManager _regTransaccion = ArchivosManager("Transaccion.dat");
-	Transaccion _Transaccion;*/
+	Transaccion _transaccion;*/
 
 };
 

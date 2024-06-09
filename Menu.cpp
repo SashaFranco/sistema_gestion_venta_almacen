@@ -133,6 +133,7 @@ void Menu::mostrarCompras()
             _manager.BuscarProductoXID();
             break;
           case 3:
+              _manager.mostrarCompras();
             system("pause");
             break;
         case 4:

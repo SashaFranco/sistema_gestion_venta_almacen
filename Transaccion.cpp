@@ -41,7 +41,7 @@ void Transaccion::mostrarEncabezadoTransaccion() const
 }
 void Transaccion::cargarCompra()
 {
-    setTipo(2);
+    setTipo(1);
 
     cout << "Ingrese el monto de la transaccion: ";
     cin >> monto;
@@ -53,9 +53,11 @@ void Transaccion::cargarCompra()
 
     setFecha();
 }
+
+
 void Transaccion::cargarVenta()
 {
-    setTipo(1);
+    setTipo(2);
 
     cout << "Ingrese el monto de la transaccion: ";
     cin >> monto;
