@@ -10,11 +10,14 @@ using namespace std;
 #include "Manager.h"
 #include "Cliente.h"
 #include "Proveedor.h"
+#include "Transaccion.h"
 
 
 class Menu
 {
 public:
+
+	
 
 	// MOSTRAR ENTRADA AL SISTEMA (NIVEL 0)
 
@@ -41,5 +44,6 @@ private:
 	Manager _manager;
 	Cliente _cliente;
 	Proveedor _proveedor;
+	//Transaccion _transaccion;
 };
 

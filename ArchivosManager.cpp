@@ -3,7 +3,6 @@
 #include "Cliente.h"
 #include "Proveedor.h"
 #include "Producto.h"
-#include "Stock.h"
 #include "Transaccion.h"
 
 ArchivosManager::ArchivosManager(const char* n){
@@ -675,112 +674,7 @@ Producto ArchivosManager::BuscarProducto(int n) const
 
 // METODOS PARA MANEJAR TRANSACCIONES
 
+
+
+
 // METODOS PARA EL STOCK
-bool ArchivosManager::AltaStock(Stock reg) {
-    FILE* p = fopen(_nombreArchivo, "ab");
-    if (p == nullptr) return false;
-
-    fwrite(&reg, sizeof(Stock), 1, p);
-    fclose(p);
-    return true;
-}
-bool ArchivosManager::BajaStock(int idProducto) {
-    FILE* p = fopen(_nombreArchivo, "rb+");
-    if (p == nullptr) return false;
-
-    Stock reg;
-    int pos = -1;
-
-    while (fread(&reg, sizeof(Stock), 1, p) == 1) {
-        pos++;
-        if (reg.GetEstado() && reg.GetIdProducto() == idProducto) {
-            fseek(p, sizeof(Stock) * pos, SEEK_SET);
-            reg.SetEstado(false);
-            fwrite(&reg, sizeof(Stock), 1, p);
-            fclose(p);
-            return true;
-        }
-    }
-    fclose(p);
-    return false;
-}
-bool ArchivosManager::ModificarStock(Stock reg, int pos) {
-    FILE* p = fopen(_nombreArchivo, "rb+");
-    if (p == nullptr) return false;
-
-    fseek(p, sizeof(Stock) * pos, SEEK_SET);
-    fwrite(&reg, sizeof(Stock), 1, p);
-    fclose(p);
-    return true;
-}
-bool ArchivosManager::ListarStock() const {
-    FILE* p = fopen(_nombreArchivo, "rb");
-    if (p == nullptr) return false;
-
-    Stock reg;
-    while (fread(&reg, sizeof(Stock), 1, p) == 1) {
-        if (reg.GetEstado()) {
-            reg.MostrarStock();
-        }
-    }
-    fclose(p);
-    return true;
-}
-Stock ArchivosManager::BuscarStock(int idProducto) const {
-    Stock reg;
-    FILE* p = fopen(_nombreArchivo, "rb");
-    if (p == nullptr) return reg;
-
-    while (fread(&reg, sizeof(Stock), 1, p) == 1) {
-        if (reg.GetIdProducto() == idProducto && reg.GetEstado()) {
-            fclose(p);
-            return reg;
-        }
-    }
-    fclose(p);
-    return reg;
-}
-int ArchivosManager::BuscarStockXProductoID(int idProducto) const {
-    FILE* p = fopen(_nombreArchivo, "rb");
-    if (p == nullptr) return -1;
-
-    Stock reg;
-    int pos = 0;
-    while (fread(&reg, sizeof(Stock), 1, p) == 1) {
-        if (reg.GetIdProducto() == idProducto) {
-            fclose(p);
-            return pos;
-        }
-        pos++;
-    }
-    fclose(p);
-    return -1;
-}
-int ArchivosManager::BuscarPosicionStock(Stock reg) {
-    FILE* p = fopen(_nombreArchivo, "rb");
-    if (p == nullptr) return -1;
-
-    Stock aux;
-    int i = 0;
-    while (fread(&aux, sizeof(Stock), 1, p) == 1) {
-        if (reg.GetIdProducto() == aux.GetIdProducto()) {
-            fclose(p);
-            return i;
-        }
-        i++;
-    }
-    fclose(p);
-    return -1;
-}
-bool ArchivosManager::sobreEscribirRegistroStock(Stock reg, int pos) {
-    FILE* p = fopen(_nombreArchivo, "rb+");
-    if (p == nullptr) return false;
-
-    fseek(p, sizeof(Stock) * pos, SEEK_SET);
-    bool escribio = fwrite(&reg, sizeof(Stock), 1, p);
-    fclose(p);
-    return escribio;
-}
-
-
-

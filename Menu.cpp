@@ -1,6 +1,5 @@
 #include "Menu.h"
 
-
 void Menu::MostrarEntrada()
 {
     while (true)
@@ -127,14 +126,14 @@ void Menu::mostrarCompras()
         switch (opc)
         {
         case 1:
-            //_manager.AgregarStock();
+            
             system("pause");
             break;
         case 2:
-            //_manager.ListarStock();
+            
             break;
         case 3:
-            //_manager.BuscarStockPorProducto();
+           
             break;
         case 4:
             break;
