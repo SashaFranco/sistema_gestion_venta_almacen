@@ -29,7 +29,6 @@ void Transaccion::mostrarTransaccion() const {
     cout << setw(35) << getMonto() << endl;
     cout << setw(35) << getIdProducto() << endl;
 }
-
 void Transaccion::mostrarEncabezadoTransaccion() const
 {
     cout << setw(15) << "ID Transaccion: ";
@@ -40,7 +39,6 @@ void Transaccion::mostrarEncabezadoTransaccion() const
     cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 
 }
-
 void Transaccion::cargarCompra()
 {
     setTipo(2);
@@ -55,7 +53,6 @@ void Transaccion::cargarCompra()
 
     setFecha();
 }
-
 void Transaccion::cargarVenta()
 {
     setTipo(1);

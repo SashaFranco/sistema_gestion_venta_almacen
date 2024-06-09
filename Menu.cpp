@@ -126,8 +126,7 @@ void Menu::mostrarCompras()
         switch (opc)
         {
         case 1:
-
-            _manager.ListarProductos();
+            _manager.listarProducto();
             system("pause");
             break;
         case 2:
@@ -135,13 +134,6 @@ void Menu::mostrarCompras()
             break;
           case 3:
             system("pause");
-            break;
-        case 2:
-            
-            break;
-        case 3:
-           
-
             break;
         case 4:
             break;
