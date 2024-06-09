@@ -151,7 +151,6 @@
     <ClCompile Include="Producto.cpp" />
     <ClCompile Include="Proveedor.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="Stock.cpp" />
     <ClCompile Include="Transaccion.cpp" />
     <ClCompile Include="Usuarios.cpp" />
     <ClCompile Include="Venta.cpp" />
@@ -169,7 +168,6 @@
     <ClInclude Include="Producto.h" />
     <ClInclude Include="Proveedor.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Stock.h" />
     <ClInclude Include="Transaccion.h" />
     <ClInclude Include="Usuarios.h" />
     <ClInclude Include="Venta.h" />

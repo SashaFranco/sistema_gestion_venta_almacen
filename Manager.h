@@ -10,7 +10,7 @@
 #include "Cliente.h"
 #include "Proveedor.h"
 #include "Producto.h"
-#include "Stock.h"
+#include "Transaccion.h"
 #include "Helpers.h"
 
 class Manager
@@ -38,13 +38,7 @@ public:
 	void BuscarProductoXNombre();
 	
 	// METODOS PARA GESTIONAR STOCK
-	void AgregarStock();
-	void EliminarStock();
-	void ModificarStock();
-	void ListarStock();
-	void BuscarStockPorProducto();
-	void  ListarProductos();
-	
+
 	// SETTERS
 	void setUsuarios(Usuarios usuario);
 
@@ -61,9 +55,11 @@ private:
 
 	// INSTANCIAS PARA GESTIONAR STOCK
 	ArchivosManager _regStock = ArchivosManager("Stock.dat");
-	Stock _stock;
+	Producto _stock;
 
-
+	// INSTANCIAS PARA GESTIONAR TRANSACCIONES
+	/*ArchivosManager _regTransaccion = ArchivosManager("Transaccion.dat");
+	Transaccion _Transaccion;*/
 
 };
 

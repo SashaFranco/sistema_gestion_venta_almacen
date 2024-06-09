@@ -18,6 +18,8 @@ class Menu
 {
 public:
 
+	
+
 	// MOSTRAR ENTRADA AL SISTEMA (NIVEL 0)
 
 	void MostrarEntrada();

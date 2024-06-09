@@ -18,10 +18,9 @@ private:
     Fecha fecha;
     double monto;
     int idProducto;
-    int idUsuario;
 
 public:
-    Transaccion(int idTransaccion, int tipo, double monto, int idProducto, int idUsuario);
+    Transaccion(int idTransaccion, int tipo, double monto, int idProducto);
 
     // Getters
     int getIdTransaccion() const;
@@ -29,7 +28,6 @@ public:
     Fecha getFecha() const;
     double getMonto() const;
     int getIdProducto() const;
-    int getIdUsuario() const;
 
     // Setters
     void setIdTransaccion(int idTransaccion);
@@ -37,9 +35,12 @@ public:
     void setFecha();
     void setMonto(double monto);
     void setIdProducto(int idProducto);
-    void setIdUsuario(int idUsuario);
+
 
     void mostrarTransaccion() const;
+    void mostrarEncabezadoTransaccion() const;
+    void cargarCompra();
+    void cargarVenta();
 };
 
 

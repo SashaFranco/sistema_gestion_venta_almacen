@@ -31,9 +31,6 @@ void exportarACSV(const std::string& archivoBinario, const std::string& nombreAr
 
     cout << "Datos exportados correctamente a " << nombreArchivoCSV << endl;
 
-
-
-
     cout << "Presione Enter para continuar...";
     cin.ignore();
     cin.get();

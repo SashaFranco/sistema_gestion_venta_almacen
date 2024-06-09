@@ -15,7 +15,7 @@ bool Manager::entradaAlSistema()
     cout << "Ingrese su usuario: ";
     cin >> inputUsuario;
     cout << endl;
-    cout << "Ingrese su contraseña: ";
+    cout << "Ingrese su contraseÃ±a: ";
     cin >> inputPassw;
     cout << endl;
 
@@ -66,7 +66,7 @@ void Manager::BajaUsuario()
     cout << "Ingrese el usuario que desea borrar: ";
     cin >> inputUsuario;
     cout << endl;
-    cout << "Ingrese su contraseña: ";
+    cout << "Ingrese su contraseÃ±a: ";
     cin >> inputPassw;
     cout << endl;
 
@@ -76,7 +76,7 @@ void Manager::BajaUsuario()
     {
         setConsoleSize(10, 60);
         int opc;
-        cout << "Se encontro usuario!" << " ¿Desea borrar?" << endl;
+        cout << "Se encontro usuario!" << " Â¿Desea borrar?" << endl;
         cout << "1- SI" << endl;
         cout << "2- NO" << endl;
         cout << "Opcion elegida: ";
@@ -130,7 +130,7 @@ void Manager::MoidificarUsuarios()
     cout << "Ingrese el usuario que desea modificar: ";
     cin >> inputUsuario;
     cout << endl;
-    cout << "Ingrese su contraseña: ";
+    cout << "Ingrese su contraseÃ±a: ";
     cin >> inputPassw;
     cout << endl;
 
@@ -140,7 +140,7 @@ void Manager::MoidificarUsuarios()
     {
         setConsoleSize(10, 60);
         int opc;
-        cout << "Se encontro usuario!" << " ¿Que desea cambiar?" << endl;
+        cout << "Se encontro usuario!" << " Â¿Que desea cambiar?" << endl;
         cout << "1- Usuario" << endl;
         cout << "2- Passw" << endl;
         cout << "Opcion elegida: ";
@@ -291,7 +291,7 @@ void Manager::BajaProducto()
         MostrarEncabezadoProductos();
         aux.MostrarProducto();
         cout << endl;
-        cout << "Se encontro Producto!" << " ¿Desea borrar?" << endl;
+        cout << "Se encontro Producto!" << " Â¿Desea borrar?" << endl;
         cout << "1- SI" << endl;
         cout << "2- NO" << endl;
         cout << "Opcion elegida: ";
@@ -359,7 +359,7 @@ void Manager::MoidificarProducto()
             cout << endl << endl;
             int opc, pos;
             pos = _regProductos.BuscarPosicion(aux);
-            cout << "Se encontro Producto!" << " ¿Que desea cambiar?" << endl;
+            cout << "Se encontro Producto!" << " Â¿Que desea cambiar?" << endl;
             cout << "1- Nombre" << endl;
             cout << "2- Descripcion" << endl;
             cout << "3- Precio de venta" << endl;
@@ -533,125 +533,4 @@ void Manager::BuscarProductoXNombre()
 
 // METODOS PARA MANEJAR STOCK
 
-void Manager::AgregarStock() {
-    system("cls");
-    int idProducto;
-    int cantidad;
-    cout << "INGRESE EL ID DEL PRODUCTO AL QUE DESEA AGREGAR STOCK:" << endl;
-    cin >> idProducto;
-    cout << "INGRESE LA CANTIDAD DE STOCK A AGREGAR:" << endl;
-    cin >> cantidad;
 
-    Stock stockExistente = _regStock.BuscarStock(idProducto);
-    if (stockExistente.GetIdProducto() != -1) {
-        int nuevaCantidad = stockExistente.GetCantidad() + cantidad;
-        stockExistente.SetCantidad(nuevaCantidad);
-        int pos = _regStock.BuscarPosicionStock(stockExistente);
-        if (_regStock.sobreEscribirRegistroStock(stockExistente, pos)) {
-            cout << "Stock actualizado con exito!" << endl;
-        }
-        else {
-            cout << "Error al actualizar el stock." << endl;
-        }
-    }
-    else {
-        Stock nuevoStock(idProducto, cantidad, true);
-        if (_regStock.AltaStock(nuevoStock)) {
-            cout << "Stock agregado con exito!" << endl;
-        }
-        else {
-            cout << "Error al agregar el stock." << endl;
-        }
-    }
-    system("pause");
-}
-void Manager::EliminarStock() {
-    system("cls");
-    int idProducto;
-    int cantidad;
-    cout << "INGRESE EL ID DEL PRODUCTO AL QUE DESEA ELIMINAR STOCK:" << endl;
-    cin >> idProducto;
-    cout << "INGRESE LA CANTIDAD DE STOCK A ELIMINAR:" << endl;
-    cin >> cantidad;
-
-    Stock stockExistente = _regStock.BuscarStock(idProducto);
-    if (stockExistente.GetIdProducto() != -1) {
-        int nuevaCantidad = stockExistente.GetCantidad() - cantidad;
-        if (nuevaCantidad < 0) {
-            cout << "No se puede eliminar más stock del disponible." << endl;
-        }
-        else {
-            stockExistente.SetCantidad(nuevaCantidad);
-            int pos = _regStock.BuscarPosicionStock(stockExistente);
-            if (_regStock.sobreEscribirRegistroStock(stockExistente, pos)) {
-                cout << "Stock eliminado con exito!" << endl;
-            }
-            else {
-                cout << "Error al eliminar el stock." << endl;
-            }
-        }
-    }
-    else {
-        cout << "No se encontró el producto en el stock." << endl;
-    }
-    system("pause");
-}
-void Manager::ModificarStock() {
-    system("cls");
-    int idProducto;
-    int cantidad;
-    cout << "INGRESE EL ID DEL PRODUCTO AL QUE DESEA MODIFICAR STOCK:" << endl;
-    cin >> idProducto;
-    cout << "INGRESE LA NUEVA CANTIDAD DE STOCK:" << endl;
-    cin >> cantidad;
-
-    Stock stockExistente = _regStock.BuscarStock(idProducto);
-    if (stockExistente.GetIdProducto() != -1) {
-        stockExistente.SetCantidad(cantidad);
-        int pos = _regStock.BuscarPosicionStock(stockExistente);
-        if (_regStock.sobreEscribirRegistroStock(stockExistente, pos)) {
-            cout << "Stock modificado con exito!" << endl;
-        }
-        else {
-            cout << "Error al modificar el stock." << endl;
-        }
-    }
-    else {
-        cout << "No se encontró el producto en el stock." << endl;
-    }
-    system("pause");
-}
-void Manager::ListarStock() {
-    system("cls");
-    if (!_regStock.ListarStock()) {
-        cout << "Error al listar el stock." << endl;
-    }
-    system("pause");
-}
-void Manager::BuscarStockPorProducto() {
-    system("cls");
-    int idProducto;
-    cout << "INGRESE EL ID DEL PRODUCTO QUE DESEA BUSCAR EN EL STOCK:" << endl;
-    cin >> idProducto;
-    Stock stock = _regStock.BuscarStock(idProducto);
-
-    if (stock.GetIdProducto() != -1) {
-        system("cls");
-        cout << "ID PRODUCTO: " << stock.GetIdProducto() << endl;
-        cout << "CANTIDAD EN STOCK: " << stock.GetCantidad() << endl;
-    }
-    else {
-        cout << "No se encontró el producto en el stock con el ID proporcionado." << endl;
-    }
-    system("pause");
-}
-
-void Manager::ListarProductos()
-{
-    Producto producto;
-    system("cls");
-    setConsoleSize(25, 170);
-    MostrarEncabezadoProductos();
-    _regProductos.ListarProducto(producto);
-    system("pause");
-}

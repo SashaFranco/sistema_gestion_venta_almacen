@@ -5,6 +5,7 @@ Producto::Producto()
 	_id = -1;
 	_precioVenta = 0.0;
 	_precioCompra = 0.0;
+	_cantidad = 0;
 	strcpy_s(_nombre, "");
 	strcpy_s(_descripcion, "");
 	_fecha = Fecha(0, 0, 0);
