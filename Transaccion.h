@@ -20,6 +20,7 @@ private:
     int idProducto;
 
 public:
+    Transaccion();//puse un constructor sin parametros
     Transaccion(int idTransaccion, int tipo, double monto, int idProducto);
 
     // Getters
@@ -39,8 +40,8 @@ public:
 
     void mostrarTransaccion() const;
     void mostrarEncabezadoTransaccion() const;
-    void cargarCompra();
-    void cargarVenta();
+    //void cargarCompra();se las pase al manager
+    //void cargarVenta();
 };
 
 

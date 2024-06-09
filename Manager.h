@@ -43,6 +43,15 @@ public:
 	void setUsuarios(Usuarios usuario);
 
 
+	//***************************************************
+	// compras
+	//***************************************************
+	//para compras
+	void cargarCompra();
+	//para ventas
+	void cargarVenta();
+
+
 private:
 
 	// INSTANCIAS PARA GESTIONAR USUARIOS
@@ -60,6 +69,7 @@ private:
 	// INSTANCIAS PARA GESTIONAR TRANSACCIONES
 	/*ArchivosManager _regTransaccion = ArchivosManager("Transaccion.dat");
 	Transaccion _Transaccion;*/
+
 
 };
 

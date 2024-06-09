@@ -213,7 +213,7 @@ void Manager::MostrarEncabezadoProductos()
     cout << setw(20) << "PRECIO DE VENTA";
     cout << setw(35) << "PRECIO DE COMPRA";
     cout << setw(45) << "FECHA DE ALTA" << endl;
-    cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 }
 void Manager::mostrarEncabezado2()
 {
@@ -532,5 +532,62 @@ void Manager::BuscarProductoXNombre()
 
 
 // METODOS PARA MANEJAR STOCK
+
+
+//METODOS PARA MANEJAR transacciones
+//******************************************************
+//compras
+void Manager::cargarCompra() {
+    cout << "Ingresando una nueva compra..." << endl;
+
+    Transaccion compra;
+    int idProducto;
+    double monto;
+
+    // Obtener los detalles de la compra del usuario
+    cout << "Ingrese el ID del Producto: ";
+    cin >> idProducto;
+
+    cout << "Ingrese el monto de la transaccion: ";
+    cin >> monto;
+
+    compra.setIdProducto(idProducto);
+    compra.setTipo(1); // Tipo 1 para compra
+    compra.setMonto(monto);
+
+    // Mostrar la compra
+    cout << "Detalles de la compra realizada:" << endl;
+    compra.mostrarEncabezadoTransaccion();
+    compra.mostrarTransaccion();
+
+    
+}
+
+//ventas
+void Manager::cargarVenta()
+{
+    cout << "Ingresando una nueva venta..." << endl;
+
+    Transaccion venta;
+    int idProducto;
+    double monto;
+
+    // Obtener los detalles de la venta del usuario
+    cout << "Ingrese el ID del Producto: ";
+    cin >> idProducto;
+
+    cout << "Ingrese el monto de la transaccion: ";
+    cin >> monto;
+
+    venta.setIdProducto(idProducto);
+    venta.setTipo(2); // Tipo 2 para la venta
+    venta.setMonto(monto);
+
+    // Mostrar la venta
+    cout << "Detalles de la venta realizada:" << endl;
+    venta.mostrarEncabezadoTransaccion();
+    venta.mostrarTransaccion();
+
+}
 
 

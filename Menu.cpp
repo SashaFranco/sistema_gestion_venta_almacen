@@ -62,7 +62,7 @@ void Menu::mostrar()
         cout << setw(40) << "--------BIENVENIDO AL MENU PRINCIPAL--------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         // Opciones del menú principal
-        cout << setw(40) << "1. GESTIONAR COMPRAS - STOCK" << endl;
+        cout << setw(40) << "1. GESTIONAR TRANSACCIONES - STOCK" << endl;
         cout << setw(40) << "2. REALIZAR VENTA" << endl;
         cout << setw(40) << "3. ABM" << endl;
         cout << setw(40) << "4. EMITIR REPORTES - EXPORTAR DATOS" << endl;
@@ -118,6 +118,7 @@ void Menu::mostrarCompras()
         cout << setw(40) << "1. LISTAR STOCK DE PRODUCTOS" << endl;
         cout << setw(40) << "2. BUSCAR STOCK DE PRODUCTO POR ID" << endl;
         cout << setw(40) << "3. INGRESAR COMPRA" << endl;
+        cout << setw(40) << "4. INGRESAR VENTA" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "0. VOLVER AL MENU PRINCIPAL" << endl;
         setConsoleSize(45, 45);
@@ -133,9 +134,12 @@ void Menu::mostrarCompras()
             _manager.BuscarProductoXID();
             break;
           case 3:
+            _manager.cargarCompra();//compra
             system("pause");
             break;
         case 4:
+            _manager.cargarVenta();//venta
+            system("pause");
             break;
         case 0:
             return;
@@ -170,6 +174,7 @@ void Menu::mostrarVentas()
         switch (opc)
         {
         case 1:
+            
             break;
         case 2:
             break;

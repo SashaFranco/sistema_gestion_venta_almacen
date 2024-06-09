@@ -11,6 +11,7 @@ using namespace std;
 #include "Cliente.h"
 #include "Proveedor.h"
 #include "ExportarACSV.h"
+#include "Transaccion.h"
 #include "Backup.h"
 
 
@@ -52,5 +53,6 @@ private:
 	Cliente _cliente;
 	Proveedor _proveedor;
 	Backup _backup;
+	Transaccion _transaccion;
 };
 
