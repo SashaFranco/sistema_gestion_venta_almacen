@@ -12,16 +12,14 @@ using namespace std;
 #include "Proveedor.h"
 #include "ExportarACSV.h"
 #include "Backup.h"
+#include "Transaccion.h"
 
 
 class Menu
 {
 public:
 
-	
-
 	// MOSTRAR ENTRADA AL SISTEMA (NIVEL 0)
-
 	void MostrarEntrada();
 
 	// MOSTRAR MENU PRINCIPAL (NIVEL 1)

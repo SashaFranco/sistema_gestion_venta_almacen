@@ -12,15 +12,10 @@ using namespace std;
 
 
 class Transaccion {
-private:
-    int idTransaccion;
-    int tipo; // 1 para compra, 2 para venta
-    Fecha fecha;
-    double monto;
-    int idProducto;
 
 public:
 
+    Transaccion();
     Transaccion(int idTransaccion, int tipo, double monto, int idProducto);
 
     // Getters
@@ -37,11 +32,18 @@ public:
     void setMonto(double monto);
     void setIdProducto(int idProducto);
 
-
     void mostrarTransaccion() const;
     void mostrarEncabezadoTransaccion() const;
     void cargarCompra();
     void cargarVenta();
+
+private:
+
+    int _idTransaccion;
+    int _tipo; // 1 para compra, 2 para venta
+    Fecha _fecha;
+    double _monto;
+    int _idProducto;
 };
 
 

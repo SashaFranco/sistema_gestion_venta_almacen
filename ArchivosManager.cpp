@@ -497,7 +497,7 @@ Proveedor ArchivosManager::BuscarProveedor(int n) const
     return reg;
 }
 
-// METODOS PARA PRODUCTOS - Revisar baja de producto
+// METODOS PARA PRODUCTOS
 int ArchivosManager::ObtenerUltimoIdProducto() const
 {
     int pos;
@@ -673,6 +673,88 @@ Producto ArchivosManager::BuscarProducto(int n) const
 }
 
 // METODOS PARA MANEJAR TRANSACCIONES
+int ArchivosManager::ObtenerUltimoIdTransaccion() const
+{
+    int pos;
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr) return -1;
+
+    fseek(p, 0, SEEK_END);
+    pos = ftell(p);
+    int ultimoRegistro = pos - sizeof(Transaccion);
+    fseek(p, ultimoRegistro, SEEK_SET);
+
+    Transaccion reg;
+    if (fread(&reg, sizeof(Transaccion), 1, p) != 1) {
+        fclose(p);
+        return -1;
+    }
+    fclose(p);
+    return reg.getIdTransaccion();
+}
+bool ArchivosManager::AltaTransaccion(Transaccion reg)
+{
+    reg.setIdTransaccion(ObtenerUltimoIdTransaccion() + 1);
+    FILE* p = fopen(_nombreArchivo, "ab");
+    if (p == nullptr) return false;
+
+    fwrite(&reg, sizeof(Transaccion), 1, p);
+    fclose(p);
+    return true;
+}
+bool ArchivosManager::ListarTransacciones(Transaccion reg) const
+{
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr)
+    {
+        return false;
+    }
+
+    while (fread(&reg, sizeof(Transaccion), 1, p) == 1)
+    {
+        reg.mostrarTransaccion();
+    }
+    fclose(p);
+    return true;
+}
+
+bool ArchivosManager::ListarCompras(Transaccion reg) const
+{
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr)
+    {
+        return false;
+    }
+
+    while (fread(&reg, sizeof(Transaccion), 1, p) == 1)
+    {
+        if (reg.getTipo()==1)
+        {
+            reg.mostrarTransaccion();
+        }
+    }
+    fclose(p);
+    return true;
+}
+
+bool ArchivosManager::ListarVentas(Transaccion reg) const
+{
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr)
+    {
+        return false;
+    }
+
+    while (fread(&reg, sizeof(Transaccion), 1, p) == 1)
+    {
+        if (reg.getTipo() == 2)
+        {
+            reg.mostrarTransaccion();
+        }
+    }
+    fclose(p);
+    return true;
+}
 
 
 

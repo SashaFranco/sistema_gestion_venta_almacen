@@ -1,32 +1,40 @@
 #include "Transaccion.h"
 
+Transaccion::Transaccion()
+{
+    _idTransaccion = -1;
+    _tipo = 0;
+    _monto = 0;
+    _idProducto = -1;
+}
+
 Transaccion::Transaccion(int idTransaccion, int tipo, double monto, int idProducto) {
-    idTransaccion = -1;
-    tipo = 0;
-    monto = 0;
-    idProducto = -1;
+    _idTransaccion = idTransaccion;
+    _tipo = tipo;
+    _monto = monto;
+    _idProducto = idProducto;
     setFecha();
 }
 
 // Getters
-int Transaccion::getIdTransaccion() const { return idTransaccion; }
-int Transaccion::getTipo() const { return tipo; }
-Fecha Transaccion::getFecha() const { return fecha; }
-double Transaccion::getMonto() const { return monto; }
-int Transaccion::getIdProducto() const { return idProducto; }
+int Transaccion::getIdTransaccion() const { return _idTransaccion; }
+int Transaccion::getTipo() const { return _tipo; }
+Fecha Transaccion::getFecha() const { return _fecha; }
+double Transaccion::getMonto() const { return _monto; }
+int Transaccion::getIdProducto() const { return _idProducto; }
 
 // Setters
-void Transaccion::setIdTransaccion(int idTransaccion) { idTransaccion = idTransaccion; }
-void Transaccion::setTipo(int tipo) { tipo = tipo; }
-void Transaccion::setFecha() { fecha.FechaActual(); }
-void Transaccion::setMonto(double monto) { monto = monto; }
-void Transaccion::setIdProducto(int idProducto) {idProducto = idProducto; }
+void Transaccion::setIdTransaccion(int idTransaccion) { _idTransaccion = idTransaccion; }
+void Transaccion::setTipo(int tipo) { _tipo = tipo; }
+void Transaccion::setFecha() { _fecha.FechaActual(); }
+void Transaccion::setMonto(double monto) { _monto = monto; }
+void Transaccion::setIdProducto(int idProducto) {_idProducto = idProducto; }
 
 void Transaccion::mostrarTransaccion() const {
-    cout << setw(15) << getIdTransaccion() << endl;
-    cout << setw(20) << (getTipo() == 1 ? "Compra" : "Venta") << endl;
+    cout << setw(15) << getIdTransaccion();
+    cout << setw(20) << (getTipo() == 1 ? "Compra" : "Venta");
     cout << setw(20) << getFecha().toString();
-    cout << setw(35) << getMonto() << endl;
+    cout << setw(35) << getMonto();
     cout << setw(35) << getIdProducto() << endl;
 }
 void Transaccion::mostrarEncabezadoTransaccion() const
@@ -41,9 +49,10 @@ void Transaccion::mostrarEncabezadoTransaccion() const
 }
 void Transaccion::cargarCompra()
 {
+    int monto, idProducto;
     setTipo(1);
 
-    cout << "Ingrese el monto de la transaccion: ";
+    cout << "Ingrese el monto de la compra: ";
     cin >> monto;
     setMonto(monto);
 
@@ -57,9 +66,10 @@ void Transaccion::cargarCompra()
 
 void Transaccion::cargarVenta()
 {
+    int monto, idProducto;
     setTipo(2);
 
-    cout << "Ingrese el monto de la transaccion: ";
+    cout << "Ingrese el monto de la venta: ";
     cin >> monto;
     setMonto(monto);
 

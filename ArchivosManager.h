@@ -62,20 +62,15 @@ public:
 	Producto BuscarProducto(int n) const;
 
 	// METODOS PARA MANEJAR TRANSACCIONES
+	int ObtenerUltimoIdTransaccion() const;
 	bool AltaTransaccion(Transaccion reg);
-	bool ListarTransacciones() const;
+	bool ListarTransacciones(Transaccion reg) const;
+	bool ListarCompras(Transaccion reg) const;
+	bool ListarVentas(Transaccion reg) const;
 	double CalcularIngresos() const;
 	double CalcularEgresos() const;
 
 	// METODOS PARA EL STOCK
-	bool AltaStock(Stock reg);
-	bool BajaStock(int idProducto);
-	bool ModificarStock(Stock reg, int pos);
-	bool ListarStock() const;
-	Stock BuscarStock(int idProducto) const;
-	int BuscarStockXProductoID(int idProducto) const;
-	int BuscarPosicionStock(Stock reg);
-	bool sobreEscribirRegistroStock(Stock reg, int pos);
 
 private:
 	char _nombreArchivo[30];

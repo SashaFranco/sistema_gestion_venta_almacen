@@ -15,7 +15,7 @@ bool Manager::entradaAlSistema()
     cout << "Ingrese su usuario: ";
     cin >> inputUsuario;
     cout << endl;
-    cout << "Ingrese su contraseña: ";
+    cout << "Ingrese su contrase�a: ";
     cin >> inputPassw;
     cout << endl;
 
@@ -66,7 +66,7 @@ void Manager::BajaUsuario()
     cout << "Ingrese el usuario que desea borrar: ";
     cin >> inputUsuario;
     cout << endl;
-    cout << "Ingrese su contraseña: ";
+    cout << "Ingrese su contrase�a: ";
     cin >> inputPassw;
     cout << endl;
 
@@ -76,7 +76,7 @@ void Manager::BajaUsuario()
     {
         setConsoleSize(10, 60);
         int opc;
-        cout << "Se encontro usuario!" << " ¿Desea borrar?" << endl;
+        cout << "Se encontro usuario!" << " �Desea borrar?" << endl;
         cout << "1- SI" << endl;
         cout << "2- NO" << endl;
         cout << "Opcion elegida: ";
@@ -130,7 +130,7 @@ void Manager::MoidificarUsuarios()
     cout << "Ingrese el usuario que desea modificar: ";
     cin >> inputUsuario;
     cout << endl;
-    cout << "Ingrese su contraseña: ";
+    cout << "Ingrese su contrase�a: ";
     cin >> inputPassw;
     cout << endl;
 
@@ -140,7 +140,7 @@ void Manager::MoidificarUsuarios()
     {
         setConsoleSize(10, 60);
         int opc;
-        cout << "Se encontro usuario!" << " ¿Que desea cambiar?" << endl;
+        cout << "Se encontro usuario!" << " �Que desea cambiar?" << endl;
         cout << "1- Usuario" << endl;
         cout << "2- Passw" << endl;
         cout << "Opcion elegida: ";
@@ -291,7 +291,7 @@ void Manager::BajaProducto()
         MostrarEncabezadoProductos();
         aux.MostrarProducto();
         cout << endl;
-        cout << "Se encontro Producto!" << " ¿Desea borrar?" << endl;
+        cout << "Se encontro Producto!" << " �Desea borrar?" << endl;
         cout << "1- SI" << endl;
         cout << "2- NO" << endl;
         cout << "Opcion elegida: ";
@@ -359,7 +359,7 @@ void Manager::MoidificarProducto()
             cout << endl << endl;
             int opc, pos;
             pos = _regProductos.BuscarPosicion(aux);
-            cout << "Se encontro Producto!" << " ¿Que desea cambiar?" << endl;
+            cout << "Se encontro Producto!" << " �Que desea cambiar?" << endl;
             cout << "1- Nombre" << endl;
             cout << "2- Descripcion" << endl;
             cout << "3- Precio de venta" << endl;
@@ -530,9 +530,43 @@ void Manager::BuscarProductoXNombre()
     }
 }
 
+// METODOS PARA MANEJAR TRANSACCIONES
+void Manager::CargarCompra()
+{
+    Transaccion transaccion;
+    bool alta;
+    transaccion.cargarCompra();
+    alta = _regTransaccion.AltaTransaccion(transaccion);
+    if (alta)
+    {
+        cout << "Compra cargada cargada con exito" << endl;
+    }
+}
+
+void Manager::CargarVenta()
+{
+    Transaccion transaccion;
+
+}
+
 void Manager::mostrarCompras()
 {
-    
+    Transaccion transaccion;
+    system("cls");
+    setConsoleSize(25, 170);
+    transaccion.mostrarEncabezadoTransaccion();
+    _regTransaccion.ListarCompras(transaccion);
+    system("pause");
+}
+
+void Manager::mostrarVentas()
+{
+    Transaccion transaccion;
+    system("cls");
+    setConsoleSize(25, 170);
+    transaccion.mostrarEncabezadoTransaccion();
+    _regTransaccion.ListarVentas(transaccion);
+    system("pause");
 }
 
 

@@ -38,7 +38,10 @@ public:
 	void BuscarProductoXNombre();
 	
 	// METODOS PARA GESTIONAR TRANSACCION
+	void CargarCompra();
+	void CargarVenta();
 	void mostrarCompras();
+	void mostrarVentas();
 
 
 	// SETTERS
@@ -60,8 +63,7 @@ private:
 	Producto _stock;
 
 	// INSTANCIAS PARA GESTIONAR TRANSACCIONES
-	/*ArchivosManager _regTransaccion = ArchivosManager("Transaccion.dat");
-	Transaccion _transaccion;*/
-
+	ArchivosManager _regTransaccion = ArchivosManager("Transaccion.dat");
+	Transaccion _transaccion;
 };
 
