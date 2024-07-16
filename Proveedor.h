@@ -1,24 +1,21 @@
 #pragma once
 #include "Persona.h"
-#include "ArchivosManager.h"
-#include "Helpers.h";
+#include <iostream>
+using namespace std;
 
-
-class Proveedor :
-    public Persona
+class Proveedor:Persona
 {
 public:
+	Proveedor();
+	void setTipoProducto(char tipoProducto);
+	char* getTipoProducto();
+	void setTipoProducto(const char* tipoProducto);
 
-	void mostrarEncabezado();
-	void mostrarEncabezado2();
+	void Cargar();
+	void Mostrar();
 
-	void AltaProveedor();
-	void BajaProveedor();
-	void ModificarProveedor();
-	void ListarProveedores();
-	void BuscarProveedor();
+protected:
 
-private:
-    ArchivosManager _reg = ArchivosManager("Proveedores.dat");
+	char _tipoProducto[30];
 };
 

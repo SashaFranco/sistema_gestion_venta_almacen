@@ -25,16 +25,13 @@ void Menu::MostrarEntrada()
         switch (opcion)
         {
         case 1:
-            
-            /*if (_manager.entradaAlSistema())
-            {
-                mostrar();
-            }*/
             mostrar();
             break;
         case 2:
             cout << endl;
             cout << "Sasha Emanuel Franco" << endl;
+            cout << "Javier Ordoñez" << endl;
+            cout << "Maria Itati Romero" << endl;
             system("pause");
             break;
         case 0:

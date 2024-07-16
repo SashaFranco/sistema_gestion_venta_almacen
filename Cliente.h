@@ -1,23 +1,21 @@
 #pragma once
 #include "Persona.h"
-#include "ArchivosManager.h"
-#include "Helpers.h";
 
 
-class Cliente :
-    public Persona
+#include <iostream>
+using namespace std;
+
+class Cliente:Persona
 {
 public:
-	void mostrarEncabezado();
-	void mostrarEncabezado2();
+	Cliente();
+	void setCategoria(bool categoria);
+	bool getCategoria();
+	void Cargar();
+	void Mostrar();
 
-	void AltaCliente();
-	void BajaCliente();
-	void ModificarCliente();
-	void ListarClientes();
-	void BuscarCliente();
+protected:
 
-private:
-	ArchivosManager _reg = ArchivosManager("Clientes.dat");
+	bool _categoria;
 };
 
