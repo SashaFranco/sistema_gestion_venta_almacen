@@ -5,18 +5,22 @@
 
 #include <iostream>
 #include <iomanip>
+#include <cstring>
+
+using namespace std;
+
+#include "Helpers.h"
 #include "ArchivosManager.h"
+#include "ArchivosClientes.h"
+#include "ArchivosProveedores.h"
 #include "Usuarios.h"
 #include "Cliente.h"
 #include "Proveedor.h"
 #include "Producto.h"
-#include "Transaccion.h"
-#include "Helpers.h"
 
 class Manager
 {
 public:
-
 	// METODOS PARA GESTIONAR USUARIOS
 	void MostrarEncabezadoUsuario();
 
@@ -28,28 +32,40 @@ public:
 
 	// METODOS PARA GESTIONAR PRODUCTOS
 	void MostrarEncabezadoProductos();
+	void MostrarEncabezadoProductosSinID();
 	void mostrarEncabezado2();
+	void mostrarEncabezado2SinID();
 	void AltaProducto();
 	void BajaProducto();
 	void MoidificarProducto();
 	void listarProducto();
-
 	void BuscarProductoXID();
 	void BuscarProductoXNombre();
-	
-	// METODOS PARA GESTIONAR TRANSACCION
-	void CargarCompra();
-	void CargarVenta();
-	void mostrarCompras();
-	void mostrarVentas();
 
+	// METODOS PARA GESTIONAR UNA COMPRA Y STOCK
+	void CargarCompra();
+	void ListarStock();
+	void BuscarStock();
+
+
+	// METODOS PARA GESTIONAR CLIENTES
+	void AltaCliente();
+	void BajaCliente();
+	void ModificarCliente();
+	void ListarClientes();
+	void BuscarCliente();
+
+	// METODOS PARA GESTIONAR PROVEEDORES
+	void AltaProveedor();
+	void BajaProveedor();
+	void ModificarProveedor();
+	void ListarProveedor();
+	void BuscarProveedor();
 
 	// SETTERS
 	void setUsuarios(Usuarios usuario);
 
-
 private:
-
 	// INSTANCIAS PARA GESTIONAR USUARIOS
 	ArchivosManager _reg = ArchivosManager("Usuarios.dat");
 	Usuarios _usuarios;
@@ -58,12 +74,11 @@ private:
 	ArchivosManager _regProductos = ArchivosManager("Productos.dat");
 	Producto _producto;
 
-	// INSTANCIAS PARA GESTIONAR STOCK
-	ArchivosManager _regStock = ArchivosManager("Stock.dat");
-	Producto _stock;
+	// INSTANCIAS PARA GESTIONAR CLIENTES
+	ArchivosClientes _regClientes = ArchivosClientes("Clientes.dat");
+	Cliente _cliente;
 
-	// INSTANCIAS PARA GESTIONAR TRANSACCIONES
-	ArchivosManager _regTransaccion = ArchivosManager("Transaccion.dat");
-	Transaccion _transaccion;
+	// INSTANCIAS PARA GESTIONAR PROVEEDORES
+	ArchivosProveedores _regProveedores = ArchivosProveedores ("Proveedores.dat");
+	Proveedor _proveedor;
 };
-

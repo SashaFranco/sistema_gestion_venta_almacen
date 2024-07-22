@@ -145,9 +145,6 @@ void mostrarBKS(const std::string& archivoBinario, const std::string& nombreArch
 
     cout << "Datos exportados correctamente a " << nombreArchivoCSV << endl;
 
-
-
-
     cout << "Presione Enter para continuar...";
     cin.ignore();
     cin.get();
@@ -163,9 +160,9 @@ void DatosClientesBackup(FILE* archivoEntrada, FILE* archivoCSV) {
        
             fprintf(archivoCSV, "%d,%s,%s,%s,%d\n",
                 cliente.getId(),
-                cliente.getApellido(),
                 cliente.getNombre(),
-                cliente.getDomicilio(),
+                cliente.getApellido(),
+                cliente.getCategoria(),
                 cliente.getDNI());
         
     }
@@ -187,8 +184,7 @@ void DatosProductoBackup(FILE* archivoEntrada, FILE* archivoCSV) {
                 producto.GetNombre(),
                 producto.GetDescripcion(),
                 producto.GetPrecioVenta(),
-                producto.GetPrecioCompra());
-      
+                producto.GetCantidad());
     }
 }
 
@@ -205,9 +201,9 @@ void DatosProveedorBackup(FILE* archivoEntrada, FILE* archivoCSV) {
        
             fprintf(archivoCSV, "%d,%s,%s,%s,%d\n",
                 proveedor.getId(),
-                proveedor.getApellido(),
                 proveedor.getNombre(),
-                proveedor.getDomicilio(),
+                proveedor.getTipo(),
+                proveedor.getEmail(),
                 proveedor.getDNI());
        
     }

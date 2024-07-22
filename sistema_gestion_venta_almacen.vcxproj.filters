@@ -21,9 +21,6 @@
     <ClCompile Include="Persona.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Fecha.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Helpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -45,19 +42,25 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Transaccion.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Usuarios.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Venta.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ExportarACSV.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Backup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fecha.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivosClientes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivosProveedores.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Factura.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -92,19 +95,22 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Transaccion.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Usuarios.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Venta.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ExportarACSV.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Backup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivosClientes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivosProveedores.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Factura.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

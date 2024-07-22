@@ -5,20 +5,21 @@
 
 using namespace std;
 
+#include "Manager.h"
 #include "Helpers.h"
 #include "Fecha.h"
-#include "Manager.h"
-#include "Cliente.h"
-#include "Proveedor.h"
-#include "ExportarACSV.h"
 #include "Backup.h"
-#include "Transaccion.h"
 
+
+// #include "Manager.h"
+// #include "Cliente.h"
+// #include "Proveedor.h"
+// #include "ExportarACSV.h"
+// #include "Transaccion.h"
 
 class Menu
 {
 public:
-
 	// MOSTRAR ENTRADA AL SISTEMA (NIVEL 0)
 	void MostrarEntrada();
 
@@ -33,12 +34,12 @@ public:
 	void mostrarUsuarios();
 	void mostrarBk();
 
-	//submenu de mostrarRreportes
+	// submenu de mostrarRreportes
 	void mostrarExportaciones();
 
-	//submenu de RESTAURACION DE BK
+	// submenu de RESTAURACION DE BK
 	void mostrarRestauracionBK();
-	
+
 	// MOSTRAR ULTIMOS MENUS (NIVEL 3)
 	void mostrarABMCLientes();
 	void mostrarABMProveedores();
@@ -47,8 +48,7 @@ public:
 private:
 	Fecha _fechaSitema;
 	Manager _manager;
-	Cliente _cliente;
-	Proveedor _proveedor;
 	Backup _backup;
+	// Cliente _cliente;
+	// Proveedor _proveedor;
 };
-

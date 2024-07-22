@@ -3,9 +3,9 @@
 // METODOS PARA MANEJAR USUARIOS
 void Manager::MostrarEncabezadoUsuario()
 {
-	cout << left;
-	cout << setw(5) << "USUARIOS" << endl;
-	cout << "--------------------------------";
+    cout << left;
+    cout << setw(5) << "USUARIOS" << endl;
+    cout << "--------------------------------";
 }
 bool Manager::entradaAlSistema()
 {
@@ -19,7 +19,6 @@ bool Manager::entradaAlSistema()
     cin >> inputPassw;
     cout << endl;
 
-
     Usuarios aux(inputUsuario, inputPassw);
     setUsuarios(_reg.BuscarUsuario(inputUsuario, inputPassw));
 
@@ -27,20 +26,22 @@ bool Manager::entradaAlSistema()
     if (_usuarios == aux)
     {
         system("cls");
-        cout << "Inicio de sesion exitoso. Bienvenido!" << endl << endl;
+        cout << "Inicio de sesion exitoso. Bienvenido!" << endl
+            << endl;
         system("pause");
         return true;
     }
 
-    else {
+    else
+    {
         system("cls");
-        cout << "Inicio de sesion fallido. Credenciales incorrectas." << endl << endl;
+        cout << "Inicio de sesion fallido. Credenciales incorrectas." << endl
+            << endl;
         system("pause");
         return false;
     }
-    
 }
-void Manager::setUsuarios(Usuarios usuario){ _usuarios = usuario; }
+void Manager::setUsuarios(Usuarios usuario) { _usuarios = usuario; }
 void Manager::AltaUsuarios()
 {
     _usuarios.Cargar();
@@ -50,10 +51,10 @@ void Manager::AltaUsuarios()
         cout << "Usuario dado de alta con exito" << endl;
         system("pause");
     }
-    else {
+    else
+    {
         cout << "ERROR AL DAR DE ALTA USUARIO" << endl;
     }
-
 }
 void Manager::BajaUsuario()
 {
@@ -88,7 +89,7 @@ void Manager::BajaUsuario()
             system("cls");
             setConsoleSize(10, 60);
             borro = _reg.BajaUsuario(aux.GetId());
-           
+
             if (borro)
             {
                 system("cls");
@@ -115,7 +116,6 @@ void Manager::BajaUsuario()
         cout << "NO SE ENCUENTRA USUARIO EN SISTEMA" << endl;
         system("pause");
     }
-
 }
 void Manager::MoidificarUsuarios()
 {
@@ -145,7 +145,7 @@ void Manager::MoidificarUsuarios()
         cout << "2- Passw" << endl;
         cout << "Opcion elegida: ";
         cin >> opc;
-        
+
         switch (opc)
         {
         case 1:
@@ -197,64 +197,44 @@ void Manager::listarUsuarios()
     if (_reg.ListarUsuarios(_usuarios))
     {
         _reg.ListarUsuarios(_usuarios);
-
     }
     system("pause");
 }
 
-
-//METODOS PARA MANEJAR PRODUCTOS
-void Manager::MostrarEncabezadoProductos()
-{
-    cout << left;
-    cout << setw(5) << "ID";
-    cout << setw(15) << "NOMBRE";
-    cout << setw(20) << "DESCRIPCION";
-    cout << setw(20) << "PRECIO DE VENTA";
-    cout << setw(35) << "PRECIO DE COMPRA";
-    cout << setw(45) << "FECHA DE ALTA" << endl;
-    cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
-}
-void Manager::mostrarEncabezado2()
-{
-    cout << left;
-    cout << setw(5) << "ID";
-    cout << setw(15) << "NOMBRE";
-    cout << setw(45) << "DESCRIPCION";
-    cout << setw(20) << "PRECIO DE VENTA";
-    cout << setw(35) << "PRECIO DE COMPRA";
-    cout << setw(35) << "CANTIDAD";
-    cout << setw(55) << "FECHA DE ALTA" << endl;
-    cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
-
-}
+// METODOS PARA MANEJAR PRODUCTOS
+void Manager::MostrarEncabezadoProductos() { _producto.MostrarEncabezado(); }
+void Manager::MostrarEncabezadoProductosSinID() { _producto.MostrarEncabezadoSinID(); }
+void Manager::mostrarEncabezado2() { _producto.MostrarEncabezadoYSuStock(); }
+void Manager::mostrarEncabezado2SinID() { _producto.MostrarInformacionProductoSinID(); }
 void Manager::AltaProducto()
 {
     system("cls");
-    cout << "INGRESE LOS DATOS DEL NUEVO PRODUCTO:" << endl << endl;
-    Producto producto;
+    cout << "INGRESE LOS DATOS DEL NUEVO PRODUCTO:" << endl;
     int id = _regProductos.ObtenerUltimoIdProducto();
-    producto.SetId(id);
-    producto.CargarProducto();
+    _producto.SetId(id);
+    _producto.CargarProducto();
     system("cls");
     cout << "Corrobore los datos:" << endl;
     setConsoleSize(20, 170);
-    mostrarEncabezado2();
-    producto.MostrarProducto2();
+    MostrarEncabezadoProductosSinID();
+    _producto.MostrarInformacionProductoSinID();
     char opc;
-    cout << endl << endl;
+    cout << endl
+        << endl;
     cout << "DATOS CORRECTOS? (S/N)" << endl;
     cin >> opc;
     if (opc == 's' || opc == 'S')
     {
         bool alta;
-        alta = _regProductos.AltaProducto(producto);
+        alta = _regProductos.AltaProducto(_producto);
         system("cls");
-        if (alta)  cout << "PRODUCTO CARGADO CON EXITO" << endl;
+        if (alta)
+            cout << "PRODUCTO CARGADO CON EXITO" << endl;
         system("pause");
         return;
     }
-    else {
+    else
+    {
         system("cls");
         cout << "DESEA CARGAR DE NUEVO EL PRODUCTO? (S/N)" << endl;
         char opc2;
@@ -289,9 +269,9 @@ void Manager::BajaProducto()
         int opc;
         cout << endl;
         MostrarEncabezadoProductos();
-        aux.MostrarProducto();
+        aux.MostrarInformacionProducto();
         cout << endl;
-        cout << "Se encontro Producto!" << " �Desea borrar?" << endl;
+        cout << "Se encontro Producto!" << "Desea borrar?" << endl;
         cout << "1- SI" << endl;
         cout << "2- NO" << endl;
         cout << "Opcion elegida: ";
@@ -355,11 +335,12 @@ void Manager::MoidificarProducto()
             system("cls");
             setConsoleSize(20, 170);
             MostrarEncabezadoProductos();
-            aux.MostrarProducto();
-            cout << endl << endl;
+            aux.MostrarInformacionProducto();
+            cout << endl
+                << endl;
             int opc, pos;
             pos = _regProductos.BuscarPosicion(aux);
-            cout << "Se encontro Producto!" << " �Que desea cambiar?" << endl;
+            cout << "Se encontro Producto!" << "Que desea cambiar?" << endl;
             cout << "1- Nombre" << endl;
             cout << "2- Descripcion" << endl;
             cout << "3- Precio de venta" << endl;
@@ -384,7 +365,8 @@ void Manager::MoidificarProducto()
                     cout << "NOMBRE DE PRODUCTO CAMBIADO CON EXITO" << endl;
                     system("pause");
                 }
-                else {
+                else
+                {
                     cout << "ERROR AL MODIFICAR REGISTRO" << endl;
                     system("pause");
                 }
@@ -406,7 +388,8 @@ void Manager::MoidificarProducto()
                     cout << "DESCRIPCION DE PRODUCTO CAMBIADO CON EXITO" << endl;
                     system("pause");
                 }
-                else {
+                else
+                {
                     cout << "ERROR AL MODIFICAR REGISTRO" << endl;
                     system("pause");
                 }
@@ -427,7 +410,8 @@ void Manager::MoidificarProducto()
                     cout << "PRECIO DE VENTA CAMBIADO CON EXITO" << endl;
                     system("pause");
                 }
-                else {
+                else
+                {
                     cout << "ERROR AL MODIFICAR REGISTRO" << endl;
                     system("pause");
                 }
@@ -448,7 +432,8 @@ void Manager::MoidificarProducto()
                     cout << "PRECIO DE COMPRA CAMBIADO CON EXITO" << endl;
                     system("pause");
                 }
-                else {
+                else
+                {
                     cout << "ERROR AL MODIFICAR REGISTRO" << endl;
                     system("pause");
                 }
@@ -482,7 +467,6 @@ void Manager::listarProducto()
     _regProductos.ListarProducto(producto);
     system("pause");
 }
-
 void Manager::BuscarProductoXID()
 {
     Producto producto;
@@ -491,15 +475,16 @@ void Manager::BuscarProductoXID()
     cout << "INGRESE ID DEL PRODUCTO:" << endl;
     int id;
     cin >> id;
-    
+
     producto = _regProductos.BuscarProducto(id);
-    if (producto.GetId()!=-1)
+    if (producto.GetId() != -1)
     {
         MostrarEncabezadoProductos();
-        producto.MostrarProducto();
+        producto.MostrarInformacionProducto();
         system("pause");
     }
-    else {
+    else
+    {
         system("cls");
         cout << "NO SE ENCONTRO PRODUCTO, VUELVA A INTENTA" << endl;
         system("pause");
@@ -516,13 +501,14 @@ void Manager::BuscarProductoXNombre()
     cin.ignore();
     cin.getline(nombre, sizeof(nombre));
     pos = _regProductos.BuscarProductoXNombre(nombre);
-    if (pos!=-1)
+    if (pos != -1)
     {
         producto = _regProductos.BuscarProducto(pos);
         MostrarEncabezadoProductos();
-        producto.MostrarProducto();
+        producto.MostrarInformacionProducto();
         system("pause");
-    } else 
+    }
+    else
     {
         system("cls");
         cout << "NO SE ENCONTRO PRODUCTO, VUELVA A INTENTA" << endl;
@@ -530,46 +516,574 @@ void Manager::BuscarProductoXNombre()
     }
 }
 
-// METODOS PARA MANEJAR TRANSACCIONES
 void Manager::CargarCompra()
 {
-    Transaccion transaccion;
-    bool alta;
-    transaccion.cargarCompra();
-    alta = _regTransaccion.AltaTransaccion(transaccion);
-    if (alta)
+    int id;
+    Producto producto;
+
+}
+
+void Manager::ListarStock()
+{
+    Producto producto;
+    system("cls");
+    setConsoleSize(25, 90);
+    _producto.MostrarEncabezadoYSuStock();
+    _regProductos.ListarStock(producto);
+    system("pause");
+}
+
+void Manager::BuscarStock()
+{
+    Producto producto;
+    system("cls");
+    setConsoleSize(25, 90);
+    cout << "INGRESE ID DEL PRODUCTO:" << endl;
+    int id;
+    cin >> id;
+
+    producto = _regProductos.BuscarProducto(id);
+    if (producto.GetId() != -1)
     {
-        cout << "Compra cargada cargada con exito" << endl;
+        producto.MostrarEncabezadoYSuStock();
+        producto.MostrarProductoYSuStock();
+        system("pause");
+    }
+    else
+    {
+        setConsoleSize(25, 85);
+        system("cls");
+        cout << "NO SE ENCONTRO PRODUCTO, VUELVA A INTENTA" << endl;
+        system("pause");
     }
 }
 
-void Manager::CargarVenta()
+//METODOS PARA MANEJAR CLIENTES
+void Manager::AltaCliente()
 {
-    Transaccion transaccion;
-
-}
-
-void Manager::mostrarCompras()
-{
-    Transaccion transaccion;
     system("cls");
-    setConsoleSize(25, 170);
-    transaccion.mostrarEncabezadoTransaccion();
-    _regTransaccion.ListarCompras(transaccion);
+    cout << "INGRESE LOS DATOS DEL NUEVO CLIENTE:" << endl << endl;
+    Cliente cliente;
+    int id = _regClientes.ObtenerUltimoIdCliente();
+    cliente.setId(id);
+    cliente.cargarCliente();
+    system("cls");
+    cout << "Corrobore los datos:" << endl;
+    setConsoleSize(20, 170);
+    cliente.mostrarEncabezadoSinID();
+    cliente.mostrarClienteSinID();
+    char opc;
+    cout << endl << endl;
+    cout << "DATOS CORRECTOS? (S/N)" << endl;
+    cin >> opc;
+    if (opc == 's' || opc == 'S')
+    {
+        bool alta;
+        alta = _regClientes.AltaCliente(cliente);
+        system("cls");
+        if (alta)  cout << "CLIENTE CARGADO CON EXITO" << endl;
+        system("pause");
+        return;
+    }
+    else {
+        system("cls");
+        cout << "DESEA CARGAR DE NUEVO EL CLIENTE? (S/N)" << endl;
+        char opc2;
+        cin >> opc2;
+        if (opc2 == 's' || opc2 == 'S')
+        {
+            AltaCliente();
+            return;
+        }
+        else
+        {
+            return;
+        }
+    }
+}
+void Manager::BajaCliente()
+{
+    system("cls");
+    Cliente aux;
+    bool borro = false;
+    int ID_DNI;
+    setConsoleSize(10, 60);
+    cout << "Ingrese el ID o DNI del cliente a borrar: ";
+    cin >> ID_DNI;
+    cout << endl;
+
+    aux = _regClientes.BuscarCliente(ID_DNI);
+
+    if (aux.getId() != -1)
+    {
+        setConsoleSize(20, 170);
+        int opc;
+        cout << endl;
+        aux.mostrarEncabezado();
+        aux.mostrarCliente();
+        cout << endl;
+        cout << "Se encontro cliente!" << "Desea borrar?" << endl;
+        cout << "1- SI" << endl;
+        cout << "2- NO" << endl;
+        cout << "Opcion elegida: ";
+        cin >> opc;
+
+        switch (opc)
+        {
+        case 1:
+            system("cls");
+            borro = _regClientes.BajaCliente(aux.getId());
+
+            if (borro)
+            {
+                system("cls");
+                setConsoleSize(10, 60);
+                cout << "Cliente borrado" << endl;
+                system("pause");
+            }
+            break;
+        case 2:
+            return;
+            break;
+        default:
+            system("cls");
+            setConsoleSize(10, 60);
+            cout << "OPCION INVALIDA" << endl;
+            system("pause");
+            return;
+            break;
+        }
+    }
+    else
+    {
+        system("cls");
+        setConsoleSize(10, 60);
+        cout << "NO SE ENCUENTRA CLIENTE EN SISTEMA" << endl;
+        system("pause");
+    }
+}
+void Manager::ModificarCliente()
+{
+    system("cls");
+    Cliente aux;
+    bool modifico = false, categoria;
+    char nombre[40], apellido[40], email[50];
+    int id;
+
+    setConsoleSize(10, 60);
+    cout << "Ingrese el ID o DNI del cliente a modificar: ";
+    cin >> id;
+    cout << endl;
+
+    aux = _regClientes.BuscarCliente(id);
+
+    if (aux.getId() != -1)
+    {
+
+        while (true)
+        {
+            system("cls");
+            setConsoleSize(20, 170);
+            aux.mostrarEncabezado();
+            aux.mostrarCliente();
+            cout << endl << endl;
+            int opc, pos;
+            pos = _regClientes.BuscarPosicion(aux);
+            cout << "Se encontro Cliente!" << " �Que desea cambiar?" << endl;
+            cout << "1- Nombre" << endl;
+            cout << "2- Apellido" << endl;
+            cout << "3- Categoria" << endl;
+            cout << "4- Email" << endl;
+            cout << "0- Cancelar" << endl;
+            cout << "Opcion elegida: ";
+            cin >> opc;
+            switch (opc)
+            {
+            case 1:
+                system("cls");
+                setConsoleSize(10, 60);
+                cout << "INGRESE NUEVO NOMBRE: " << endl;
+
+                cin.ignore();
+                cin.getline(nombre, sizeof(nombre));
+                aux.setNombre(nombre);
+
+                modifico = _regClientes.ModificarCliente(aux, pos);
+                if (modifico)
+                {
+                    system("cls");
+                    cout << "NOMBRE DE CLIENTE CAMBIADO CON EXITO" << endl;
+                    system("pause");
+                }
+                else {
+                    cout << "ERROR AL MODIFICAR REGISTRO" << endl;
+                    system("pause");
+                }
+                return;
+                break;
+            case 2:
+                system("cls");
+                setConsoleSize(10, 60);
+                cout << "INGRESE NUEVO APELLIDO: " << endl;
+
+                cin.ignore();
+                cin.getline(apellido, sizeof(apellido));
+                aux.setApellido(apellido);
+
+                modifico = _regClientes.ModificarCliente(aux, pos);
+                if (modifico)
+                {
+                    system("cls");
+                    cout << "APELLIDO DE CLIENTE CAMBIADO CON EXITO" << endl;
+                    system("pause");
+                }
+                else {
+                    cout << "ERROR AL MODIFICAR REGISTRO" << endl;
+                    system("pause");
+                }
+                return;
+                break;
+            case 3:
+                system("cls");
+                setConsoleSize(10, 60);
+                cout << "INGRESE NUEVA CATEGORIA: " << endl;
+
+                cin >> categoria;
+                aux.setCategoria(categoria);
+
+                modifico = _regClientes.ModificarCliente(aux, pos);
+                if (modifico)
+                {
+                    system("cls");
+                    cout << "CATEGORIA DE CLIENTE CAMBIADA CON EXITO" << endl;
+                    system("pause");
+                }
+                else {
+                    cout << "ERROR AL MODIFICAR REGISTRO" << endl;
+                    system("pause");
+                }
+                return;
+                break;
+            case 4:
+                system("cls");
+                setConsoleSize(10, 60);
+                cout << "INGRESE NUEVO EMAIL: " << endl;
+
+                cin.ignore();
+                cin.getline(email, sizeof(email));
+                aux.setEmail(email);
+
+                modifico = _regClientes.ModificarCliente(aux, pos);
+                if (modifico)
+                {
+                    system("cls");
+                    cout << "EMAIL DE CLIENTE CAMBIADO CON EXITO" << endl;
+                    system("pause");
+                }
+                else {
+                    cout << "ERROR AL MODIFICAR REGISTRO" << endl;
+                    system("pause");
+                }
+                break;
+            case 0:
+                return;
+                break;
+            default:
+                system("cls");
+                setConsoleSize(10, 60);
+                cout << "OPCION INVALIDA" << endl;
+                system("pause");
+                break;
+            }
+        }
+    }
+    else
+    {
+        system("cls");
+        setConsoleSize(10, 60);
+        cout << "NO SE ENCUENTRA CLIENTE EN SISTEMA" << endl;
+        system("pause");
+    }
+}
+void Manager::ListarClientes()
+{
+    Cliente cliente;
+    system("cls");
+    setConsoleSize(60, 170);
+    cliente.mostrarEncabezado();
+    _regClientes.ListarCliente(cliente);
+    system("pause");
+}
+void Manager::BuscarCliente()
+{
+    system("cls");
+    cout << "INGRESE EL DNI O EL ID DEL CLIENTE A BUSCAR:" << endl << endl;
+    int num;
+    cin >> num;
+    Cliente cliente;
+    cliente = _regClientes.BuscarCliente(num);
+    if (cliente.getId() == -1)
+    {
+        cout << "NO SE ENCONTRO CLIENTE" << endl;
+        system("pause");
+        return;
+    }
+    system("cls");
+    setConsoleSize(20, 170);
+    cout << "CLIENTE ENCONTRADO: " << endl << endl;
+    cliente.mostrarEncabezado();
+    cliente.mostrarCliente();
     system("pause");
 }
 
-void Manager::mostrarVentas()
-{
-    Transaccion transaccion;
+//METODOS PARA MANEJAR PROVEEDORES
+void Manager::AltaProveedor(){
     system("cls");
-    setConsoleSize(25, 170);
-    transaccion.mostrarEncabezadoTransaccion();
-    _regTransaccion.ListarVentas(transaccion);
+    cout << "INGRESE LOS DATOS DEL NUEVO PROVEEDOR:" << endl << endl;
+    Proveedor proveedor;
+    int id = _regProveedores.ObtenerUltimoIdProveedor();
+    proveedor.setId(id);
+    proveedor.cargarProveedor();
+    system("cls");
+    cout << "Corrobore los datos:" << endl;
+    setConsoleSize(20, 170);
+    proveedor.mostrarEncabezadoSinID();
+    proveedor.mostrarProveedorSinID();
+    char opc;
+    cout << endl << endl;
+    cout << "DATOS CORRECTOS? (S/N)" << endl;
+    cin >> opc;
+    if (opc == 's' || opc == 'S')
+    {
+        bool alta;
+        alta = _regProveedores.AltaProveedor(proveedor);
+        system("cls");
+        if (alta)  cout << "PROVEEDOR CARGADO CON EXITO" << endl;
+        system("pause");
+        return;
+    }
+    else {
+        system("cls");
+        cout << "DESEA CARGAR DE NUEVO EL PROVEEDOR? (S/N)" << endl;
+        char opc2;
+        cin >> opc2;
+        if (opc2 == 's' || opc2 == 'S')
+        {
+            AltaCliente();
+            return;
+        }
+        else
+        {
+            return;
+        }
+    }
+}
+void Manager::BajaProveedor(){
+    system("cls");
+    Proveedor aux;
+    bool borro = false;
+    int ID_DNI;
+    setConsoleSize(10, 60);
+    cout << "Ingrese el ID o CUIL del proveedor a borrar: ";
+    cin >> ID_DNI;
+    cout << endl;
+
+    aux = _regProveedores.BuscarProveedor(ID_DNI);
+
+    if (aux.getId() != -1)
+    {
+        setConsoleSize(20, 170);
+        int opc;
+        cout << endl;
+        aux.mostrarEncabezado();
+        aux.mostrarProveedor();
+        cout << endl;
+        cout << "Se encontro proveedor!" << "Desea borrar?" << endl;
+        cout << "1- SI" << endl;
+        cout << "2- NO" << endl;
+        cout << "Opcion elegida: ";
+        cin >> opc;
+
+        switch (opc)
+        {
+        case 1:
+            system("cls");
+            borro = _regProveedores.BajaProveedor(aux.getId());
+
+            if (borro)
+            {
+                system("cls");
+                setConsoleSize(10, 60);
+                cout << "Proveedor borrado" << endl;
+                system("pause");
+            }
+            break;
+        case 2:
+            return;
+            break;
+        default:
+            system("cls");
+            setConsoleSize(10, 60);
+            cout << "OPCION INVALIDA" << endl;
+            system("pause");
+            return;
+            break;
+        }
+    }
+    else
+    {
+        system("cls");
+        setConsoleSize(10, 60);
+        cout << "NO SE ENCUENTRA PROVEEDOR EN SISTEMA" << endl;
+        system("pause");
+        return;
+    }
+}
+void Manager::ModificarProveedor(){
+    system("cls");
+    Proveedor aux;
+    bool modifico = false;
+    char nombre[40], tipo[50], email[50];
+    int id;
+
+    setConsoleSize(10, 60);
+    cout << "Ingrese el ID o DNI del proveedor a modificar: ";
+    cin >> id;
+    cout << endl;
+
+    aux = _regProveedores.BuscarProveedor(id);
+
+    if (aux.getId() != -1)
+    {
+
+        while (true)
+        {
+            system("cls");
+            setConsoleSize(25, 170);
+            aux.mostrarEncabezado();
+            aux.mostrarProveedor();
+            cout << endl << endl;
+            int opc, pos;
+            pos = _regProveedores.BuscarPosicion(aux);
+            cout << "Se encontro Proveedor!" << "Que desea cambiar?" << endl;
+            cout << "1- Nombre razon social" << endl;
+            cout << "2- Tipo" << endl;
+            cout << "3- Email" << endl;
+            cout << "0- Cancelar" << endl;
+            cout << "Opcion elegida: ";
+            cin >> opc;
+            switch (opc)
+            {
+            case 1:
+                system("cls");
+                setConsoleSize(15, 60);
+                cout << "INGRESE NUEVO NOMBRE RAZON SOCIAL: " << endl;
+
+                cin.ignore();
+                cin.getline(nombre, sizeof(nombre));
+                aux.setNombre(nombre);
+
+                modifico = _regProveedores.ModificarProveedor(aux, pos);
+                if (modifico)
+                {
+                    system("cls");
+                    cout << "RAZON SOCIAL DE PROVEEDOR CAMBIADA CON EXITO" << endl;
+                    system("pause");
+                }
+                else {
+                    cout << "ERROR AL MODIFICAR REGISTRO" << endl;
+                    system("pause");
+                }
+                return;
+                break;
+            case 2:
+                system("cls");
+                setConsoleSize(15, 60);
+                cout << "INGRESE NUEVO TIPO: " << endl;
+
+                cin.ignore();
+                cin.getline(tipo, sizeof(tipo));
+                aux.setTipo(tipo);
+
+                modifico = _regProveedores.ModificarProveedor(aux, pos);
+                if (modifico)
+                {
+                    system("cls");
+                    cout << "TIPO DE PROVEEDOR CAMBIADO CON EXITO" << endl;
+                    system("pause");
+                }
+                else {
+                    cout << "ERROR AL MODIFICAR REGISTRO" << endl;
+                    system("pause");
+                }
+                return;
+                break;
+            case 3:
+                system("cls");
+                setConsoleSize(15, 60);
+                cout << "INGRESE NUEVO EMAIL: " << endl;
+
+                cin.ignore();
+                cin.getline(email, sizeof(email));
+                aux.setEmail(email);
+
+                modifico = _regProveedores.ModificarProveedor(aux, pos);
+                if (modifico)
+                {
+                    system("cls");
+                    cout << "EMAIL DE PROVEEDOR CAMBIADO CON EXITO" << endl;
+                    system("pause");
+                }
+                else {
+                    cout << "ERROR AL MODIFICAR REGISTRO" << endl;
+                    system("pause");
+                }
+                break;
+            case 0:
+                return;
+                break;
+            default:
+                system("cls");
+                setConsoleSize(15, 60);
+                cout << "OPCION INVALIDA" << endl;
+                system("pause");
+                break;
+            }
+        }
+    }
+    else
+    {
+        system("cls");
+        setConsoleSize(10, 60);
+        cout << "NO SE ENCUENTRA CLIENTE EN SISTEMA" << endl;
+        system("pause");
+    }
+}
+void Manager::ListarProveedor(){
+    Proveedor proveedor;
+    system("cls");
+    setConsoleSize(60, 170);
+    proveedor.mostrarEncabezado();
+    _regProveedores.ListarProveedor(proveedor);
     system("pause");
 }
-
-
-// METODOS PARA MANEJAR STOCK
-
-
+void Manager::BuscarProveedor(){
+    system("cls");
+    cout << "INGRESE EL CUIL O EL ID DEL PROVEEDOR A BUSCAR:" << endl << endl;
+    int num;
+    cin >> num;
+    Proveedor proveedor;
+    proveedor = _regProveedores.BuscarProveedor(num);
+    if (proveedor.getId() == -1)
+    {
+        cout << "NO SE ENCONTRO PROVEEDOR" << endl;
+        system("pause");
+        return;
+    }
+    system("cls");
+    setConsoleSize(20, 170);
+    cout << "PROVEEDOR ENCONTRADO: " << endl << endl;
+    proveedor.mostrarEncabezado();
+    proveedor.mostrarProveedor();
+    system("pause");
+}

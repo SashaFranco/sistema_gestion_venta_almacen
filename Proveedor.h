@@ -1,24 +1,27 @@
 #pragma once
+#include <iostream>
+#include <cstring>
+#include <iomanip>
+
+using namespace std;
+
 #include "Persona.h"
-#include "ArchivosManager.h"
-#include "Helpers.h";
+#include "Fecha.h"
+#include "Helpers.h"
 
-
-class Proveedor :
-    public Persona
+class Proveedor : public Persona
 {
 public:
+	void setTipo(const char* tipo);
+	const char* getTipo() const;
+
+	void cargarProveedor();
+	void mostrarProveedor();
+	void mostrarProveedorSinID();
 
 	void mostrarEncabezado();
-	void mostrarEncabezado2();
-
-	void AltaProveedor();
-	void BajaProveedor();
-	void ModificarProveedor();
-	void ListarProveedores();
-	void BuscarProveedor();
+	void mostrarEncabezadoSinID();
 
 private:
-    ArchivosManager _reg = ArchivosManager("Proveedores.dat");
+	char _tipo[50]; // GOLOSINAS,CONGELADOS, LACTEOS, VERDULERIA, ETC
 };
-

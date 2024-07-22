@@ -9,7 +9,8 @@ void Menu::MostrarEntrada()
         cout << left;
         cout << "***********************" << endl;
         cout << "** " << _fechaSitema.toString() << " - " << _fechaSitema.getNombreDia() << " **" << endl;
-        cout << "***********************" << endl << endl;
+        cout << "***********************" << endl
+            << endl;
         cout << setw(40) << "SISTEMA DE GESTION PARA LA VENTA DE ALMACEN" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "-----------------BIENVENIDO-----------------" << endl;
@@ -25,7 +26,7 @@ void Menu::MostrarEntrada()
         switch (opcion)
         {
         case 1:
-            
+
             /*if (_manager.entradaAlSistema())
             {
                 mostrar();
@@ -40,12 +41,12 @@ void Menu::MostrarEntrada()
         case 0:
             return;
             break;
-        default: "OPCION INCORRECTA, ELIJA DE NUEVO";
+        default:
+            "OPCION INCORRECTA, ELIJA DE NUEVO";
             system("pause");
             break;
         }
     }
-    
 }
 void Menu::mostrar()
 {
@@ -56,7 +57,8 @@ void Menu::mostrar()
         cout << left;
         cout << "***********************" << endl;
         cout << "** " << _fechaSitema.toString() << " - " << _fechaSitema.getNombreDia() << " **" << endl;
-        cout << "***********************" << endl << endl;
+        cout << "***********************" << endl
+            << endl;
         cout << setw(40) << "SISTEMA DE GESTION PARA LA VENTA DE ALMACEN" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "--------BIENVENIDO AL MENU PRINCIPAL--------" << endl;
@@ -66,7 +68,7 @@ void Menu::mostrar()
         cout << setw(40) << "2. REALIZAR VENTA" << endl;
         cout << setw(40) << "3. ABM" << endl;
         cout << setw(40) << "4. EMITIR REPORTES - EXPORTAR DATOS" << endl;
-        cout << setw(40) << "5. GESTION DE USUARIOS" << endl; //terminado
+        cout << setw(40) << "5. GESTION DE USUARIOS" << endl; // terminado
         cout << setw(40) << "6. BACKUP DE ARCHIVOS" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "0. VOLVER" << endl;
@@ -96,7 +98,7 @@ void Menu::mostrar()
         case 0:
             return;
             break;
-        default: 
+        default:
             cout << "INGRESE UNA OPCION VALIDA" << endl;
             system("pause");
             break;
@@ -126,14 +128,14 @@ void Menu::mostrarCompras()
         switch (opc)
         {
         case 1:
-            _manager.listarProducto();
+            _manager.ListarStock();
             system("pause");
             break;
         case 2:
-            _manager.BuscarProductoXID();
+            _manager.BuscarStock();
             break;
-          case 3:
-              _manager.CargarCompra();
+        case 3:
+            //_manager.CargarCompra();
             system("pause");
             break;
         case 4:
@@ -147,8 +149,7 @@ void Menu::mostrarCompras()
             break;
         }
     }
-}
-
+} //USAR FACTURA Y DETALLE
 void Menu::mostrarVentas()
 {
     while (true)
@@ -183,9 +184,7 @@ void Menu::mostrarVentas()
             break;
         }
     }
-
 }
-
 void Menu::mostrarABM()
 {
     while (true)
@@ -227,7 +226,6 @@ void Menu::mostrarABM()
         }
     }
 }
-
 void Menu::mostrarRreportes()
 {
     while (true)
@@ -240,12 +238,9 @@ void Menu::mostrarRreportes()
         cout << setw(40) << "----------------MENU REPORTES---------------" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         // Opciones del menú de reportes
-        cout << setw(40) << "1. LISTAR CLIENTES" << endl;
-        cout << setw(40) << "2. LISTAR PROVEEDORES" << endl;
-        cout << setw(40) << "3. LISTAR PRODUCTOS" << endl;
-        cout << setw(40) << "4. LISTADO DE VENTAS" << endl;
-        cout << setw(40) << "5. EMITIR REPORTE DE CAJA" << endl;
-        cout << setw(40) << "6. EXPORTAR REPORTES A CSV" << endl; //lLISTO
+        cout << setw(40) << "1. LISTADO DE VENTAS" << endl;
+        cout << setw(40) << "2. EMITIR REPORTE DE CAJA" << endl;
+        cout << setw(40) << "3. EXPORTAR REPORTES A CSV" << endl; // lLISTO
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "0. VOLVER AL MENU PRINCIPAL" << endl;
         setConsoleSize(45, 45);
@@ -254,20 +249,12 @@ void Menu::mostrarRreportes()
         switch (opc)
         {
         case 1:
-            _cliente.ListarClientes();
+            //_cliente.ListarClientes();
             break;
         case 2:
-            _proveedor.ListarProveedores();
+            //_proveedor.ListarProveedores();
             break;
         case 3:
-           
-            break;
-        case 4:
-            break;
-        case 5:
-            break;
-        case 6:
-            mostrarExportaciones();
             break;
         case 0:
             return;
@@ -278,8 +265,7 @@ void Menu::mostrarRreportes()
             break;
         }
     }
-}
-
+} // TERMINAR
 void Menu::mostrarUsuarios()
 {
     while (true)
@@ -326,9 +312,8 @@ void Menu::mostrarUsuarios()
     }
 }
 
-
 //************************************************************************************************************************
-//MENU DE BACKUPS
+// MENU DE BACKUPS
 void Menu::mostrarBk()
 {
     while (true)
@@ -344,9 +329,9 @@ void Menu::mostrarBk()
         cout << setw(40) << "1. HACER BACKUP CLIENTES" << endl;
         cout << setw(40) << "2. HACER BACKUP PROVEEDORES" << endl;
         cout << setw(40) << "3. HACER BACKUP PRODUCTOS" << endl;
-        //cout << setw(40) << "4. MOSTRAR BACKUP CLIENTES" << endl;
-        //cout << setw(40) << "5. MOSTRAR BACKUP PROVEEDORES" << endl;
-        //cout << setw(40) << "6. MOSTRAR BACKUP PRODUCTOS" << endl;
+        // cout << setw(40) << "4. MOSTRAR BACKUP CLIENTES" << endl;
+        // cout << setw(40) << "5. MOSTRAR BACKUP PROVEEDORES" << endl;
+        // cout << setw(40) << "6. MOSTRAR BACKUP PRODUCTOS" << endl;
         cout << setw(40) << "7. RESTAURAR BACKUP" << endl;
         cout << setw(40) << "--------------------------------------------" << endl;
         cout << setw(40) << "0. VOLVER AL MENU PRINCIPAL" << endl;
@@ -364,15 +349,15 @@ void Menu::mostrarBk()
         case 3:
             _backup.backupProductos();
             break;
-        /*case 4:
-            mostrarClientesBackup();
-            break;
-        case 5:
-            mostrarProveedoresBackup();
-            break;
-        case 6:
-            mostrarProductosBackup();
-            break;*/
+            /*case 4:
+                mostrarClientesBackup();
+                break;
+            case 5:
+                mostrarProveedoresBackup();
+                break;
+            case 6:
+                mostrarProductosBackup();
+                break;*/
         case 7:
             mostrarRestauracionBK();
         case 0:
@@ -385,19 +370,17 @@ void Menu::mostrarBk()
         }
     }
 }
-//FIN MENU DE BACKUPS**********************************************************************
-
+// FIN MENU DE BACKUPS**********************************************************************
 
 //*****************************************************************************************
-//MENU RESTAURACION DE BACKUPS
+// MENU RESTAURACION DE BACKUPS
 //*****************************************************************************************
 void Menu::mostrarRestauracionBK()
 {
     while (true)
     {
-        
 
-        //const string archivoCSV;
+        // const string archivoCSV;
         system("cls");
         int opc;
         cout << left;
@@ -435,11 +418,11 @@ void Menu::mostrarRestauracionBK()
         }
     }
 }
-//FIN MENU DE RESTAURACION DE BACKUP*******************************************************
+// FIN MENU DE RESTAURACION DE BACKUP*******************************************************
 
 //*****************************************************************************************
-//EXPORTAR DATOS
-// 
+// EXPORTAR DATOS
+//
 void Menu::mostrarExportaciones()
 {
     while (true)
@@ -465,16 +448,16 @@ void Menu::mostrarExportaciones()
         switch (opc)
         {
         case 1:
-            exportarClientesACSV();
+            // exportarClientesACSV();
             break;
         case 2:
-            exportarProveedoresACSV();
+            // exportarProveedoresACSV();
             break;
         case 3:
-            exportarProductosACSV();
+            // exportarProductosACSV();
             break;
         case 4:
-            exportarUsuariosACSV();
+            // exportarUsuariosACSV();
             break;
         case 0:
             return;
@@ -486,7 +469,7 @@ void Menu::mostrarExportaciones()
         }
     }
 }
-//FIN EXPORTAR DATOS************************************************************************
+// FIN EXPORTAR DATOS************************************************************************
 
 void Menu::mostrarABMCLientes()
 {
@@ -513,19 +496,19 @@ void Menu::mostrarABMCLientes()
         switch (opc)
         {
         case 1:
-            _cliente.AltaCliente();
+            _manager.AltaCliente();
             break;
         case 2:
-            _cliente.BajaCliente();
+            _manager.BajaCliente();
             break;
         case 3:
-            _cliente.ModificarCliente();
+            _manager.ModificarCliente();
             break;
         case 4:
-            _cliente.ListarClientes();
+            _manager.ListarClientes();
             break;
         case 5:
-            _cliente.BuscarCliente();
+            _manager.BuscarCliente();
             break;
         case 0:
             return;
@@ -536,9 +519,7 @@ void Menu::mostrarABMCLientes()
             break;
         }
     }
-
 }
-
 void Menu::mostrarABMProveedores()
 {
     while (true)
@@ -564,19 +545,19 @@ void Menu::mostrarABMProveedores()
         switch (opc)
         {
         case 1:
-            _proveedor.AltaProveedor();
+            _manager.AltaProveedor();
             break;
         case 2:
-            _proveedor.BajaProveedor();
+            _manager.BajaProveedor();
             break;
         case 3:
-            _proveedor.ModificarProveedor();
+            _manager.ModificarProveedor();
             break;
         case 4:
-            _proveedor.ListarProveedores();
+            _manager.ListarProveedor();
             break;
         case 5:
-            _proveedor.BuscarProveedor();
+            _manager.BuscarProveedor();
             break;
         case 0:
             return;
@@ -588,7 +569,6 @@ void Menu::mostrarABMProveedores()
         }
     }
 }
-
 void Menu::mostrarABMProductos()
 {
     while (true)
@@ -641,5 +621,4 @@ void Menu::mostrarABMProductos()
             break;
         }
     }
-
 }

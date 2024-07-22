@@ -139,10 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArchivosClientes.cpp" />
     <ClCompile Include="ArchivosManager.cpp" />
+    <ClCompile Include="ArchivosProveedores.cpp" />
     <ClCompile Include="Backup.cpp" />
     <ClCompile Include="Cliente.cpp" />
     <ClCompile Include="ExportarACSV.cpp" />
+    <ClCompile Include="Factura.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Helpers.cpp" />
     <ClCompile Include="Manager.cpp" />
@@ -151,15 +154,16 @@
     <ClCompile Include="Producto.cpp" />
     <ClCompile Include="Proveedor.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="Transaccion.cpp" />
     <ClCompile Include="Usuarios.cpp" />
-    <ClCompile Include="Venta.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArchivosClientes.h" />
     <ClInclude Include="ArchivosManager.h" />
+    <ClInclude Include="ArchivosProveedores.h" />
     <ClInclude Include="Backup.h" />
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="ExportarACSV.h" />
+    <ClInclude Include="Factura.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Helpers.h" />
     <ClInclude Include="Manager.h" />
@@ -168,9 +172,7 @@
     <ClInclude Include="Producto.h" />
     <ClInclude Include="Proveedor.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Transaccion.h" />
     <ClInclude Include="Usuarios.h" />
-    <ClInclude Include="Venta.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

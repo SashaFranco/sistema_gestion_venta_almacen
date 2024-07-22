@@ -1,23 +1,27 @@
 #pragma once
+#include <iostream>
+#include <cstring>
+#include <iomanip>
+
+using namespace std;
+
 #include "Persona.h"
-#include "ArchivosManager.h"
-#include "Helpers.h";
+#include "Fecha.h"
+#include "Helpers.h"
 
-
-class Cliente :
-    public Persona
+class Cliente : public Persona
 {
 public:
-	void mostrarEncabezado();
-	void mostrarEncabezado2();
+	void setCategoria(bool categoria);
+	bool getCategoria() const;
 
-	void AltaCliente();
-	void BajaCliente();
-	void ModificarCliente();
-	void ListarClientes();
-	void BuscarCliente();
+	void cargarCliente();
+	void mostrarCliente();
+	void mostrarClienteSinID();
+
+	void mostrarEncabezado();
+	void mostrarEncabezadoSinID();
 
 private:
-	ArchivosManager _reg = ArchivosManager("Clientes.dat");
+	bool _categoria; // 1- MAYORISTA y 0-MINORISTA
 };
-

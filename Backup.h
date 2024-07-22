@@ -14,7 +14,6 @@ public:
     void backupClientes();
     void backupProveedores();
     void backupProductos();
-    
 };
 
 

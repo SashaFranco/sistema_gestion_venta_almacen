@@ -1,6 +1,7 @@
 #pragma once
+#include <iostream>
 #include <string>
-
+#include <ctime>
 class Fecha
 {
 public:
@@ -20,4 +21,3 @@ private:
     int _dia, _mes, _anio;
     int _diaSemana;
 };
-
