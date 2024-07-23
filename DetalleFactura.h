@@ -2,12 +2,14 @@
 #include <iostream>
 #include <cstring>
 #include <iomanip>
+#include <vector>
 
 using namespace std;
 
 #include "Cliente.h"
 #include "ArchivosClientes.h"
 #include "Producto.h"
+#include "ArchivosManager.h"
 
 class DetalleFactura
 {

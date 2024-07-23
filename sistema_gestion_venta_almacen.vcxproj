@@ -144,6 +144,7 @@
     <ClCompile Include="ArchivosProveedores.cpp" />
     <ClCompile Include="Backup.cpp" />
     <ClCompile Include="Cliente.cpp" />
+    <ClCompile Include="DetalleFactura.cpp" />
     <ClCompile Include="ExportarACSV.cpp" />
     <ClCompile Include="Factura.cpp" />
     <ClCompile Include="Fecha.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="ArchivosProveedores.h" />
     <ClInclude Include="Backup.h" />
     <ClInclude Include="Cliente.h" />
+    <ClInclude Include="DetalleFactura.h" />
     <ClInclude Include="ExportarACSV.h" />
     <ClInclude Include="Factura.h" />
     <ClInclude Include="Fecha.h" />

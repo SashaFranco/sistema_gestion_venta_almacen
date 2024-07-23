@@ -7,6 +7,7 @@ Factura::Factura()
 	_envio = false;
 	_estado = false;
 	_fecha = Fecha(0, 0, 0);
+	_monto = 0;
 }
 
 void Factura::setFormaDePago(const char* fp) {strcpy_s(_formaDePago, fp);}
