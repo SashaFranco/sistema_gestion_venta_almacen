@@ -1153,7 +1153,7 @@ void Manager::CargarVenta()
                     // MOSTRAR DETALLE
 
                     cout << "Detalles actuales:" << endl;
-                    for (size_t i = 0; i < NuevoDetalle.size(); ++i) {
+                    for (int i = 0; i < NuevoDetalle.size(); ++i) {
                         cout << "Detalle " << i + 1 << ": ";
                         NuevoDetalle[i].mostrarDetalle();
                     }
@@ -1162,16 +1162,53 @@ void Manager::CargarVenta()
                 }
             }
     }
-    // revisar detalle
+        // revisar detalle
+        bool revisarDetalle = true;
+        while (revisarDetalle) {
+            int opcion;
+            cout << "¿Desea revisar o eliminar algún detalle? (1 - Sí, 0 - No): ";
+            cin >> opcion;
+
+            if (opcion == 1) {
+                int detalleIndex;
+                cout << "Ingrese el número del detalle a eliminar (1 a " << NuevoDetalle.size() << "): ";
+                cin >> detalleIndex;
+
+                if (detalleIndex >= 1 && detalleIndex <= NuevoDetalle.size()) {
+                    montoTotal -= NuevoDetalle[detalleIndex - 1].getMontoTotal();
+                    NuevoDetalle.erase(NuevoDetalle.begin() + detalleIndex - 1);
+
+                    cout << "Detalle eliminado. Monto total actualizado: " << montoTotal << endl;
+                    // Mostrar detalles actualizados
+                    cout << "Detalles actuales:" << endl;
+                    for (int i = 0; i < NuevoDetalle.size(); ++i) {
+                        std::cout << "Detalle " << i + 1 << ": ";
+                        NuevoDetalle[i].mostrarDetalle();
+                    }
+                }
+                else {
+                    cout << "Número de detalle inválido." << endl;
+                }
+            }
+            else if (opcion == 0) {
+                revisarDetalle = false;
+            }
+            else {
+                cout << "Opción inválida." << endl;
+            }
+        }
 }
     // confirmar y guardar
     Nuevafactura.Cargar(cliente.getId(), montoTotal);
     _regFacturas.AltaFactura(Nuevafactura);
-    for (size_t i = 0; i < NuevoDetalle.size(); i++)
+
+    for (int i = 0; i < NuevoDetalle.size(); i++)
     {
         if (NuevoDetalle[i].getEstado()==true)
         {
         _regDetalle.altaDetalle(NuevoDetalle[i]);
         }
     }
+    cout << "VENTA REALIZADA" << endl;
+    system("pause");
 }
