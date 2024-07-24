@@ -2,7 +2,6 @@
 #include <iostream>
 #include <cstring>
 #include <iomanip>
-#include <vector>
 
 using namespace std;
 
@@ -11,31 +10,34 @@ using namespace std;
 #include "Producto.h"
 #include "ArchivosManager.h"
 
-class DetalleFactura
-{
+class DetalleFactura {
 public:
     DetalleFactura();
-    void  setId(int id);
-    void  setIdproducto(int pro);
-    void  setCantidad(int cant);
-    void  setEstado(bool e);
-    void  setTotal(float total);
 
-    int getId();
-    int getIdProducto();
-    int getCantidad();
-    bool getEstado();
-    float getTotal();
+    // Getters
+    int getIdFactura() const;
+    int getCantidad() const;
+    float getMontoTotal() const;
+    Producto getProducto() const;
+    bool getEstado() const;
 
-    void Cargar();
-    void Mostrar();
-    Producto BuscarIDProducto(int num);
+    // Setters
+    void setIdFactura(int idFactura);
+    void setCantidad(int cantidad);
+    void setMontoTotal();
+    void setProducto(Producto producto);
+    void setEstado(bool estado);
+
+    // Métodos
+    void mostrarDetalle() const;
+    void cargarFactura(int idFactura, Producto producto, int cantidad);
+
 
 private:
-    int _id;
-    int _idproducto;
+    int _idFactura;
     int _cantidad;
-    bool _Estado;
-    float _total;
+    float _montoTotal;
+    Producto _producto;
+    bool _estado;
 };
 

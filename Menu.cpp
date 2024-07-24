@@ -152,38 +152,40 @@ void Menu::mostrarCompras()
 } //USAR FACTURA Y DETALLE
 void Menu::mostrarVentas()
 {
-    while (true)
-    {
-        system("cls");
-        int opc;
-        cout << left;
-        cout << setw(40) << "SISTEMA DE GESTION PARA LA VENTA DE ALMACEN" << endl;
-        cout << setw(40) << "--------------------------------------------" << endl;
-        cout << setw(40) << "---------------MENU DE VENTAS---------------" << endl;
-        cout << setw(40) << "--------------------------------------------" << endl;
-        // Opciones del menú de ventas
-        cout << setw(40) << "1. INGRESAR VENTA DE UN ARTICULO" << endl;
-        cout << setw(40) << "2. INGRESAR VENTA DE VARIOS ARTICULOS" << endl;
-        cout << setw(40) << "--------------------------------------------" << endl;
-        cout << setw(40) << "0. VOLVER AL MENU PRINCIPAL" << endl;
-        setConsoleSize(45, 45);
-        cin >> opc;
+    //while (true)
+    //{
+    //    system("cls");
+    //    int opc;
+    //    cout << left;
+    //    cout << setw(40) << "SISTEMA DE GESTION PARA LA VENTA DE ALMACEN" << endl;
+    //    cout << setw(40) << "--------------------------------------------" << endl;
+    //    cout << setw(40) << "---------------MENU DE VENTAS---------------" << endl;
+    //    cout << setw(40) << "--------------------------------------------" << endl;
+    //    // Opciones del menú de ventas
+    //    cout << setw(40) << "1. INGRESAR VENTA DE UN ARTICULO" << endl;
+    //    cout << setw(40) << "2. INGRESAR VENTA DE VARIOS ARTICULOS" << endl;
+    //    cout << setw(40) << "--------------------------------------------" << endl;
+    //    cout << setw(40) << "0. VOLVER AL MENU PRINCIPAL" << endl;
+    //    setConsoleSize(45, 45);
+    //    cin >> opc;
 
-        switch (opc)
-        {
-        case 1:
-            break;
-        case 2:
-            break;
-        case 0:
-            return;
-            break;
-        default:
-            cout << "INGRESE UNA OPCION VALIDA" << endl;
-            system("pause");
-            break;
-        }
-    }
+    //    switch (opc)
+    //    {
+    //    case 1:
+    //        break;
+    //    case 2:
+    //        break;
+    //    case 0:
+    //        return;
+    //        break;
+    //    default:
+    //        cout << "INGRESE UNA OPCION VALIDA" << endl;
+    //        system("pause");
+    //        break;
+    //    }
+    //}
+
+    _manager.CargarVenta();
 }
 void Menu::mostrarABM()
 {

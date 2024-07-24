@@ -13,10 +13,14 @@ using namespace std;
 #include "ArchivosManager.h"
 #include "ArchivosClientes.h"
 #include "ArchivosProveedores.h"
+#include "ArchivoFactura.h"
 #include "Usuarios.h"
 #include "Cliente.h"
 #include "Proveedor.h"
 #include "Producto.h"
+#include "Factura.h"
+#include "DetalleFactura.h"
+
 
 class Manager
 {
@@ -62,6 +66,9 @@ public:
 	void ListarProveedor();
 	void BuscarProveedor();
 
+	// METODOS PARA GESTIONAR VENTAS
+	void CargarVenta();
+
 	// SETTERS
 	void setUsuarios(Usuarios usuario);
 
@@ -81,4 +88,11 @@ private:
 	// INSTANCIAS PARA GESTIONAR PROVEEDORES
 	ArchivosProveedores _regProveedores = ArchivosProveedores ("Proveedores.dat");
 	Proveedor _proveedor;
+
+	// INTANCIAS PARA GESTIONAR FACTURAS
+
+	ArchivoFactura _regFacturas = ArchivoFactura("Facturas.dat");
+	Factura _factura;
+	ArchivosManager _regDetalle = ArchivosManager("DetalleFactura.dat");
+	DetalleFactura _detalle;
 };

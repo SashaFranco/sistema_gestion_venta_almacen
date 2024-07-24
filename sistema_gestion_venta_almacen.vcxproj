@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArchivoFactura.cpp" />
     <ClCompile Include="ArchivosClientes.cpp" />
     <ClCompile Include="ArchivosManager.cpp" />
     <ClCompile Include="ArchivosProveedores.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Usuarios.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArchivoFactura.h" />
     <ClInclude Include="ArchivosClientes.h" />
     <ClInclude Include="ArchivosManager.h" />
     <ClInclude Include="ArchivosProveedores.h" />

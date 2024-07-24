@@ -38,6 +38,7 @@ void Cliente::mostrarEncabezadoSinID()
 }
 void Cliente::cargarCliente()
 {
+
 	int categoria;
 	this->Cargar();
 	cout << "CATEGORIA (1-MAYORISTA / 0-MINORISTA): ";

@@ -520,7 +520,6 @@ void Manager::CargarCompra()
 {
     int id;
     Producto producto;
-
 }
 
 void Manager::ListarStock()
@@ -532,7 +531,6 @@ void Manager::ListarStock()
     _regProductos.ListarStock(producto);
     system("pause");
 }
-
 void Manager::BuscarStock()
 {
     Producto producto;
@@ -557,6 +555,8 @@ void Manager::BuscarStock()
         system("pause");
     }
 }
+
+
 
 //METODOS PARA MANEJAR CLIENTES
 void Manager::AltaCliente()
@@ -1086,4 +1086,92 @@ void Manager::BuscarProveedor(){
     proveedor.mostrarEncabezado();
     proveedor.mostrarProveedor();
     system("pause");
+}
+
+void Manager::CargarVenta()
+{
+    Factura Nuevafactura;
+    Producto producto;
+    Cliente cliente;
+    std::vector<DetalleFactura> NuevoDetalle;
+
+    int dni;
+    float montoTotal = 0;
+
+    cout << "INGRESE DNI DE CLIENTE: ";
+    cin >> dni;
+
+    cliente = _regClientes.BuscarCliente(dni);
+    if (cliente.getId() == -1)
+    {
+        cout << "NO EXISTE CLIENTE EN BASE DE DATOS. CARGUE NUEVO CLIENTE" << endl;
+        system("pause");
+        AltaCliente();
+    }
+    else { 
+        cout << "CLIENTE EN BASE DE DATOS" << endl;
+        system("pause");
+        system("cls");
+
+        Nuevafactura.setId(_regFacturas.ObtenerUltimoIdFactura() + 1);
+        bool continuar = true;
+
+       // COMPRA EN LOOP
+        while (continuar)
+        {
+            system("cls");
+            cout << "INGRESE ID DE ARTICULO: ";
+            int id;
+            cin >> id;
+            producto = _regProductos.BuscarProducto(id);
+            if (producto.GetId() == -1)
+            {
+                system("cls");
+                cout << "El producto no existe, ingrese id correcto";
+                system("pause");
+            }
+            else {
+                cout << "INGRESE CANTIDAD A COMPRAR: ";
+                int cantidad;
+                cin >> cantidad;
+                if (_regProductos.verificarStock(producto, cantidad)==false)
+                {
+                    cout << "no hay suficiente stock de producto para la compra" << endl;
+                    cout << "¿Desea agregar otro producto? (1 - Sí, 0 - No): ";
+                    cin >> continuar;
+                }
+                else {
+                    float precioUnitario = producto.GetPrecioVenta();
+                    float monto = precioUnitario * cantidad;
+
+                    DetalleFactura detalle;
+                    detalle.cargarFactura(Nuevafactura.getId(),producto, cantidad);
+
+                    NuevoDetalle.push_back(detalle);
+                    montoTotal += monto;
+                
+                    // MOSTRAR DETALLE
+
+                    cout << "Detalles actuales:" << endl;
+                    for (size_t i = 0; i < NuevoDetalle.size(); ++i) {
+                        cout << "Detalle " << i + 1 << ": ";
+                        NuevoDetalle[i].mostrarDetalle();
+                    }
+                    cout << "¿Desea agregar otro producto? (1 - Sí, 0 - No): ";
+                    cin >> continuar;
+                }
+            }
+    }
+    // revisar detalle
+}
+    // confirmar y guardar
+    Nuevafactura.Cargar(cliente.getId(), montoTotal);
+    _regFacturas.AltaFactura(Nuevafactura);
+    for (size_t i = 0; i < NuevoDetalle.size(); i++)
+    {
+        if (NuevoDetalle[i].getEstado()==true)
+        {
+        _regDetalle.altaDetalle(NuevoDetalle[i]);
+        }
+    }
 }

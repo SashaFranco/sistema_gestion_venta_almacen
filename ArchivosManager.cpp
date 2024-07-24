@@ -1,6 +1,7 @@
 #include "ArchivosManager.h"
 #include "Usuarios.h"
 #include "Producto.h"
+#include "DetalleFactura.h"
 
 ArchivosManager::ArchivosManager(const char* n) { strcpy_s(_nombreArchivo, n); }
 
@@ -231,6 +232,8 @@ bool ArchivosManager::ListarProducto(Producto reg) const
     return true;
 }
 
+
+// MEOTOD PARA STOCK
 bool ArchivosManager::ListarStock(Producto reg) const
 {
     FILE* p = fopen(_nombreArchivo, "rb");
@@ -246,7 +249,6 @@ bool ArchivosManager::ListarStock(Producto reg) const
     fclose(p);
     return true;
 }
-
 bool ArchivosManager::sobreEscribirRegistroProducto(Producto reg, int pos)
 {
     FILE* p = fopen(_nombreArchivo, "rb+");
@@ -353,4 +355,78 @@ Producto ArchivosManager::BuscarProducto(int n) const
     fclose(p);
     return reg;
 }
+bool ArchivosManager::verificarStock(Producto reg, int cantidad)
+{
+    Producto aux;
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr)
+    {
+        return false;
+    }
+    
+    while (fread(&aux, sizeof(Producto), 1, p) == 1) {
+        if (reg.GetId() == aux.GetId())
+        {
+            if (aux.GetCantidad()<cantidad)
+            {
+                fclose(p);
+                return false;
+            }
+            else {
+                fclose(p);
+                return true;
+            }
+        }
+    }
+    fclose(p);
+    return false;
+}
+
+
+// METODOS PARA EL DETALLE
+bool ArchivosManager::altaDetalle(DetalleFactura reg)
+{
+    FILE* p = fopen(_nombreArchivo, "ab");
+    if (p == nullptr)
+    {
+        return false;
+    }
+
+    fwrite(&reg, sizeof(DetalleFactura), 1, p);
+    fclose(p);
+    return true;
+}
+bool ArchivosManager::bajaDetalle(int id)
+{
+    DetalleFactura reg;
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr)
+    {
+        return false;
+    }
+    while (fread(&reg, sizeof(DetalleFactura), 1, p) == 1)
+    {
+        if (reg.getIdFactura() == id)
+        {
+            reg.setEstado(false);
+        }
+    }
+    return true;
+}
+bool ArchivosManager::ListarDetalle(DetalleFactura reg)
+{
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr)
+    {
+        return false;
+    }
+
+    while (fread(&reg, sizeof(DetalleFactura), 1, p) == 1)
+    {
+        reg.mostrarDetalle();
+    }
+    fclose(p);
+    return true;
+}
+
 

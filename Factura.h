@@ -7,7 +7,7 @@
 using namespace std;
 
 #include "Cliente.h"
-#include "ArchivosClientes.h"
+#include "ArchivoFactura.h"
 
 class Factura
 {
@@ -45,4 +45,3 @@ private:
     Cliente _cliente; // fijarse si se puede borrar, ya que la funcion no lo necesita
     Fecha _fecha;
 };
-

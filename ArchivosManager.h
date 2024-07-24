@@ -6,6 +6,7 @@ using namespace std;
 
 class Usuarios;
 class Producto;
+class DetalleFactura;
 
 class ArchivosManager
 {
@@ -33,6 +34,13 @@ public:
 	int BuscarProductoXNombre(const char* nombre) const;
 	int BuscarPosicion(Producto reg);
 	Producto BuscarProducto(int n) const;
+
+	bool verificarStock(Producto reg, int cantidad);
+
+	// METODOS PARA DETALLE
+	bool altaDetalle(DetalleFactura reg);
+	bool bajaDetalle(int id);
+	bool ListarDetalle(DetalleFactura reg);
 
 private:
 	char _nombreArchivo[30];
