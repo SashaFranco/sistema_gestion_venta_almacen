@@ -251,12 +251,16 @@ void Menu::mostrarRreportes()
         switch (opc)
         {
         case 1:
-            //_cliente.ListarClientes();
+            //_manager.listarVentas();
             break;
         case 2:
-            //_proveedor.ListarProveedores();
+            //_manager.reporteCaja();
             break;
         case 3:
+            exportarClientesACSV();
+            exportarProductosACSV();
+            exportarProveedoresACSV();
+            exportarUsuariosACSV();
             break;
         case 0:
             return;

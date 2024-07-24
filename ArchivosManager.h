@@ -36,6 +36,7 @@ public:
 	Producto BuscarProducto(int n) const;
 
 	bool verificarStock(Producto reg, int cantidad);
+	bool ajustarStock(Producto reg, int cantidad);
 
 	// METODOS PARA DETALLE
 	bool altaDetalle(DetalleFactura reg);

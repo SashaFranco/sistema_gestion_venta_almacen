@@ -29,8 +29,9 @@ public:
     void setEstado(bool estado);
 
     // Métodos
-    void mostrarDetalle() const;
+    void mostrarDetalle();
     void cargarFactura(int idFactura, Producto producto, int cantidad);
+    void mostrarEncabezado();
 
 
 private:

@@ -1090,6 +1090,7 @@ void Manager::BuscarProveedor(){
 
 void Manager::CargarVenta()
 {
+    system("cls");
     Factura Nuevafactura;
     Producto producto;
     Cliente cliente;
@@ -1127,8 +1128,8 @@ void Manager::CargarVenta()
             if (producto.GetId() == -1)
             {
                 system("cls");
-                cout << "El producto no existe, ingrese id correcto";
-                system("pause");
+                cout << "EL PRODUCTO NO EXISTE. DESEA CONTINUAR CON LA COMPRA? (1-SI / 0 -NO)" << endl;
+                cin >> continuar;
             }
             else {
                 cout << "INGRESE CANTIDAD A COMPRAR: ";
@@ -1151,27 +1152,38 @@ void Manager::CargarVenta()
                     montoTotal += monto;
                 
                     // MOSTRAR DETALLE
+                    system("cls");
+                    setConsoleSize(35, 95);
 
-                    cout << "Detalles actuales:" << endl;
+                    cout << "******DETALLES ACTUALES*******" << endl << endl;
+                    
                     for (int i = 0; i < NuevoDetalle.size(); ++i) {
-                        cout << "Detalle " << i + 1 << ": ";
+                        if (i == 0)
+                        {
+                            NuevoDetalle[i].mostrarEncabezado();
+                        }
+                        //cout << "Detalle " << i + 1 << ": ";
                         NuevoDetalle[i].mostrarDetalle();
                     }
-                    cout << "¿Desea agregar otro producto? (1 - Sí, 0 - No): ";
+                    cout << "Desea agregar otro producto? (1 - SI, 0 - No): ";
                     cin >> continuar;
                 }
             }
     }
         // revisar detalle
         bool revisarDetalle = true;
+        if (NuevoDetalle[0].getIdFactura()==-1)
+        {
+            bool revisarDetalle = false;
+        }
         while (revisarDetalle) {
             int opcion;
-            cout << "¿Desea revisar o eliminar algún detalle? (1 - Sí, 0 - No): ";
+            cout << "Desea revisar o eliminar algun detalle? (1 - SI / 0 - NO): ";
             cin >> opcion;
 
             if (opcion == 1) {
                 int detalleIndex;
-                cout << "Ingrese el número del detalle a eliminar (1 a " << NuevoDetalle.size() << "): ";
+                cout << "Ingrese el numero del detalle a eliminar (1 a " << NuevoDetalle.size() << "): ";    
                 cin >> detalleIndex;
 
                 if (detalleIndex >= 1 && detalleIndex <= NuevoDetalle.size()) {
@@ -1207,6 +1219,7 @@ void Manager::CargarVenta()
         if (NuevoDetalle[i].getEstado()==true)
         {
         _regDetalle.altaDetalle(NuevoDetalle[i]);
+        _regProductos.ajustarStock(NuevoDetalle[i].getProducto(), NuevoDetalle[i].getCantidad());
         }
     }
     cout << "VENTA REALIZADA" << endl;

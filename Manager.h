@@ -51,7 +51,6 @@ public:
 	void ListarStock();
 	void BuscarStock();
 
-
 	// METODOS PARA GESTIONAR CLIENTES
 	void AltaCliente();
 	void BajaCliente();
@@ -68,6 +67,11 @@ public:
 
 	// METODOS PARA GESTIONAR VENTAS
 	void CargarVenta();
+
+	// METODOS PARA REPORTES
+	void listarVentas();
+	void reporteCaja();
+
 
 	// SETTERS
 	void setUsuarios(Usuarios usuario);
@@ -95,4 +99,5 @@ private:
 	Factura _factura;
 	ArchivosManager _regDetalle = ArchivosManager("DetalleFactura.dat");
 	DetalleFactura _detalle;
+
 };

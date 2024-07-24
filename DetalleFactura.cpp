@@ -20,12 +20,16 @@ void DetalleFactura::setMontoTotal() {_montoTotal = _cantidad * _producto.GetPre
 void DetalleFactura::setProducto(Producto producto){_producto = producto;}
 void DetalleFactura::setEstado(bool estado){_estado = estado;}
 
-void DetalleFactura::mostrarDetalle() const {
-    cout << "ID Factura: " << _idFactura << endl;
-    cout << "ID Producto " << _producto.GetId() << endl;
-    cout << "Cantidad: " << _cantidad << endl;
-    cout << "Precio Unitario: " << _producto.GetPrecioVenta() << endl;
-    cout << "Precio Total: " << _montoTotal << endl << endl;
+void DetalleFactura::mostrarDetalle() {
+    if (_estado == true)
+    {
+        cout << setw(15) << getIdFactura();
+        cout << setw(15) << _producto.GetNombre();
+        cout << setw(20) << getCantidad();
+        cout << setw(20) << _producto.GetPrecioVenta();
+        cout << setw(15) << getMontoTotal() << endl;
+        cout << "-----------------------------------------------------------------------------------------------" << endl;
+    }
 }
 void DetalleFactura::cargarFactura(int idFactura, Producto producto, int cantidad)
 {
@@ -34,4 +38,13 @@ void DetalleFactura::cargarFactura(int idFactura, Producto producto, int cantida
     setCantidad(cantidad);
     setEstado(true);
     setMontoTotal();
+}
+void DetalleFactura::mostrarEncabezado()
+{
+    cout << setw(15) << "ID Factura";
+    cout << setw(15) << "Producto";
+    cout << setw(20) << "Cantidad";
+    cout << setw(20) << "Precio Unitario";
+    cout << setw(15) << "Precio Total: " << endl;
+    cout << "-----------------------------------------------------------------------------------------------" << endl;
 }
