@@ -18,6 +18,13 @@ void Factura::setMonto(float monto) { _monto = monto; }
 void Factura::setEnvio(bool e) { _envio = e; }
 void Factura::setFechaActual() { _fecha.FechaActual(); }
 
+void Factura::setFecha(int dia, int mes, int anio)
+{
+	_fecha.setDia(dia);
+	_fecha.setMes(mes);
+	_fecha.setAnio(anio);
+}
+
 void Factura::setId(int id) { _id = id; }
 
 char* Factura::getFormaDePago() { return _formaDePago; }
@@ -30,13 +37,13 @@ bool Factura::getEstado() { return _estado; }
 
 void Factura::MostrarEncabezado()
 {
-	cout << setw(5) << "ID DE VENTA";
-	cout << setw(5) << "ID DE CLIENTE";
-	cout << setw(15) << "FORMA DE PAGO";
-	cout << setw(10) << "ENVIO";
+	cout << setw(15) << "ID DE FACTURA";
+	cout << setw(15) << "ID DE CLIENTE";
+	cout << setw(20) << "FORMA DE PAGO";
+	cout << setw(20) << "ENVIO";
 	cout << setw(15) << "MONTO";
 	cout << setw(15) << "FECHA" << endl;
-	cout << "---------------------------------------------------------------------------------" << endl;
+	cout << "-----------------------------------------------------------------------------------------------" << endl;
 }
 void Factura::Cargar(int idCliente, float monto)
 {
@@ -73,13 +80,13 @@ void Factura::Mostrar()
 			strcpy_s(envio, "RETIRO EN TIENDA");
 		}
 
-		cout << setw(5) << getId();
-		cout << setw(5) << getIdCliente();
-		cout << setw(15) << getFormaDePago();
-		cout << setw(10) << envio;
+		cout << setw(15) << getId();
+		cout << setw(15) << getIdCliente();
+		cout << setw(20) << getFormaDePago();
+		cout << setw(20) << envio;
 		cout << setw(15) << getMonto();
 		cout << setw(15) << _fecha.toString() << endl;
-		cout << "---------------------------------------------------------------------------------" << endl;
+		cout << "-----------------------------------------------------------------------------------------------" << endl;
 
 	}
 }

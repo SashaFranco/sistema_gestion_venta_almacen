@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstdio>
 #include <cstring>
-#include <vector>
 #include <string>
 #include "Cliente.h"
 #include "Proveedor.h"

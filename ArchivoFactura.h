@@ -22,6 +22,7 @@ public:
 	// bool sobreEscribirRegistro(Factura reg, int pos);
 	int BuscarPosicion(Factura reg);
 	Factura BuscarFactura(int n) const;
+	float listarReporteCaja(Fecha fecha);
     
 private:
     char _nombreArchivo[30];

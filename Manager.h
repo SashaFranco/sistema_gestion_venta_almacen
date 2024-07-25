@@ -33,6 +33,7 @@ public:
 	void BajaUsuario();
 	void MoidificarUsuarios();
 	void listarUsuarios();
+	bool permisosAdmin();
 
 	// METODOS PARA GESTIONAR PRODUCTOS
 	void MostrarEncabezadoProductos();

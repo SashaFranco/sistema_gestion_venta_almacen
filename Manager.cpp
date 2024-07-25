@@ -15,7 +15,7 @@ bool Manager::entradaAlSistema()
     cout << "Ingrese su usuario: ";
     cin >> inputUsuario;
     cout << endl;
-    cout << "Ingrese su contrase�a: ";
+    cout << "Ingrese su contrasenia: ";
     cin >> inputPassw;
     cout << endl;
 
@@ -199,6 +199,14 @@ void Manager::listarUsuarios()
         _reg.ListarUsuarios(_usuarios);
     }
     system("pause");
+}
+bool Manager::permisosAdmin(){
+    Usuarios admin("admin", "admin");
+    if (_usuarios == admin)
+    {
+        return true;
+    }
+    return false;
 }
 
 // METODOS PARA MANEJAR PRODUCTOS
@@ -516,10 +524,39 @@ void Manager::BuscarProductoXNombre()
     }
 }
 
-void Manager::CargarCompra()
+void Manager::CargarCompra() // corregir
 {
-    int id;
+    int id, cantidad;
     Producto producto;
+    bool continuar = true;
+    while (continuar)
+    {
+        system("cls");
+        setConsoleSize(25, 65);
+        cout << "INGRESE ID DE PRODUCTO A COMPRAR: ";
+        cin >> id;
+        producto.SetId(id);
+        int pos = _regProductos.BuscarPosicion(producto);
+        if (pos == -1)
+        {
+            cout << "NO HAY PRODUCTO EN BASE DE DATOS. DESEA CONTINUAR? (1-SI / 0-NO) ";
+            cin >> continuar;
+        }
+        else
+        {
+        cout << "INGRESE CANTIDAD A COMPRAR: ";
+        cin >> cantidad;
+        producto.SetCantidad(cantidad);
+        _regProductos.aumentarStock(producto, cantidad);
+        system("cls");
+        producto = _regProductos.BuscarProducto(pos);
+        producto.MostrarEncabezadoYSuStock();
+        producto.MostrarProductoYSuStock();
+        cout << endl;
+        cout << "STOCK ACTUALIZADO. DESEA CARGAR MAS? (1-SI / 0-NO) ";
+        cin >> continuar;
+        }
+    }
 }
 
 void Manager::ListarStock()
@@ -1094,7 +1131,7 @@ void Manager::CargarVenta()
     Factura Nuevafactura;
     Producto producto;
     Cliente cliente;
-    std::vector<DetalleFactura> NuevoDetalle;
+    std::vector<DetalleFactura> NuevoDetalle; // se crea el vector dinamico
 
     int dni;
     float montoTotal = 0;
@@ -1172,10 +1209,12 @@ void Manager::CargarVenta()
     }
         // revisar detalle
         bool revisarDetalle = true;
+
         if (NuevoDetalle[0].getIdFactura()==-1)
         {
             bool revisarDetalle = false;
         }
+
         while (revisarDetalle) {
             int opcion;
             cout << "Desea revisar o eliminar algun detalle? (1 - SI / 0 - NO): ";
@@ -1194,7 +1233,11 @@ void Manager::CargarVenta()
                     // Mostrar detalles actualizados
                     cout << "Detalles actuales:" << endl;
                     for (int i = 0; i < NuevoDetalle.size(); ++i) {
-                        std::cout << "Detalle " << i + 1 << ": ";
+                        if (i == 0)
+                        {
+                            NuevoDetalle[i].mostrarEncabezado();
+                        }
+                        //cout << "Detalle " << i + 1 << ": ";
                         NuevoDetalle[i].mostrarDetalle();
                     }
                 }
@@ -1223,5 +1266,39 @@ void Manager::CargarVenta()
         }
     }
     cout << "VENTA REALIZADA" << endl;
+    system("pause");
+}
+
+void Manager::listarVentas()
+{
+    system("cls");
+    setConsoleSize(50, 100);
+    _factura.MostrarEncabezado();
+    _regFacturas.ListarFactura(_factura);
+    system("pause");
+}
+
+void Manager::reporteCaja()
+{
+    int dia, mes, anio;
+
+    cout << "INGRESE DIA - MES - ANIO (XXYYZZZZ) " << endl;
+    cout << "DIA: ";
+    cin >> dia;
+    cout << endl;
+    cout << "MES: ";
+    cin >> mes;
+    cout << endl;
+    cout << "ANIO: ";
+    cin >> anio;
+
+    Factura aux;
+    aux.setFecha(dia, mes, anio);
+    float monto = _regFacturas.listarReporteCaja(aux.getFecha());
+
+    system("cls");
+    setConsoleSize(15, 50);
+    cout << "EN EL DIA DE LA FECHA: " << aux.getFecha().toString() << " FACTURO: " << endl;
+    cout << "$ " << monto << endl << endl;
     system("pause");
 }

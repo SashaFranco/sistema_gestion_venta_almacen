@@ -26,7 +26,7 @@ int ArchivoFactura::ObtenerUltimoIdFactura() const
 }
 bool ArchivoFactura::AltaFactura(Factura reg)
 {
-    reg.setId(ObtenerUltimoIdFactura() + 1);
+    //reg.setId(ObtenerUltimoIdFactura() + 1);
     FILE* p = fopen(_nombreArchivo, "ab");
     if (p == nullptr)
         return false;
@@ -107,4 +107,25 @@ Factura ArchivoFactura::BuscarFactura(int n) const
         }
     }
     fclose(p);
+}
+
+float ArchivoFactura::listarReporteCaja(Fecha fecha)
+{
+    Factura reg;
+    float monto = 0;
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr)
+    {
+        return -1;
+    }
+
+    while (fread(&reg, sizeof(Factura), 1, p) == 1)
+    {
+        if (reg.getFecha() == fecha);
+        {
+            monto += reg.getMonto();
+        }
+    }
+    fclose(p);
+    return monto;
 }

@@ -380,7 +380,6 @@ bool ArchivosManager::verificarStock(Producto reg, int cantidad)
     fclose(p);
     return false;
 }
-
 bool ArchivosManager::ajustarStock(Producto reg, int cantidad)
 {
     Producto aux;
@@ -392,7 +391,30 @@ bool ArchivosManager::ajustarStock(Producto reg, int cantidad)
     }
 
     pos = BuscarProductoXID(reg.GetId(), p);
+    if (reg.GetCantidad()> cantidad)
+    {
     reg.SetCantidad(reg.GetCantidad() - cantidad);
+    fseek(p, sizeof(Producto) * pos, 0);
+    bool escribio = fwrite(&reg, sizeof(Producto), 1, p);
+    fclose(p);
+    return escribio;
+    }
+
+    return false;
+}
+bool ArchivosManager::aumentarStock(Producto reg, int cantidad)
+{
+    Producto aux;
+    int nuevaCantidad = 0, pos;
+    FILE* p = fopen(_nombreArchivo, "rb+");
+    if (p == nullptr)
+    {
+        return false;
+    }
+
+    pos = BuscarProductoXID(reg.GetId(), p);
+    fread(&reg, sizeof(Producto), 1, p);
+    reg.SetCantidad(reg.GetCantidad() + cantidad);
 
     fseek(p, sizeof(Producto) * pos, 0);
     bool escribio = fwrite(&reg, sizeof(Producto), 1, p);

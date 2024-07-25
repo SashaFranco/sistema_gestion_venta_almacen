@@ -16,6 +16,7 @@ public:
     Fecha(int dia, int mes, int anio);
     std::string toString();
     void FechaActual();
+    bool operator==(const Fecha& other) const;
 
 private:
     int _dia, _mes, _anio;

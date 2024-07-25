@@ -62,3 +62,8 @@ void Fecha::FechaActual()
     _anio = f->tm_year + 1900;
     _diaSemana = f->tm_wday;
 }
+
+bool Fecha::operator==(const Fecha& aux) const
+{
+    return (_dia == aux._dia) && (_mes == aux._mes) && (_anio == aux._anio);
+}

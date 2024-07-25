@@ -27,15 +27,24 @@ void Menu::MostrarEntrada()
         {
         case 1:
 
-            /*if (_manager.entradaAlSistema())
+            if (_manager.entradaAlSistema())
             {
                 mostrar();
-            }*/
-            mostrar();
+            }
+            //mostrar();
             break;
         case 2:
+            system("cls");
+            setConsoleSize(25, 45);
             cout << endl;
-            cout << "Sasha Emanuel Franco" << endl;
+            cout << "GRUPO 3 - LABORATORIO DE PROGRAMACION II " << endl;
+            cout << endl;
+            cout << "**************INTEGRANTES*************** " << endl;
+            cout << endl;
+            cout << "Sasha Emanuel Franco. Legajo: 27984 " << endl;
+            cout << "Sasha Emanuel Franco. Legajo: 27984 " << endl;
+            cout << "Sasha Emanuel Franco. Legajo: 27984 " << endl;
+            cout << endl;
             system("pause");
             break;
         case 0:
@@ -90,7 +99,17 @@ void Menu::mostrar()
             mostrarRreportes();
             break;
         case 5:
-            mostrarUsuarios();
+            if (_manager.permisosAdmin())
+            {
+                mostrarUsuarios();
+
+            }
+            else
+            {
+                system("cls");
+                cout << "NO TIENE PERMISOS DE ADMINISTRADOR" << endl;
+                system("pause");
+            }
             break;
         case 6:
             mostrarBk();
@@ -135,7 +154,7 @@ void Menu::mostrarCompras()
             _manager.BuscarStock();
             break;
         case 3:
-            //_manager.CargarCompra();
+            _manager.CargarCompra(); // corregir, ya que borra cosas
             system("pause");
             break;
         case 4:
@@ -251,10 +270,10 @@ void Menu::mostrarRreportes()
         switch (opc)
         {
         case 1:
-            //_manager.listarVentas();
+            _manager.listarVentas();
             break;
         case 2:
-            //_manager.reporteCaja();
+            _manager.reporteCaja();
             break;
         case 3:
             exportarClientesACSV();
@@ -505,10 +524,26 @@ void Menu::mostrarABMCLientes()
             _manager.AltaCliente();
             break;
         case 2:
-            _manager.BajaCliente();
+            if (_manager.permisosAdmin())
+            {
+                _manager.BajaCliente();
+            }
+            else {
+                system("cls");
+                cout << "NO TIENE PERMISOS DE ADMINISTRADOR" << endl;
+                system("pause");
+            }
             break;
         case 3:
-            _manager.ModificarCliente();
+            if (_manager.permisosAdmin())
+            {
+                _manager.ModificarCliente();
+            }
+            else {
+                system("cls");
+                cout << "NO TIENE PERMISOS DE ADMINISTRADOR" << endl;
+                system("pause");
+            }
             break;
         case 4:
             _manager.ListarClientes();
@@ -554,10 +589,26 @@ void Menu::mostrarABMProveedores()
             _manager.AltaProveedor();
             break;
         case 2:
+            if (_manager.permisosAdmin())
+        {
             _manager.BajaProveedor();
+        }
+              else {
+            system("cls");
+            cout << "NO TIENE PERMISOS DE ADMINISTRADOR" << endl;
+            system("pause");
+        }
             break;
         case 3:
-            _manager.ModificarProveedor();
+            if (_manager.permisosAdmin())
+            {
+                _manager.ModificarProveedor();
+            }
+            else {
+                system("cls");
+                cout << "NO TIENE PERMISOS DE ADMINISTRADOR" << endl;
+                system("pause");
+            }
             break;
         case 4:
             _manager.ListarProveedor();
@@ -604,10 +655,26 @@ void Menu::mostrarABMProductos()
             _manager.AltaProducto();
             break;
         case 2:
-            _manager.BajaProducto(); // ya funciona
+            if (_manager.permisosAdmin())
+            {
+                _manager.BajaProducto(); // ya funciona
+            }
+            else {
+                system("cls");
+                cout << "NO TIENE PERMISOS DE ADMINISTRADOR" << endl;
+                system("pause");
+            }
             break;
         case 3:
-            _manager.MoidificarProducto();
+            if (_manager.permisosAdmin())
+            {
+                _manager.MoidificarProducto();
+            }
+            else {
+                system("cls");
+                cout << "NO TIENE PERMISOS DE ADMINISTRADOR" << endl;
+                system("pause");
+            }
             break;
         case 4:
             _manager.listarProducto();

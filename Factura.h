@@ -20,6 +20,7 @@ public:
     void setEstado(bool estado);
     void setMonto(float monto);
     void setFechaActual();
+    void setFecha(int dia, int mes, int anio);
     void setId(int id);
 
     char* getFormaDePago();
