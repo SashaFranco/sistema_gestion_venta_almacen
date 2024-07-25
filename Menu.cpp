@@ -42,8 +42,8 @@ void Menu::MostrarEntrada()
             cout << "**************INTEGRANTES*************** " << endl;
             cout << endl;
             cout << "Sasha Emanuel Franco. Legajo: 27984 " << endl;
-            cout << "Sasha Emanuel Franco. Legajo: 27984 " << endl;
-            cout << "Sasha Emanuel Franco. Legajo: 27984 " << endl;
+            cout << "Javier Alejandro Ordóñez. Legajo: 26040 " << endl;
+            cout << "María Itatí Romero. Legajo:  29888 " << endl;
             cout << endl;
             system("pause");
             break;
