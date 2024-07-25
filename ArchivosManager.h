@@ -37,7 +37,7 @@ public:
 
 	bool verificarStock(Producto reg, int cantidad);
 	bool ajustarStock(Producto reg, int cantidad);
-		bool aumentarStock(Producto reg, int cantidad);
+	bool aumentarStock(int id, int cantidad);
 
 	// METODOS PARA DETALLE
 	bool altaDetalle(DetalleFactura reg);

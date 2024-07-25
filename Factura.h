@@ -22,6 +22,7 @@ public:
     void setFechaActual();
     void setFecha(int dia, int mes, int anio);
     void setId(int id);
+    void setTipo(char tipo);
 
     char* getFormaDePago();
     bool getEnvio();
@@ -30,6 +31,7 @@ public:
     float getMonto();
     int getId();
     bool getEstado();
+    char getTipo();
 
     void MostrarEncabezado();
     void Cargar(int idCliente, float monto);
@@ -45,4 +47,5 @@ private:
     float _monto;
     Cliente _cliente; // fijarse si se puede borrar, ya que la funcion no lo necesita
     Fecha _fecha;
+    char _tipo; // A, B, C 
 };

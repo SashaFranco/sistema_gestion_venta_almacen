@@ -9,6 +9,7 @@ Factura::Factura()
 	_estado = false;
 	_fecha = Fecha(0, 0, 0);
 	_monto = 0;
+	_tipo = 'z';
 }
 
 void Factura::setFormaDePago(const char* fp) { strcpy_s(_formaDePago, fp); }
@@ -27,6 +28,8 @@ void Factura::setFecha(int dia, int mes, int anio)
 
 void Factura::setId(int id) { _id = id; }
 
+void Factura::setTipo(char tipo){_tipo = tipo;}
+
 char* Factura::getFormaDePago() { return _formaDePago; }
 bool Factura::getEnvio() { return _envio; }
 int Factura::getIdCliente() { return _idcliente; }
@@ -35,19 +38,22 @@ float Factura::getMonto() { return _monto; }
 int Factura::getId() { return _id; }
 bool Factura::getEstado() { return _estado; }
 
+char Factura::getTipo() {return _tipo;}
+
 void Factura::MostrarEncabezado()
 {
 	cout << setw(15) << "ID DE FACTURA";
 	cout << setw(15) << "ID DE CLIENTE";
+	cout << setw(15) << "TIPO FACTURA";
 	cout << setw(20) << "FORMA DE PAGO";
 	cout << setw(20) << "ENVIO";
 	cout << setw(15) << "MONTO";
 	cout << setw(15) << "FECHA" << endl;
-	cout << "-----------------------------------------------------------------------------------------------" << endl;
+	cout << "----------------------------------------------------------------------------------------------------" << endl;
 }
 void Factura::Cargar(int idCliente, float monto)
 {
-	char formaDePago[10];
+	char formaDePago[10], tipo;
 	bool envio;
 	system("cls");
 
@@ -57,6 +63,9 @@ void Factura::Cargar(int idCliente, float monto)
 	cout << endl;
 	cout << "1-ENVIOS /// 0-RETIRO EN TIENDA : ";
 	cin >> envio;
+	cout << endl;
+	cout << "TIPO DE FACTURA (A,B,C,D, ETC): ";
+	cin >> tipo;
 
 	setFormaDePago(formaDePago);
 	setEnvio(envio);
@@ -64,6 +73,7 @@ void Factura::Cargar(int idCliente, float monto)
 	setMonto(monto);
 	setFechaActual();
 	setEstado(true);
+	setTipo(tipo);
 }
 void Factura::Mostrar()
 {
@@ -82,11 +92,12 @@ void Factura::Mostrar()
 
 		cout << setw(15) << getId();
 		cout << setw(15) << getIdCliente();
+		cout << setw(15) << getTipo();
 		cout << setw(20) << getFormaDePago();
 		cout << setw(20) << envio;
 		cout << setw(15) << getMonto();
 		cout << setw(15) << _fecha.toString() << endl;
-		cout << "-----------------------------------------------------------------------------------------------" << endl;
+		cout << "----------------------------------------------------------------------------------------------------" << endl;
 
 	}
 }

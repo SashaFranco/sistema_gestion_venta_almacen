@@ -529,6 +529,7 @@ void Manager::CargarCompra() // corregir
     int id, cantidad;
     Producto producto;
     bool continuar = true;
+
     while (continuar)
     {
         system("cls");
@@ -544,14 +545,11 @@ void Manager::CargarCompra() // corregir
         }
         else
         {
+
         cout << "INGRESE CANTIDAD A COMPRAR: ";
         cin >> cantidad;
-        producto.SetCantidad(cantidad);
-        _regProductos.aumentarStock(producto, cantidad);
+        _regProductos.aumentarStock(id, cantidad);
         system("cls");
-        producto = _regProductos.BuscarProducto(pos);
-        producto.MostrarEncabezadoYSuStock();
-        producto.MostrarProductoYSuStock();
         cout << endl;
         cout << "STOCK ACTUALIZADO. DESEA CARGAR MAS? (1-SI / 0-NO) ";
         cin >> continuar;
@@ -1272,7 +1270,7 @@ void Manager::CargarVenta()
 void Manager::listarVentas()
 {
     system("cls");
-    setConsoleSize(50, 100);
+    setConsoleSize(50, 115);
     _factura.MostrarEncabezado();
     _regFacturas.ListarFactura(_factura);
     system("pause");
